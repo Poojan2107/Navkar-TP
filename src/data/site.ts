@@ -19,22 +19,22 @@ export const site = {
     rakhialTel: 'tel:+919825085947',
   },
   address: {
-    line1: 'Ahmedabad',
-    line2: 'Gujarat',
+    line1: 'Plot No. 1426/B, Trikampura Patiya',
+    line2: 'Phase-3, GIDC Vatva',
     city: 'Ahmedabad',
     state: 'Gujarat',
     country: 'India',
-    full: 'Ahmedabad, Gujarat, India',
+    full: 'Plot No. 1426/B, Trikampura Patiya, Phase-3, GIDC Vatva, Ahmedabad, Gujarat',
   },
-  /** Secondary contact line — kept for phone routing */
+  /** Stockyard — shown on Contact page only */
   rakhial: {
-    line1: 'Ahmedabad',
-    line2: 'Gujarat',
+    line1: '8, Jaymangal Estate, Opp. Jagganath Estate',
+    line2: 'Nr. Gujarat Bottling, Rakhial',
     city: 'Ahmedabad',
     state: 'Gujarat',
-    full: 'Ahmedabad, Gujarat, India',
+    full: '8, Jaymangal Estate, Opp. Jagganath Estate, Nr. Gujarat Bottling, Rakhial, Ahmedabad, Gujarat',
   },
-  locations: ['Ahmedabad', 'Gujarat'],
+  locations: ['Vatva', 'Rakhial'],
   catalogueUrl: '/catalogue/',
   /**
    * Google Business Profile sticky search links (Knowledge Panel).

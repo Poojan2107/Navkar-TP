@@ -2,31 +2,70 @@
 import { site } from '../data/site';
 import { images } from '../data/images';
 
-/** Single Ahmedabad presence card (legacy switcher kept for potential reuse) */
 const yards = [
   {
-    id: 'ahmedabad',
-    label: 'Ahmedabad',
-    title: 'Ahmedabad, Gujarat',
+    id: 'vatva',
+    label: 'Vatva',
+    title: 'Vatva — Main office',
     address: site.address.full,
     image: images.officeVatva,
-    imageAlt: 'Navkar Tubes facility — Ahmedabad, Gujarat',
+    imageAlt: 'Navkar Tubes facility with NAVKAR TUBES & TOOLS sign — Vatva, Ahmedabad',
     phone: site.phones.sales,
     tel: site.phones.salesTel,
     note: 'Sales desk, quotations and dispatch coordination.',
-    mapsQuery: 'Navkar Tubes & Tools Ahmedabad Gujarat',
+    mapsQuery: site.address.full,
+  },
+  {
+    id: 'rakhial',
+    label: 'Rakhial',
+    title: 'Rakhial — Stockyard',
+    address: site.rakhial.full,
+    image: images.officeRakhial,
+    imageAlt: 'MS ERW pipe stock at Navkar Tubes Rakhial stockyard, Ahmedabad',
+    phone: site.phones.rakhial,
+    tel: site.phones.rakhialTel,
+    note: 'Call ahead for pickup timing and gate access.',
+    mapsQuery: site.rakhial.full,
   },
 ] as const;
 ---
 
 <div class="yard-switcher" data-yard-switcher>
+  <div
+    class="mb-5 flex gap-1 border-b border-slate-200"
+    role="tablist"
+    aria-label="Choose yard"
+  >
+    {
+      yards.map((yard, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`yard-tab-${yard.id}`}
+          aria-controls={`yard-panel-${yard.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          data-yard-tab={yard.id}
+          class:list={[
+            'yard-tab -mb-px min-h-11 flex-1 border-b-2 px-3 py-2.5 text-sm font-semibold transition sm:flex-none sm:px-4',
+            i === 0
+              ? 'border-teal-600 text-teal-700'
+              : 'border-transparent text-steel-500 hover:text-navy-brand',
+          ]}
+        >
+          {yard.label}
+        </button>
+      ))
+    }
+  </div>
+
   {
     yards.map((yard, i) => (
       <div
         id={`yard-panel-${yard.id}`}
-        role="region"
-        aria-label={yard.title}
+        role="tabpanel"
+        aria-labelledby={`yard-tab-${yard.id}`}
         data-yard-panel={yard.id}
+        hidden={i !== 0}
         class="grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8"
       >
         <div class="overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200/80">
@@ -50,7 +89,7 @@ const yards = [
             {yard.address}
           </address>
           <a href={yard.tel} class="mt-3 text-sm font-bold text-teal-600 hover:text-teal-700">
-            Sales {yard.phone}
+            {yard.phone}
           </a>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(yard.mapsQuery)}`}
@@ -65,3 +104,33 @@ const yards = [
     ))
   }
 </div>
+
+<script>
+  function initYardSwitcher(root: HTMLElement) {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-yard-tab]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-yard-panel]'));
+
+    function activate(id: string) {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.yardTab === id;
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.classList.toggle('border-teal-600', active);
+        tab.classList.toggle('text-teal-700', active);
+        tab.classList.toggle('border-transparent', !active);
+        tab.classList.toggle('text-steel-500', !active);
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.yardPanel !== id;
+      });
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.dataset.yardTab;
+        if (id) activate(id);
+      });
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-yard-switcher]').forEach(initYardSwitcher);
+</script>

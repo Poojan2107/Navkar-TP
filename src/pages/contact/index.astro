@@ -4,9 +4,9 @@ import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import Reveal from '../../components/Reveal.astro';
+import YardSwitcher from '../../components/YardSwitcher.astro';
 import SalesContactActions from '../../components/SalesContactActions.astro';
 import { site } from '../../data/site';
-import { images } from '../../data/images';
 import { metaDescriptionFor } from '../../data/seo';
 import { contactPageSchema, breadcrumbSchema } from '../../lib/schema';
 
@@ -30,7 +30,7 @@ const schemas = [
   <PageHero
     eyebrow="Contact"
     title="Let's connect"
-    description="Tell us product, size and quantity — we respond with a detailed free quote from Ahmedabad, Gujarat."
+    description="Tell us product, size and quantity — we respond with a detailed free quote. Call or visit Vatva and Rakhial."
   >
     <Breadcrumbs
       slot="breadcrumb"
@@ -41,47 +41,12 @@ const schemas = [
   <section class="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
     <div class="container-narrow">
       <Reveal variant="fade-up" class="mb-6">
-        <p class="section-eyebrow mb-2">Location</p>
-        <h2 class="section-title">Ahmedabad, Gujarat</h2>
+        <p class="section-eyebrow mb-2">Our yards</p>
+        <h2 class="section-title">Vatva &amp; Rakhial</h2>
       </Reveal>
 
       <Reveal variant="fade-up">
-        <div class="grid gap-5 overflow-hidden rounded-2xl border border-slate-200/90 lg:grid-cols-[1.05fr_0.95fr] lg:gap-0">
-          <div class="overflow-hidden bg-slate-100">
-            <img
-              src={images.officeVatva}
-              alt="Navkar Tubes & Tools facility — Ahmedabad, Gujarat"
-              class="aspect-[16/10] w-full max-h-[280px] object-cover object-center lg:max-h-none lg:h-full"
-              width="1400"
-              height="1050"
-              sizes="(max-width: 1024px) 100vw, 640px"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-          <div class="flex flex-col justify-center px-5 py-6 sm:px-7 sm:py-8">
-            <h3 class="font-display text-xl font-bold uppercase tracking-tight text-navy-brand">
-              Yard &amp; sales desk
-            </h3>
-            <p class="mt-2 text-[15px] leading-relaxed text-steel-500">
-              Visit by appointment, or call / WhatsApp for availability, loading and project dispatch across Gujarat and India.
-            </p>
-            <address class="mt-4 text-[14px] not-italic leading-relaxed text-navy-brand">
-              {site.address.full}
-            </address>
-            <div class="mt-5">
-              <SalesContactActions />
-            </div>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Navkar Tubes & Tools Ahmedabad Gujarat')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-4 inline-flex text-sm font-semibold text-teal-600 hover:text-teal-700"
-            >
-              Open in Google Maps →
-            </a>
-          </div>
-        </div>
+        <YardSwitcher />
       </Reveal>
     </div>
   </section>
@@ -104,16 +69,21 @@ const schemas = [
             <SalesContactActions />
           </div>
 
-          <div class="mt-6 border-t border-white/10 pt-6">
-            <p class="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-300/80">Email</p>
-            <a href={`mailto:${site.email}`} class="text-[15px] font-semibold text-slate-200 transition hover:text-teal-200">
+          <div class="mt-6 space-y-2 border-t border-white/10 pt-6 text-[14px] leading-relaxed text-slate-300">
+            <p>
+              <span class="font-semibold text-teal-200">Vatva</span> — {site.address.line1}
+            </p>
+            <p>
+              <span class="font-semibold text-teal-200">Rakhial</span> — {site.rakhial.line1}
+            </p>
+            <a href={`mailto:${site.email}`} class="inline-block font-semibold text-slate-200 transition hover:text-teal-200">
               {site.email}
             </a>
           </div>
         </div>
 
         <p class="relative mt-10 text-sm leading-relaxed tracking-[0.02em] text-slate-400 lg:mt-12">
-          Ahmedabad, Gujarat
+          Vatva office · Rakhial stockyard · Ahmedabad
         </p>
       </Reveal>
 

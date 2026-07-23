@@ -32,26 +32,30 @@ const shots = [
       </a>
     </Reveal>
 
-    <div class="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
+    <div class="portal-grid grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3 lg:gap-6">
       {
         shots.map((shot, i) => (
           <Reveal delay={i * 50} variant="fade-up">
             <a
               href={shot.src}
-              class="group relative block aspect-[4/3] overflow-hidden bg-slate-100 ring-1 ring-slate-200/80"
+              class="portal-card group relative block aspect-[4/3] overflow-hidden bg-slate-100"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
                 src={shot.src}
                 alt={shot.alt}
-                class="media-enhance h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                class="img-zoom media-enhance absolute inset-0 h-full w-full object-cover"
                 width={shot.w}
                 height={shot.h}
                 sizes="(max-width: 1023px) 50vw, 33vw"
                 loading="lazy"
                 decoding="async"
               />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-navy-brand/80 via-navy-brand/20 to-transparent opacity-70 transition-all duration-500 group-hover:from-navy-dark group-hover:via-teal-900/35 group-hover:opacity-95"
+                aria-hidden="true"
+              ></div>
             </a>
           </Reveal>
         ))

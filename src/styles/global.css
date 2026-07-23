@@ -1439,12 +1439,15 @@ html.js-reveal [data-stat].is-popped {
   outline: 1px solid rgb(226 232 240 / 0.95);
   transition:
     box-shadow var(--duration-normal) var(--ease-out-expo),
-    outline-color var(--duration-normal) ease;
+    outline-color var(--duration-normal) ease,
+    transform 0.45s var(--ease-out-expo);
 }
 
-.update-rail-card:hover {
+.update-rail-card:hover,
+.update-rail-form:hover {
   box-shadow: var(--shadow-md);
-  outline-color: rgb(89 161 168 / 0.35);
+  outline-color: rgb(89 161 168 / 0.45);
+  transform: translateY(-2px);
 }
 
 @media (min-width: 640px) {
