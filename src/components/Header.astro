@@ -41,19 +41,15 @@ const currentPath = Astro.url.pathname;
           rel="noopener noreferrer"
           class="header-util-link hidden shrink-0 text-[12px] font-semibold sm:inline"
         >
-          WhatsApp quote →
+          WhatsApp Quote →
         </a>
       </div>
     </div>
   </div>
 
-  <div class="header-main container-narrow flex items-center justify-between gap-3 border-b px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4">
-    <a href="/" class="flex min-w-0 items-center gap-2 sm:gap-3" aria-label="Navkar Tubes & Tools home">
-      <Logo size="md" class="!h-10 !w-10 sm:!h-11 sm:!w-11" />
-      <div class="min-w-0 leading-tight">
-        <span class="header-brand font-display block truncate text-base font-bold uppercase tracking-[0.04em] sm:text-lg">Navkar Tubes</span>
-        <span class="header-tagline block text-[11px] font-medium tracking-[0.04em] sm:text-xs">and Tools · Ahmedabad</span>
-      </div>
+  <div class="header-main container-narrow flex items-center justify-between gap-3 border-b px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8 lg:py-3.5">
+    <a href="/" class="brand-lockup min-w-0 shrink" aria-label="Navkar Tubes & Tools home">
+      <Logo variant="lockup" theme="teal" heightClass="h-8 sm:h-9 lg:h-10" />
     </a>
 
     <nav class="hidden items-center gap-0.5 lg:flex xl:gap-1" aria-label="Main navigation">
@@ -75,7 +71,7 @@ const currentPath = Astro.url.pathname;
       <a href={site.catalogueUrl} class="header-catalogue header-nav-link nav-link px-2 py-1.5 font-semibold lg:text-[14px] xl:text-[15px]">
         Catalogue
       </a>
-      <a href="/contact/" class="btn btn-teal btn-shimmer ml-2 px-4 py-2.5 text-[14px] shadow-md xl:px-5 xl:text-[15px]" data-magnetic>Get quote</a>
+      <a href="/contact/" class="btn btn-teal btn-shimmer ml-2 px-4 py-2.5 text-[14px] shadow-md xl:px-5 xl:text-[15px]" data-magnetic>Get Quote</a>
     </nav>
 
     <button

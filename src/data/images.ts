@@ -29,7 +29,8 @@ export const images = {
   jindalCertificate: '/images/navkar/jindal-certificate.webp',
   catalogue: '/images/navkar/brochure-cover.webp',
   catalogueLegacy: '/images/navkar/catalogue-cover.webp',
-  logo: '/images/navkar/logo-full.png',
+  logo: '/images/navkar/logo-lockup-teal-clear.png',
+  logoWhite: '/images/navkar/logo-lockup-white-clear.png',
   emblem: '/images/navkar/favicon.webp',
   people: {
     founder: '/images/navkar/shripal-shah.webp',

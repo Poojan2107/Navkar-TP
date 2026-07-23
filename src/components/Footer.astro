@@ -18,15 +18,11 @@ const productLinks = products.slice(0, 5);
   <div class="container-narrow px-4 pb-8 pt-10 sm:px-6 lg:px-8 lg:pb-10 lg:pt-12">
     <div class="mb-8 grid gap-8 border-b border-white/10 pb-8 lg:grid-cols-12 lg:gap-10">
       <div class="lg:col-span-4">
-        <a href="/" class="mb-3 inline-flex items-center gap-3 transition-opacity hover:opacity-90">
-          <Logo size="sm" />
-          <span class="font-display font-bold uppercase leading-tight tracking-tight text-white">
-            Navkar Tubes<br />
-            <span class="font-sans text-xs font-medium normal-case tracking-normal text-teal-300">and Tools</span>
-          </span>
+        <a href="/" class="brand-lockup mb-4 inline-block transition-opacity hover:opacity-90">
+          <Logo variant="lockup" theme="teal" heightClass="h-10 sm:h-11" />
         </a>
         <p class="mb-4 max-w-sm text-[14px] leading-relaxed text-slate-400">
-          Authorized Jindal channel partner — MS ERW pipes, fittings &amp; flanges from Ahmedabad stockyards.
+          Authorized Jindal Channel Partner — MS ERW pipes, fittings &amp; flanges from Ahmedabad stockyards.
         </p>
         <a
           href={site.phones.whatsapp}
@@ -34,7 +30,7 @@ const productLinks = products.slice(0, 5);
           rel="noopener noreferrer"
           class="text-[14px] font-semibold text-teal-300 transition hover:text-white"
         >
-          WhatsApp sales →
+          WhatsApp Sales →
         </a>
       </div>
 
@@ -66,7 +62,7 @@ const productLinks = products.slice(0, 5);
               ))
             }
             <li>
-              <a href="/products/" class="footer-link font-semibold text-teal-300">All products →</a>
+              <a href="/products/" class="footer-link font-semibold text-teal-300">All Products →</a>
             </li>
           </ul>
         </div>
@@ -90,7 +86,7 @@ const productLinks = products.slice(0, 5);
     <div class="flex flex-col items-start justify-between gap-2 text-sm text-slate-500 sm:flex-row sm:items-center">
       <p>© {new Date().getFullYear()} {site.name}</p>
       <div class="flex flex-wrap gap-4 text-sm">
-        <a href="/contact/" class="transition hover:text-white">Get quote</a>
+        <a href="/contact/" class="transition hover:text-white">Get Quote</a>
         <a href="/privacy/" class="transition hover:text-white">Privacy</a>
         <span>Ahmedabad · Gujarat</span>
       </div>

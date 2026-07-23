@@ -1,26 +1,57 @@
 ---
-import { images } from '../data/images';
-
+/**
+ * Brand mark / lockup — prefer full lockup in header & footer.
+ * Assets are transparent PNGs knocked from brand artwork.
+ */
 interface Props {
+  /** Full horizontal lockup (default) or emblem-only mark */
+  variant?: 'lockup' | 'mark';
+  /** Teal wordmark (dark UI) or white wordmark (dark UI alternate) */
+  theme?: 'teal' | 'white';
   class?: string;
-  size?: 'sm' | 'md' | 'lg';
+  /** Height class override for the image */
+  heightClass?: string;
 }
 
-const { class: className, size = 'md' } = Astro.props;
+const {
+  variant = 'lockup',
+  theme = 'teal',
+  class: className,
+  heightClass,
+} = Astro.props;
 
-const sizes = {
-  sm: 'h-8 w-8 sm:h-9 sm:w-9',
-  md: 'h-11 w-11',
-  lg: 'h-14 w-14',
-};
+const lockupSrc =
+  theme === 'white'
+    ? '/images/navkar/logo-lockup-white-clear.png'
+    : '/images/navkar/logo-lockup-teal-clear.png';
+
+const markSrc = '/images/navkar/favicon.webp';
 ---
 
-<img
-  src={images.emblem}
-  alt="Navkar Tubes & Tools"
-  class:list={['logo-mark rounded-xl object-contain', sizes[size], className]}
-  width="96"
-  height="96"
-  loading="eager"
-  decoding="async"
-/>
+{
+  variant === 'lockup' ? (
+    <img
+      src={lockupSrc}
+      alt="Navkar Tubes & Tools"
+      class:list={[
+        'brand-lockup-img',
+        heightClass ?? 'h-9 sm:h-10 lg:h-11',
+        className,
+      ]}
+      width={theme === 'white' ? 458 : 1024}
+      height={theme === 'white' ? 96 : 316}
+      loading="eager"
+      decoding="async"
+    />
+  ) : (
+    <img
+      src={markSrc}
+      alt="Navkar Tubes & Tools"
+      class:list={['logo-mark rounded-xl object-contain', heightClass ?? 'h-10 w-10', className]}
+      width="96"
+      height="96"
+      loading="eager"
+      decoding="async"
+    />
+  )
+}
