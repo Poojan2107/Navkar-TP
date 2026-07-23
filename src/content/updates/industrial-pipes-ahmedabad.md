@@ -1,7 +1,7 @@
 ---
 draft: true
 title: "Industrial pipes — Ahmedabad stock update"
-excerpt: "Wide-diameter MS pipe stacks for refineries, cement, chemical and general fabrication — confirm size with sales before dispatch."
+excerpt: "Wide-diameter MS stacks for refineries, cement, chemical and fabrication — confirm size before dispatch."
 date: 2026-07-14
 image: "/images/navkar/updates/yard-25-960.webp"
 thumb: "/images/navkar/updates/yard-25-640.webp"

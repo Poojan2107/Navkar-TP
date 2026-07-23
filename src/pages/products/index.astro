@@ -49,8 +49,8 @@ const schemas = [
     />
   </PageHero>
 
-  <section class="bg-surface px-4 py-7 sm:px-6 lg:px-8 lg:py-10">
-    <div class="container-narrow space-y-8 lg:space-y-10">
+  <section class="bg-surface px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
+    <div class="container-narrow space-y-7 lg:space-y-8">
       <Reveal variant="fade-up">
         <div class="portal-grid grid gap-4 sm:grid-cols-2 sm:gap-5">
           {
@@ -93,21 +93,22 @@ const schemas = [
           </a>
         </Reveal>
 
-        <div class="portal-grid grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+        <div class="portal-grid products-card-grid grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {
             allProducts.map((product, i) => {
-              const rem = allProducts.length % 3;
+              const remLg = allProducts.length % 3;
+              const remSm = allProducts.length % 2;
               const isLast = i === allProducts.length - 1;
-              const centerOrphan = rem === 1 && isLast;
-              const centerPair = rem === 2 && i === allProducts.length - 2;
+              const centerOnLg = remLg === 1 && isLast && allProducts.length > 3;
+              const centerOnSm = remSm === 1 && isLast && allProducts.length > 2;
               return (
                 <ProductCard
                   product={product}
                   index={i}
                   featured={product.slug === 'erw-pipes'}
                   class:list={[
-                    centerOrphan && 'lg:col-start-2',
-                    centerPair && 'lg:col-start-2',
+                    centerOnSm && 'sm:col-span-2 sm:max-w-md sm:justify-self-center lg:col-span-1 lg:max-w-none lg:justify-self-stretch',
+                    centerOnLg && 'lg:col-start-2',
                   ]}
                 />
               );
@@ -116,7 +117,7 @@ const schemas = [
         </div>
       </div>
 
-      <div class="products-enquiry grid items-start gap-6 rounded-2xl border border-slate-200/90 bg-white p-5 sm:gap-8 sm:p-7 lg:grid-cols-[minmax(0,1fr)_minmax(300px,360px)] lg:gap-8 lg:p-8">
+      <div class="products-enquiry grid items-start gap-6 rounded-2xl border border-slate-200/90 bg-white p-5 sm:gap-7 sm:p-7 lg:grid-cols-[minmax(0,1fr)_minmax(300px,360px)] lg:gap-8 lg:p-8">
         <Reveal variant="fade-up">
           <p class="section-eyebrow mb-1.5">Talk to sales</p>
           <h2 class="font-display mb-3 text-2xl font-bold uppercase tracking-tight text-navy-brand sm:text-3xl">

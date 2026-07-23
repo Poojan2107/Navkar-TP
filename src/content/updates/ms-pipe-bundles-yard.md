@@ -1,6 +1,6 @@
 ---
 title: "MS pipe bundles — yard ready"
-excerpt: "MS pipe bundles are tagged, stacked and ready for confirmation against your bill of materials. ERW, spiral and allied lines can be quoted together from Ahmedabad — one enquiry for pipes, fittings and flanges."
+excerpt: "Tagged MS bundles ready against your BOM — ERW, spiral and allied lines quoted together from Ahmedabad."
 date: 2026-07-16
 image: "/images/navkar/updates/yard-19-960.webp"
 thumb: "/images/navkar/updates/yard-19-640.webp"

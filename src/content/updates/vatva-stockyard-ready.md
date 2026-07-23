@@ -1,7 +1,7 @@
 ---
 draft: true
 title: "Ahmedabad yard — pipes on the ground"
-excerpt: "Open-yard MS pipe stock at our Ahmedabad location — visit by appointment or send your requirement for a remote quote."
+excerpt: "Open-yard MS stock at our Ahmedabad location — visit by appointment or send specs for a remote quote."
 date: 2026-07-15
 image: "/images/navkar/updates/yard-22-960.webp"
 thumb: "/images/navkar/updates/yard-22-640.webp"

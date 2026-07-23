@@ -1,7 +1,6 @@
 ---
-draft: true
 title: "Heavy wall pipe inventory — open yard"
-excerpt: "Thick-wall MS pipe stacks photographed at our yard — ideal for pressure, structural and heavy industrial applications."
+excerpt: "Thick-wall MS stacks for pressure, structural and heavy industrial work — confirm grade and NB with sales."
 date: 2026-07-18
 image: "/images/navkar/updates/yard-13-960.webp"
 thumb: "/images/navkar/updates/yard-13-640.webp"

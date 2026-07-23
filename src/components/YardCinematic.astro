@@ -6,9 +6,23 @@ const posterSrc = '/images/navkar/yard-tour-poster.jpg';
 ---
 
 <section class="yard-cinematic" data-yard-cinematic aria-label="Yard walkthrough video">
+  <div class="yard-cinematic-approach">
+    <div class="container-narrow px-4 sm:px-6 lg:px-8">
+      <p class="yard-cinematic-lead-eyebrow">
+        <span class="yard-cinematic-dot" aria-hidden="true"></span>
+        From the yard · Ahmedabad
+      </p>
+      <p class="yard-cinematic-lead-title">Step into the stockyard</p>
+      <p class="yard-cinematic-lead-hint">
+        Scroll to walk the floor — ERW pipes, hollow sections and dispatch-ready stock.
+      </p>
+    </div>
+  </div>
+
   <div class="yard-cinematic-track">
     <div class="yard-cinematic-sticky">
       <div class="yard-cinematic-stage" data-yard-stage>
+        <div class="yard-cinematic-frame" aria-hidden="true"></div>
         <div class="yard-cinematic-media" data-yard-media aria-hidden="true">
           <video
             class="yard-cinematic-video"
@@ -25,38 +39,41 @@ const posterSrc = '/images/navkar/yard-tour-poster.jpg';
           </video>
         </div>
         <div class="yard-cinematic-scrim" aria-hidden="true"></div>
+        <div class="yard-cinematic-vignette" aria-hidden="true"></div>
         <div class="yard-cinematic-veil" aria-hidden="true"></div>
+
+        <div class="yard-cinematic-caption" data-yard-copy>
+          <div class="container-narrow px-4 sm:px-6 lg:px-8">
+            <div class="yard-cinematic-caption-inner">
+              <div class="yard-cinematic-caption-text">
+                <p class="yard-cinematic-eyebrow">
+                  <span class="yard-cinematic-dot" aria-hidden="true"></span>
+                  Live stock on the floor
+                </p>
+                <h2 class="yard-cinematic-title">Stock you can see. Dispatch you can trust.</h2>
+                <p class="yard-cinematic-lede">
+                  A quick look through our Ahmedabad yard — ERW pipes, hollow sections and project-ready stock.
+                </p>
+              </div>
+              <div class="yard-cinematic-actions">
+                <a href="/updates/" class="btn btn-teal px-5 py-2.5 text-sm">View yard updates</a>
+                <a
+                  href={site.phones.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline-light px-5 py-2.5 text-sm"
+                >
+                  WhatsApp sales
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="yard-cinematic-caption">
-    <div class="container-narrow px-4 sm:px-6 lg:px-8">
-      <div class="yard-cinematic-caption-inner">
-        <div class="yard-cinematic-caption-text">
-          <p class="yard-cinematic-eyebrow">
-            <span class="yard-cinematic-dot" aria-hidden="true"></span>
-            From the yard · Ahmedabad
-          </p>
-          <h2 class="yard-cinematic-title">Stock you can see. Dispatch you can trust.</h2>
-          <p class="yard-cinematic-lede">
-            A quick look through our Ahmedabad yard — ERW pipes, hollow sections and project-ready stock.
-          </p>
-        </div>
-        <div class="yard-cinematic-actions">
-          <a href="/updates/" class="btn btn-teal px-5 py-2.5 text-sm">View yard updates</a>
-          <a
-            href={site.phones.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-outline-light px-5 py-2.5 text-sm"
-          >
-            WhatsApp sales
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="yard-cinematic-departure" aria-hidden="true"></div>
 </section>
 
 <script>
@@ -67,11 +84,14 @@ const posterSrc = '/images/navkar/yard-tour-poster.jpg';
     const track = root.querySelector('.yard-cinematic-track');
     const stage = root.querySelector('[data-yard-stage]');
     const media = root.querySelector('[data-yard-media]');
+    const copy = root.querySelector('[data-yard-copy]');
     const video = root.querySelector('[data-yard-video]');
+    const lead = root.querySelector('.yard-cinematic-approach');
     if (
       !(track instanceof HTMLElement) ||
       !(stage instanceof HTMLElement) ||
       !(media instanceof HTMLElement) ||
+      !(copy instanceof HTMLElement) ||
       !(video instanceof HTMLVideoElement)
     ) {
       return;
@@ -80,12 +100,20 @@ const posterSrc = '/images/navkar/yard-tour-poster.jpg';
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let ownsFrame = false;
 
-    function easeInOutCubic(t) {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    function clamp(n, a, b) {
+      return Math.min(Math.max(n, a), b);
     }
 
-    function easeOutCubic(t) {
-      return 1 - Math.pow(1 - t, 3);
+    function easeOutQuint(t) {
+      return 1 - Math.pow(1 - t, 5);
+    }
+
+    function easeInOutQuint(t) {
+      return t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
+    }
+
+    function easeInCubic(t) {
+      return t * t * t;
     }
 
     function setOwns(next) {
@@ -95,65 +123,98 @@ const posterSrc = '/images/navkar/yard-tour-poster.jpg';
     }
 
     function setProgress(progress) {
-      const p = Math.min(Math.max(progress, 0), 1);
+      const p = clamp(progress, 0, 1);
 
-      // 0–18% fade in · 18–58% hold · 58–100% fade out
-      let opacity = 1;
-      let scale = 1.02;
+      // enter 0–18% · hold 18–58% · exit 58–100%
+      const enterEnd = 0.18;
+      const holdEnd = 0.58;
+
+      let scale = 1;
       let y = 0;
       let blur = 0;
+      let opacity = 1;
       let veil = 0;
-      let scrim = 0.12;
+      let scrim = 0.14;
+      let vignette = 0.35;
+      let copyOpacity = 0;
+      let copyY = 28;
+      let leadOpacity = 1;
 
-      if (p < 0.18) {
-        const t = easeOutCubic(p / 0.18);
-        opacity = 0.35 + t * 0.65;
-        scale = 1.1 - t * 0.08;
+      if (p < enterEnd) {
+        const t = easeOutQuint(p / enterEnd);
+        veil = 0.55 * (1 - t);
+        scale = 1.08 - t * 0.08;
         y = (1 - t) * 36;
-        blur = (1 - t) * 4;
-        veil = 1 - t;
-        scrim = 0.45 - t * 0.33;
-      } else if (p > 0.58) {
-        const t = easeInOutCubic((p - 0.58) / 0.42);
-        opacity = 1 - t * 0.92;
-        scale = 1.02 - t * 0.1;
-        y = t * -28;
-        blur = t * 8;
-        veil = t;
-        scrim = 0.12 + t * 0.75;
+        blur = (1 - t) * 5;
+        opacity = 0.78 + t * 0.22;
+        scrim = 0.42 - t * 0.28;
+        vignette = 0.5 - t * 0.15;
+        copyOpacity = t * 0.18;
+        copyY = 28 - t * 8;
+        leadOpacity = 1 - t * 0.85;
+      } else if (p <= holdEnd) {
+        const mid = (p - enterEnd) / (holdEnd - enterEnd);
+        veil = 0;
+        scale = 1 + mid * 0.04;
+        y = mid * -12;
+        blur = 0;
+        opacity = 1;
+        scrim = 0.14 + mid * 0.04;
+        vignette = 0.35 + mid * 0.08;
+        copyOpacity = 0.18 + mid * 0.12;
+        copyY = 20 - mid * 8;
+        leadOpacity = 0.15;
       } else {
-        // Gentle drift during hold
-        const mid = (p - 0.18) / 0.4;
-        scale = 1.02 + mid * 0.025;
-        y = mid * -8;
+        const t = easeInOutQuint((p - holdEnd) / (1 - holdEnd));
+        const copyT = easeOutQuint(clamp(t / 0.7, 0, 1));
+        veil = easeInCubic(t) * 0.72;
+        scale = 1.04 - t * 0.08;
+        y = -12 - t * 24;
+        blur = t * 5;
+        opacity = 1 - t * 0.42;
+        scrim = 0.18 + t * 0.48;
+        vignette = 0.43 + t * 0.22;
+        copyOpacity = 0.3 + copyT * 0.7;
+        copyY = 12 * (1 - copyT);
+        leadOpacity = 0;
       }
 
       media.style.setProperty('--media-opacity', String(opacity));
       media.style.setProperty('--media-scale', String(scale));
-      media.style.setProperty('--media-y', y + 'px');
-      media.style.setProperty('--media-blur', blur + 'px');
+      media.style.setProperty('--media-y', y.toFixed(2) + 'px');
+      media.style.setProperty('--media-blur', blur.toFixed(2) + 'px');
       stage.style.setProperty('--yard-scrim', String(scrim));
       stage.style.setProperty('--yard-veil', String(veil));
+      stage.style.setProperty('--yard-vignette', String(vignette));
+      copy.style.setProperty('--copy-opacity', String(copyOpacity));
+      copy.style.setProperty('--copy-y', copyY.toFixed(2) + 'px');
+      if (lead instanceof HTMLElement) {
+        lead.style.setProperty('--lead-opacity', String(leadOpacity));
+      }
     }
 
     function update() {
       const trackRect = track.getBoundingClientRect();
       const total = track.offsetHeight - window.innerHeight;
 
-      // Sticky video fills the viewport — hide site chrome
       const pinned =
         !prefersReduced.matches &&
-        trackRect.top <= 2 &&
-        trackRect.bottom >= window.innerHeight - 2;
-      setOwns(pinned);
+        trackRect.top <= 4 &&
+        trackRect.bottom >= window.innerHeight - 4;
 
       if (total <= 0) {
-        setProgress(0);
+        setProgress(0.35);
+        setOwns(false);
         return;
       }
 
-      const scrolled = Math.min(Math.max(-trackRect.top, 0), total);
-      setProgress(scrolled / total);
+      const scrolled = clamp(-trackRect.top, 0, total);
+      const progress = scrolled / total;
+      setProgress(progress);
+
+      // Soft chrome dim only once past enter, before late exit
+      const immersive = pinned && progress > 0.14 && progress < 0.88;
+      setOwns(immersive);
     }
 
     function playIfVisible() {
@@ -162,7 +223,7 @@ const posterSrc = '/images/navkar/yard-tour-poster.jpg';
         return;
       }
       const rect = track.getBoundingClientRect();
-      const visible = rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1;
+      const visible = rect.top < window.innerHeight * 0.92 && rect.bottom > window.innerHeight * 0.08;
       if (visible) {
         const play = video.play();
         if (play && typeof play.catch === 'function') play.catch(function () {});
@@ -172,7 +233,12 @@ const posterSrc = '/images/navkar/yard-tour-poster.jpg';
     }
 
     if (prefersReduced.matches) {
-      setProgress(0.3);
+      setProgress(0.7);
+      copy.style.setProperty('--copy-opacity', '1');
+      copy.style.setProperty('--copy-y', '0px');
+      if (lead instanceof HTMLElement) {
+        lead.style.setProperty('--lead-opacity', '1');
+      }
       setOwns(false);
       return;
     }

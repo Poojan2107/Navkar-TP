@@ -1,6 +1,6 @@
 ---
 title: "GI hollow sections — yard stock snapshot"
-excerpt: "Jindal GI square and rectangular hollow sections are staged for fabrication, roofing and structural frames. Send your size matrix — side, thickness and length — for an Ahmedabad stock quote from our authorized channel inventory."
+excerpt: "Jindal GI square and rectangular hollow sections for fabrication and frames — send your size matrix for a quote."
 date: 2026-07-19
 image: "/images/navkar/updates/yard-10-960.webp"
 thumb: "/images/navkar/updates/yard-10-640.webp"

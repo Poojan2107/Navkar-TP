@@ -1,6 +1,6 @@
 ---
 title: "Pipe loading & Gujarat dispatch"
-excerpt: "Confirmed orders are staged and loaded from Ahmedabad for sites across Gujarat. Share product, quantity and delivery location — we reply with availability, loading plan and transport options from Ahmedabad."
+excerpt: "Orders staged and loaded from Ahmedabad for Gujarat sites — share product, qty and delivery location."
 date: 2026-07-17
 image: "/images/navkar/updates/yard-16-960.webp"
 thumb: "/images/navkar/updates/yard-16-640.webp"

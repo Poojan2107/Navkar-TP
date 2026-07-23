@@ -1,7 +1,6 @@
 ---
-draft: true
 title: "Fresh yard stock — July 2026"
-excerpt: "Latest pipe stacks added to Navkar Tubes yard inventory — ERW, spiral and hollow sections available from Ahmedabad, Gujarat."
+excerpt: "Latest stacks added to the yard — ERW, spiral and hollow sections ready from Ahmedabad, Gujarat."
 date: 2026-07-13
 image: "/images/navkar/updates/yard-28-960.webp"
 thumb: "/images/navkar/updates/yard-28-640.webp"

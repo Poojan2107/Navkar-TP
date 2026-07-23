@@ -157,9 +157,27 @@ import { breadcrumbSchema } from '../../lib/schema';
           <Reveal variant="fade-up" class="about-contact-copy">
             <p class="section-eyebrow mb-2">Talk to sales</p>
             <h2 class="section-title mb-3">Ready to work with us?</h2>
-            <p class="about-prose max-w-xl">
+            <p class="about-prose mb-5 max-w-xl">
               Call or WhatsApp from Ahmedabad, Gujarat — share product, size and quantity for a free quote.
             </p>
+            <ul class="about-contact-points mb-6">
+              <li>Jindal authorized ERW &amp; GI hollow sections</li>
+              <li>Asian and allied mill stock on enquiry</li>
+              <li>Fittings, flanges and project dispatch support</li>
+            </ul>
+            <div class="about-contact-meta">
+              <p class="text-[13px] font-semibold uppercase tracking-wide text-teal-600">Yard &amp; office</p>
+              <p class="mt-1 text-[15px] leading-relaxed text-navy-brand">{site.address.full}</p>
+              <p class="mt-3 text-[14px] text-steel-500">
+                Prefer email?{' '}
+                <a href={`mailto:${site.email}`} class="font-semibold text-teal-600 hover:text-teal-700">
+                  {site.email}
+                </a>
+              </p>
+              <a href="/contact/" class="mt-4 inline-flex text-sm font-semibold text-teal-600 hover:text-teal-700">
+                Full contact page →
+              </a>
+            </div>
           </Reveal>
           <div class="about-contact-rail">
             <UpdateContactRail formId="about-quote-form" />

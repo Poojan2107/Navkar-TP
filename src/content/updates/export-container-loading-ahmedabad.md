@@ -1,6 +1,6 @@
 ---
 title: "Export container loading â€” Ahmedabad yard"
-excerpt: "MS pipe bundles stuffed into shipping containers at our Ahmedabad yard for outbound export. Share port, size and quantity for stuffing and dispatch support from Ahmedabad, Gujarat."
+excerpt: "MS bundles stuffed for export containers at our Ahmedabad yard — share port, size and quantity."
 date: 2026-07-22
 image: "/images/navkar/export/export-12.webp"
 thumb: "/images/navkar/export/export-12-thumb.webp"

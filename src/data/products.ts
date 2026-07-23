@@ -57,7 +57,7 @@ export const products: Product[] = [
   {
     slug: 'ms-hollow-sections',
     title: 'MS Square & Rectangular Hollow Sections',
-    shortDescription: 'GI / MS RHS & SHS — authorized Jindal GI sections plus Asian pipes stock.',
+    shortDescription: 'GI / MS RHS & SHS — Jindal GI sections plus Asian pipes stock.',
     image: productImage('ms-hollow-sections'),
     description:
       'Square and rectangular hollow sections (SHS / RHS) for structural and fabrication work. Includes authorized Jindal GI square and rectangular pipes, MS sections, and Asian pipes stockist lines in common sizes. Available mill finish or with anti-rust coating — confirm thickness and length with your enquiry.',
@@ -86,7 +86,7 @@ export const products: Product[] = [
   {
     slug: 'ms-fittings',
     title: 'MS Fittings',
-    shortDescription: 'Elbows, tees, reducers & couplings matched to MS / ERW lines.',
+    shortDescription: 'Elbows, tees, reducers and couplings matched to MS / ERW lines.',
     image: productImage('ms-fittings'),
     description:
       'Mild steel pipe fittings stocked alongside our ERW and MS pipe range — elbows, tees, reducers, couplings and related pieces for process piping and fabrication. Quote with pipe size and schedule for matched supply.',
@@ -114,7 +114,7 @@ export const products: Product[] = [
   {
     slug: 'spiral-pipes',
     title: 'Spiral Pipes',
-    shortDescription: 'Large diameter spiral welded pipes for transmission & heavy duty.',
+    shortDescription: 'Large-diameter spiral welded pipes for transmission and heavy duty.',
     image: productImage('spiral-pipes'),
     description:
       'Spiral welded pipes for large diameter, high-volume applications. Suited to water transmission, infrastructure and heavy engineering — share OD, thickness and length for a project quote.',
@@ -170,7 +170,7 @@ export const products: Product[] = [
   {
     slug: 'seamless-hydraulic-pipes',
     title: 'Seamless Hydraulic Pipes',
-    shortDescription: 'Seamless hydraulic pipe to ANSI, API, IS and related standards.',
+    shortDescription: 'Seamless hydraulic pipe quoted to ANSI, API, IS and related standards.',
     image: productImage('seamless-hydraulic-pipes'),
     description:
       'Seamless hydraulic pipes supplied to project specification from Ahmedabad. Quoted against ANSI, API, MSS, BS, DIN, JIS and IS. Tell us OD, wall, grade and quantity — we quote from stock or mill lead time.',
@@ -200,7 +200,7 @@ export const products: Product[] = [
   {
     slug: 'lancing-pipes',
     title: 'Ceramic & Special Coated Lancing Pipes',
-    shortDescription: 'Ceramic and special coated lancing pipes manufactured in Ahmedabad for steel plant use.',
+    shortDescription: 'Ceramic and special coated lancing pipes made in Ahmedabad for steel plant duty.',
     image: productImage('lancing-pipes'),
     description:
       'Ceramic coated and special coated lancing pipes for steel plants and high-temperature process work. Manufactured and supplied from Ahmedabad — share diameter, coating type, length and quantity for a production quote.',
@@ -224,6 +224,62 @@ export const products: Product[] = [
       { label: 'Enquiry', value: 'OD, coating, length & quantity' },
     ],
     gradient: 'from-navy-dark to-steel-500',
+  },
+  {
+    slug: 'asian-pipes',
+    title: 'Asian Pipes Stock',
+    shortDescription: 'Asian mill lines for hollow sections and MS pipes — confirm size and grade with sales.',
+    image: productImage('asian-pipes'),
+    description:
+      'Asian pipes dealer stock alongside our Jindal authorized range. Common hollow sections and MS pipe sizes for fabrication and structural work — share OD, thickness, length and quantity for availability from Ahmedabad.',
+    features: [
+      'Asian mill stockist lines',
+      'Hollow sections and MS pipe sizes',
+      'Paired with fittings and flanges on request',
+      'Confirm size and grade before dispatch',
+    ],
+    applications: [
+      'Structural fabrication',
+      'Construction frames',
+      'Plant maintenance',
+      'General engineering',
+    ],
+    sizes: 'Common sizes · confirm OD & thickness',
+    specs: [
+      { label: 'Brand', value: 'Asian (dealer / stockist)' },
+      { label: 'Lines', value: 'Hollow sections · MS pipes' },
+      { label: 'Supply', value: 'Ahmedabad yard · confirm grade' },
+      { label: 'Enquiry', value: 'OD, thickness, length & qty' },
+    ],
+    gradient: 'from-steel-500 to-navy-brand',
+  },
+  {
+    slug: 'allied-mill-stock',
+    title: 'Allied Mill Stock',
+    shortDescription: 'MSL, JSL, Suryaprakash, Apollo and related mills — quote size and grade from Ahmedabad.',
+    image: productImage('allied-mill-stock'),
+    description:
+      'Allied mill stock beyond Jindal and Asian — including MSL, JSL, Suryaprakash, Apollo and related lines as available. Ideal when a project specifies an alternate mill. Tell us brand preference, size and quantity for a free quote from Ahmedabad.',
+    features: [
+      'MSL, JSL, Suryaprakash, Apollo and related',
+      'Quoted against project mill preference',
+      'Cross-checked before confirming dispatch',
+      'Bundled with fittings and flanges on request',
+    ],
+    applications: [
+      'Project mill substitutions',
+      'Government and private tenders',
+      'Fabrication workshops',
+      'Infrastructure packages',
+    ],
+    sizes: 'Confirm mill, size & grade',
+    specs: [
+      { label: 'Mills', value: 'MSL · JSL · Suryaprakash · Apollo · related' },
+      { label: 'Supply', value: 'Stock or mill lead time' },
+      { label: 'Docs', value: 'Mill docs on request' },
+      { label: 'Enquiry', value: 'Brand, size, grade & qty' },
+    ],
+    gradient: 'from-navy-brand to-teal-600',
   },
 ];
 

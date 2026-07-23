@@ -43,6 +43,8 @@ export const images = {
     'seamless-hydraulic-pipes': '/images/navkar/hydraulic.webp',
     'ms-hollow-sections': '/images/navkar/hollow-sections.webp',
     'lancing-pipes': '/images/navkar/lancing-pipes.webp',
+    'asian-pipes': '/images/navkar/updates/yard-10-960.webp',
+    'allied-mill-stock': '/images/navkar/export/export-10.webp',
   },
   industries: {
     refineries: '/images/navkar/refinery.webp',

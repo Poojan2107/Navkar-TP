@@ -1,6 +1,6 @@
 ---
 title: "Spiral pipes in stock â€” Ahmedabad yard"
-excerpt: "Large-diameter spiral welded pipes are available from our Ahmedabad yards for water lines, drainage and heavy industrial applications. Share diameter, thickness and length for a dispatch-ready quote from Ahmedabad."
+excerpt: "Large-diameter spiral welded pipes for water lines and heavy industrial use — share OD and wall for a quote."
 date: 2026-07-20
 image: "/images/navkar/updates/yard-07-960.webp"
 thumb: "/images/navkar/updates/yard-07-640.webp"

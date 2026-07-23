@@ -1,6 +1,6 @@
 ---
 title: "Jindal ERW pipe stock â€” Ahmedabad yard"
-excerpt: "Genuine Jindal MS ERW black pipes are staged at our Ahmedabad yard for structural and industrial buyers across Gujarat. Sizes from 15 MM to 500 MM are confirmed against your bill of materials before dispatch."
+excerpt: "Jindal MS ERW black pipes staged in Ahmedabad — 15 MM to 500 MM confirmed against your BOM before dispatch."
 date: 2026-07-22
 image: "/images/navkar/updates/yard-01-960.webp"
 thumb: "/images/navkar/updates/yard-01-640.webp"

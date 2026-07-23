@@ -1,6 +1,6 @@
 ---
 title: "Stockyard tour — pipes & loading"
-excerpt: "A short yard walkthrough of pipe bundles staged for Gujarat dispatch at Navkar Tubes & Tools, Ahmedabad. See how we store and handle MS pipe stock as an authorized Jindal channel partner — then send your requirement for a same-day quote."
+excerpt: "Short yard walkthrough of MS pipe bundles staged for Gujarat dispatch — send your requirement for a quote."
 date: 2026-07-11
 image: "/images/navkar/updates/yard-20-960.webp"
 thumb: "/images/navkar/updates/yard-20-640.webp"
