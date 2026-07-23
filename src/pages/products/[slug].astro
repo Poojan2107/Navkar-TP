@@ -77,8 +77,8 @@ const schemas = [
   </PageHero>
 
   <section class="section-padding bg-white">
-    <div class="container-narrow grid gap-12 lg:grid-cols-3">
-      <Reveal variant="fade-left" class="lg:col-span-2">
+    <div class="container-narrow page-split !gap-8 lg:!grid-cols-[minmax(0,1.4fr)_minmax(280px,340px)]">
+      <Reveal variant="fade-left" class="min-w-0">
         <img
           src={product.image}
           alt={product.title}
@@ -160,11 +160,11 @@ const schemas = [
         </div>
       </Reveal>
 
-      <aside class="hidden space-y-6 lg:sticky lg:top-28 lg:block lg:self-start">
+      <aside class="page-split-rail hidden space-y-5 lg:block">
         <Reveal delay={150} variant="fade-right">
-          <div class={`rounded-2xl bg-gradient-to-br ${product.gradient} p-8 text-white`}>
+          <div class={`rounded-2xl bg-gradient-to-br ${product.gradient} p-6 text-white sm:p-7`}>
             <p class="text-xs font-bold uppercase tracking-widest text-white/70">Navkar Tubes</p>
-            <p class="font-display mt-2 text-2xl font-bold tracking-tight">{product.title}</p>
+            <p class="font-display mt-2 text-xl font-bold tracking-tight sm:text-2xl">{product.title}</p>
             {product.sizes && <p class="mt-3 text-sm text-teal-100">{product.sizes}</p>}
             {
               product.jindalAuthorized && (
@@ -180,7 +180,7 @@ const schemas = [
           product.standards && (
             <Reveal delay={200} variant="fade-up">
               <div class="rounded-2xl border border-slate-200/90 bg-surface/60 px-5 py-4">
-                <h3 class="font-display mb-2 text-sm font-bold uppercase tracking-wider text-navy-brand">
+                <h3 class="font-display mb-2 text-sm font-bold tracking-wider text-navy-brand">
                   Standards
                 </h3>
                 <p class="text-sm leading-relaxed text-steel-500">{product.standards.join(' · ')}</p>
@@ -193,12 +193,15 @@ const schemas = [
           product.materials && (
             <Reveal delay={250} variant="fade-up">
               <div class="rounded-2xl border border-slate-200/90 bg-surface/60 px-5 py-4">
-                <h3 class="font-display mb-2 text-sm font-bold uppercase tracking-wider text-navy-brand">
+                <h3 class="font-display mb-2 text-sm font-bold tracking-wider text-navy-brand">
                   Materials
                 </h3>
                 <ul class="space-y-1.5 text-sm text-steel-500">
                   {product.materials.map((m) => (
-                    <li>{m}</li>
+                    <li class="flex gap-2">
+                      <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-teal-500" aria-hidden="true"></span>
+                      {m}
+                    </li>
                   ))}
                 </ul>
               </div>

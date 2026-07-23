@@ -2,6 +2,8 @@
 /**
  * Click-to-enlarge certificate — no fancy modal chrome, just readable full view.
  */
+import Icon from './Icon.astro';
+
 interface Props {
   src: string;
   alt: string;
@@ -22,14 +24,15 @@ const { src, alt, class: className } = Astro.props;
     <img
       src={src}
       alt={alt}
-      class="aspect-[3/4] max-h-[420px] w-full object-contain object-top p-3 sm:p-4 transition group-hover:opacity-95"
+      class="aspect-[3/4] max-h-[380px] w-full object-contain object-top p-3 sm:max-h-[420px] sm:p-4 transition group-hover:opacity-95"
       width="480"
       height="640"
       loading="lazy"
       decoding="async"
     />
-    <span class="absolute inset-x-0 bottom-0 bg-navy-950/85 px-3 py-2 text-center text-[12px] font-semibold text-white">
-      View full certificate
+    <span class="absolute inset-x-0 bottom-0 flex items-center justify-center gap-2 bg-navy-950/85 px-3 py-2.5 text-[12px] font-semibold text-white">
+      <Icon name="search" class="h-3.5 w-3.5" />
+      View Full Certificate
     </span>
   </button>
 </figure>

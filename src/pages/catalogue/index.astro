@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Reveal from '../../components/Reveal.astro';
 import UpdateContactRail from '../../components/UpdateContactRail.astro';
+import Icon from '../../components/Icon.astro';
 import { images } from '../../data/images';
 import { getJindalProducts, getComplementaryProducts } from '../../data/products';
 
@@ -32,9 +33,9 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
     />
   </PageHero>
 
-  <section class="bg-surface px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
-    <div class="container-narrow grid items-start gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(300px,360px)] lg:gap-8">
-      <div class="min-w-0 space-y-5">
+  <section class="bg-surface px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <div class="container-narrow page-split">
+      <div class="page-split-main">
         <Reveal variant="fade-up">
           <div class="portal-card overflow-hidden bg-white p-5 sm:grid sm:grid-cols-[180px_1fr] sm:gap-7 sm:p-6 lg:grid-cols-[200px_1fr]">
             <img
@@ -44,7 +45,10 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
               loading="lazy"
             />
             <div class="mt-5 flex flex-col justify-center sm:mt-0">
-              <p class="section-eyebrow mb-1.5">PDF Download</p>
+              <p class="section-eyebrow mb-1.5">
+                <Icon name="download" class="h-3.5 w-3.5" />
+                PDF Download
+              </p>
               <h2 class="font-display mb-2 text-2xl font-bold tracking-tight text-navy-brand">
                 Navkar Tubes Brochure
               </h2>
@@ -57,9 +61,7 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
                 {
                   brochureIncludes.map((item) => (
                     <li class="flex gap-2 text-[14px] text-navy-brand">
-                      <svg class="mt-0.5 h-4 w-4 shrink-0 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                      </svg>
+                      <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
                       {item}
                     </li>
                   ))
@@ -72,16 +74,12 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
                   download="Navkar-Tubes-Brochure.pdf"
                   class="btn btn-teal inline-flex items-center gap-2 px-7 py-3 text-sm"
                 >
-                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                  </svg>
+                  <Icon name="download" class="h-4 w-4" />
                   Download PDF
                 </a>
                 <a href="/products/" class="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 hover:text-teal-700">
                   Browse Products
-                  <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
+                  <Icon name="arrow" class="h-3.5 w-3.5" />
                 </a>
               </div>
             </div>
@@ -90,23 +88,23 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
 
         <Reveal delay={80} variant="fade-up">
           <div class="rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6">
-            <p class="section-eyebrow mb-1.5">Quick links</p>
+            <p class="section-eyebrow mb-1.5">Quick Links</p>
             <h3 class="font-display mb-4 text-lg font-bold tracking-tight text-navy-brand">
               Core Stock Lines
             </h3>
-            <div class="grid gap-2.5 sm:grid-cols-2">
+            <div class="grid gap-2 sm:grid-cols-2">
               {
                 quickLinks.map((product) => (
                   <a
                     href={`/products/${product.slug}/`}
-                    class="group flex items-center gap-3 rounded-xl border border-slate-200/90 bg-surface/60 px-3.5 py-3 transition hover:border-teal-300 hover:bg-white"
+                    class="group flex items-center gap-3 rounded-xl border border-slate-200/90 bg-surface/60 px-3 py-2.5 transition hover:border-teal-300 hover:bg-white"
                   >
                     <img
                       src={product.image}
                       alt=""
-                      class="h-11 w-11 shrink-0 rounded-lg object-cover ring-1 ring-slate-200"
-                      width="88"
-                      height="88"
+                      class="h-10 w-10 shrink-0 rounded-lg object-cover ring-1 ring-slate-200"
+                      width="80"
+                      height="80"
                       loading="lazy"
                       decoding="async"
                     />
@@ -116,9 +114,7 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
                       </span>
                       <span class="mt-0.5 inline-flex items-center gap-1 text-[12px] text-steel-500">
                         View Details
-                        <svg class="h-3 w-3 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
+                        <Icon name="arrow" class="h-3 w-3 transition group-hover:translate-x-0.5" />
                       </span>
                     </span>
                   </a>
@@ -129,7 +125,7 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
         </Reveal>
       </div>
 
-      <div class="lg:sticky lg:top-28">
+      <div class="page-split-rail">
         <UpdateContactRail formId="catalogue-quote-form" />
       </div>
     </div>

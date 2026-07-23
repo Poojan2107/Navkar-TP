@@ -154,7 +154,7 @@
 
 @layer utilities {
   .section-padding {
-    @apply px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-[4.5rem];
+    @apply px-4 py-11 sm:px-6 sm:py-14 lg:px-8 lg:py-16;
   }
 
   /* Lift phone/yard stills without looking filtered */
@@ -2372,18 +2372,18 @@ body.mobile-cta-visible [data-quote-form] {
 }
 
 .about-section {
-  padding-block: 2.5rem;
+  padding-block: 2.75rem;
 }
 
 @media (min-width: 640px) {
   .about-section {
-    padding-block: 3rem;
+    padding-block: 3.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   .about-section {
-    padding-block: 3.25rem;
+    padding-block: 3.5rem;
   }
 }
 
@@ -2694,8 +2694,15 @@ body.mobile-cta-visible [data-quote-form] {
 
 @media (min-width: 1024px) {
   .about-contact {
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 360px);
     gap: 2rem;
+  }
+
+  .about-contact-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 28rem;
   }
 
   .about-contact-rail {
@@ -3860,6 +3867,7 @@ body.yard-cinematic-owns.mobile-cta-visible {
 .product-range-grid {
   display: grid;
   gap: 1.25rem;
+  align-items: stretch;
 }
 
 @media (min-width: 640px) {
@@ -4253,6 +4261,73 @@ body.yard-cinematic-owns.mobile-cta-visible {
   background: var(--color-teal-500);
   flex-shrink: 0;
   box-shadow: 0 0 6px rgb(89 161 168 / 0.55);
+}
+
+/* When an SVG icon leads the eyebrow, drop the decorative dot */
+.section-eyebrow:has(svg)::before {
+  display: none;
+}
+
+/* Shared two-column page body: copy / proof + sticky enquiry rail */
+.page-split {
+  display: grid;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .page-split {
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 360px);
+    gap: 2rem;
+  }
+
+  .page-split-rail {
+    position: sticky;
+    top: 7rem;
+  }
+}
+
+.page-split-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Enquiry intro block — fills left column so it matches rail height better */
+.enquiry-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  padding: 1.5rem 0;
+}
+
+@media (min-width: 1024px) {
+  .enquiry-intro {
+    min-height: 28rem;
+    padding: 1.75rem 0.25rem 1.75rem 0;
+  }
+}
+
+.enquiry-intro-list {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.enquiry-intro-list li {
+  display: flex;
+  gap: 0.65rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-navy-brand);
+}
+
+/* Soften rail card hover so sticky columns don’t feel jumpy */
+.update-rail-card:hover,
+.update-rail-form:hover {
+  transform: none;
 }
 
 /* ── Section title — Title Case presence, not shouty ALL CAPS ── */

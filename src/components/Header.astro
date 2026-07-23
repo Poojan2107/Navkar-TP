@@ -22,36 +22,6 @@ const currentPath = Astro.url.pathname;
   ]}
   data-over-dark={overDark ? 'true' : 'false'}
 >
-  <div
-    class:list={[
-      'header-utility hidden border-b lg:block',
-      overDark ? 'header-utility--over-dark border-white/10' : 'border-white/8',
-    ]}
-  >
-    <div class="container-narrow flex items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
-      <p class="header-util-text inline-flex items-center gap-1.5 truncate text-[12px] font-medium tracking-wide">
-        <Icon name="map" class="h-3.5 w-3.5 shrink-0 opacity-80" />
-        Ahmedabad, Gujarat
-      </p>
-      <div class="flex items-center gap-4 sm:gap-6">
-        <a href={site.phones.salesTel} class="header-util-link inline-flex shrink-0 items-center gap-1.5 text-[12px] font-semibold">
-          <Icon name="phone" class="h-3.5 w-3.5" />
-          Sales {site.phones.sales}
-        </a>
-        <a
-          href={site.phones.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="header-util-link hidden shrink-0 items-center gap-1.5 text-[12px] font-semibold sm:inline-flex"
-        >
-          <Icon name="whatsapp" class="h-3.5 w-3.5" />
-          WhatsApp Quote
-          <Icon name="arrow" class="h-3 w-3 opacity-70" />
-        </a>
-      </div>
-    </div>
-  </div>
-
   <div class="header-main container-narrow flex items-center justify-between gap-3 border-b px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8 lg:py-3.5">
     <a href="/" class="brand-lockup min-w-0 shrink" aria-label="Navkar Tubes & Tools home">
       <Logo variant="lockup" theme="teal" heightClass="h-8 sm:h-9 lg:h-10" />

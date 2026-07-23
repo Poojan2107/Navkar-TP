@@ -6,6 +6,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import ProductsSeoBlock from '../../components/ProductsSeoBlock.astro';
 import Reveal from '../../components/Reveal.astro';
 import UpdateContactRail from '../../components/UpdateContactRail.astro';
+import Icon from '../../components/Icon.astro';
 import { products, getJindalProducts, getComplementaryProducts } from '../../data/products';
 import { brandLines, site } from '../../data/site';
 import { metaDescriptionFor } from '../../data/seo';
@@ -49,8 +50,8 @@ const schemas = [
     />
   </PageHero>
 
-  <section class="bg-surface px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
-    <div class="container-narrow space-y-7 lg:space-y-8">
+  <section class="bg-surface px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <div class="container-narrow space-y-8 lg:space-y-10">
       <Reveal variant="fade-up">
         <div class="portal-grid grid gap-4 sm:grid-cols-2 sm:gap-5">
           {
@@ -71,9 +72,7 @@ const schemas = [
                   <p class="mt-2 text-[14px] leading-relaxed text-white/75">{brand.detail}</p>
                   <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-200 transition group-hover:text-white">
                     Learn More
-                    <svg class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
+                    <Icon name="arrow" class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
                 </div>
               </a>
@@ -85,11 +84,12 @@ const schemas = [
       <div>
         <Reveal variant="fade-up" class="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p class="section-eyebrow mb-1.5">Product lines</p>
+            <p class="section-eyebrow mb-1.5">Product Lines</p>
             <h2 class="section-title !text-[1.45rem] sm:!text-[1.75rem]">Core Stock We Keep</h2>
           </div>
-          <a href="/contact/" class="btn btn-teal px-5 py-2.5 text-sm">
+          <a href="/contact/" class="btn btn-teal inline-flex items-center gap-1.5 px-5 py-2.5 text-sm">
             Request Bulk Quote
+            <Icon name="arrow" class="h-3.5 w-3.5" />
           </a>
         </Reveal>
 
@@ -117,31 +117,34 @@ const schemas = [
         </div>
       </div>
 
-      <div class="products-enquiry grid items-start gap-6 rounded-2xl border border-slate-200/90 bg-white p-5 sm:gap-7 sm:p-7 lg:grid-cols-[minmax(0,1fr)_minmax(300px,360px)] lg:gap-8 lg:p-8">
-        <Reveal variant="fade-up">
-          <p class="section-eyebrow mb-1.5">Talk to sales</p>
+      <div class="page-split border-t border-slate-200/90 pt-8 lg:pt-10">
+        <div class="enquiry-intro">
+          <p class="section-eyebrow mb-1.5">
+            <Icon name="phone" class="h-3.5 w-3.5" />
+            Talk To Sales
+          </p>
           <h2 class="font-display mb-3 text-2xl font-bold tracking-tight text-navy-brand sm:text-3xl">
             Need Size &amp; Quantity Confirmed?
           </h2>
           <p class="max-w-xl text-[15px] leading-relaxed text-steel-500">
             Share your bill of materials — we reply from Ahmedabad, Gujarat with availability, mill docs and a free quote.
           </p>
-          <ul class="mt-5 space-y-2.5 text-[14px] text-navy-brand">
-            <li class="flex gap-2.5">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" aria-hidden="true"></span>
+          <ul class="enquiry-intro-list">
+            <li>
+              <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
               Confirm NB, wall thickness and quantity against yard stock
             </li>
-            <li class="flex gap-2.5">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" aria-hidden="true"></span>
+            <li>
+              <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
               Match fittings and flanges in the same enquiry
             </li>
-            <li class="flex gap-2.5">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" aria-hidden="true"></span>
+            <li>
+              <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
               Dispatch support across Gujarat and India
             </li>
           </ul>
-        </Reveal>
-        <div class="lg:sticky lg:top-28">
+        </div>
+        <div class="page-split-rail">
           <UpdateContactRail formId="products-quote-form" />
         </div>
       </div>

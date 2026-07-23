@@ -1,6 +1,7 @@
 ---
 import { products } from '../data/products';
 import { site } from '../data/site';
+import Icon from './Icon.astro';
 
 interface Props {
   id?: string;
@@ -176,17 +177,23 @@ const preselected =
 
   <button type="submit" class:list={['btn btn-teal inline-flex min-h-12 w-full items-center justify-center gap-2 px-6 py-3.5', !compact && 'sm:w-auto']} data-submit-btn>
     Submit Enquiry
-    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-    </svg>
+    <Icon name="send" class="h-4 w-4" />
   </button>
 </form>
 
-<p class:list={['quote-form-alt mt-4 text-sm leading-relaxed', helpClass]}>
-  Or call{' '}
-  <a href={site.phones.salesTel} class:list={['font-semibold', linkClass]}>{site.phones.sales}</a>
-  <span class="mx-1.5 text-slate-400" aria-hidden="true">·</span>
-  <a href={site.phones.whatsapp} target="_blank" rel="noopener noreferrer" class:list={['font-semibold', linkClass]}>WhatsApp Sales</a>
+<p class:list={['quote-form-alt mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm leading-relaxed', helpClass]}>
+  <span class="inline-flex items-center gap-1.5">
+    Or
+    <a href={site.phones.salesTel} class:list={['inline-flex items-center gap-1.5 font-semibold', linkClass]}>
+      <Icon name="phone" class="h-3.5 w-3.5" />
+      {site.phones.sales}
+    </a>
+  </span>
+  <span class="text-slate-400" aria-hidden="true">·</span>
+  <a href={site.phones.whatsapp} target="_blank" rel="noopener noreferrer" class:list={['inline-flex items-center gap-1.5 font-semibold', linkClass]}>
+    <Icon name="whatsapp" class="h-3.5 w-3.5" />
+    WhatsApp Sales
+  </a>
 </p>
 
 <script is:inline>
@@ -218,8 +225,8 @@ const preselected =
     function resetButton() {
       if (!btn) return;
       btn.disabled = false;
-      btn.textContent = 'Submit Enquiry';
       btn.classList.remove('opacity-70');
+      btn.innerHTML = 'Submit Enquiry <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>';
     }
 
     function showError() {
