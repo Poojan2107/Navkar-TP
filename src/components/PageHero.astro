@@ -3,14 +3,41 @@ interface Props {
   eyebrow?: string;
   title: string;
   description?: string;
+  /** Optional photo background — used on update detail for a stronger masthead */
+  image?: string;
+  imageAlt?: string;
 }
 
-const { eyebrow, title, description } = Astro.props;
+const { eyebrow, title, description, image, imageAlt = '' } = Astro.props;
+const hasImage = Boolean(image);
 ---
 
-<section class="page-hero relative overflow-hidden">
-  <div class="page-hero-atmosphere pointer-events-none absolute inset-0" aria-hidden="true"></div>
-  <div class="container-narrow relative px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+<section class:list={['page-hero relative overflow-hidden', hasImage && 'page-hero--photo']}>
+  {
+    hasImage ? (
+      <div class="page-hero-media absolute inset-0" aria-hidden="true">
+        <img
+          src={image}
+          alt={imageAlt}
+          class="h-full w-full object-cover object-center"
+          width="1600"
+          height="900"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <div class="page-hero-scrim absolute inset-0"></div>
+      </div>
+    ) : (
+      <div class="page-hero-atmosphere pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    )
+  }
+  <div
+    class:list={[
+      'container-narrow relative px-4 sm:px-6 lg:px-8',
+      hasImage ? 'py-14 sm:py-16 lg:py-20' : 'py-10 sm:py-12 lg:py-14',
+    ]}
+  >
     <div class="page-hero-copy">
       <slot name="breadcrumb" />
       {

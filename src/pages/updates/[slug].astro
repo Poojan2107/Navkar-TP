@@ -67,7 +67,7 @@ const articleSchema = {
   ogImage={image}
   schemas={[articleSchema]}
 >
-  <PageHero eyebrow="Yard update" title={title} description={excerpt}>
+  <PageHero eyebrow="Yard update" title={title} description={excerpt} image={image} imageAlt="">
     <Breadcrumbs
       slot="breadcrumb"
       items={[
@@ -80,9 +80,9 @@ const articleSchema = {
 
   <article class="update-article bg-white">
     <div class="container-narrow px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
-      <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:gap-12 xl:gap-14">
+      <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(300px,0.75fr)] lg:gap-12 xl:gap-16">
         <div class="min-w-0">
-          <div class="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <div class="mb-7 flex flex-wrap items-center gap-x-3 gap-y-2">
             <time class="text-sm font-medium text-steel-500" datetime={date.toISOString()}>
               {displayDate}
             </time>
@@ -105,8 +105,8 @@ const articleSchema = {
           </div>
 
           {
-            video ? (
-              <div class="mb-8 overflow-hidden bg-navy-950 ring-1 ring-slate-200/80">
+            video && (
+              <div class="mb-8 overflow-hidden rounded-lg bg-navy-950 ring-1 ring-slate-200/80">
                 <video
                   class="aspect-video w-full"
                   controls
@@ -117,19 +117,6 @@ const articleSchema = {
                   Your browser does not support embedded video.
                 </video>
               </div>
-            ) : (
-              <figure class="update-feature mb-8 overflow-hidden bg-slate-100 ring-1 ring-slate-200/80">
-                <img
-                  src={image}
-                  alt={title}
-                  class="media-enhance aspect-[16/10] w-full object-cover object-center"
-                  width="1280"
-                  height="800"
-                  loading="eager"
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </figure>
             )
           }
 
@@ -173,15 +160,11 @@ const articleSchema = {
               <div class="mt-12 border-t border-slate-200 pt-10">
                 <p class="section-eyebrow mb-2">Gallery</p>
                 <h2 class="section-title !text-[1.35rem] sm:!text-[1.5rem]">More from the yard</h2>
-                <div class="update-gallery mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+                <div class="update-gallery mt-6">
                   {galleryShots.map((src, i) => (
                     <a
                       href={src}
-                      class:list={[
-                        'update-gallery-item group relative block overflow-hidden bg-slate-100 ring-1 ring-slate-200/70',
-                        i === 0 && 'col-span-2 aspect-[16/9] lg:col-span-2',
-                        i !== 0 && 'aspect-[4/3]',
-                      ]}
+                      class="update-gallery-item group relative block overflow-hidden bg-slate-100 ring-1 ring-slate-200/70"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -215,7 +198,7 @@ const articleSchema = {
 
       {
         related.length > 0 && (
-          <div class="mt-14 border-t border-slate-200 pt-12">
+          <div class="mt-16 border-t border-slate-200 pt-12 sm:mt-20">
             <RelatedUpdates entries={related} heading="Related updates" layout="cards" />
           </div>
         )

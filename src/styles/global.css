@@ -1121,12 +1121,33 @@ html.js-reveal [data-stat].is-popped {
   border-bottom: 1px solid rgb(255 255 255 / 0.06);
 }
 
+.page-hero--photo {
+  min-height: clamp(16rem, 38vw, 22rem);
+}
+
 .page-hero-atmosphere {
   background-image:
     radial-gradient(ellipse 55% 80% at 92% 40%, rgb(89 161 168 / 0.2) 0%, transparent 58%),
     radial-gradient(ellipse 40% 60% at 8% 90%, rgb(0 90 123 / 0.35) 0%, transparent 55%),
     linear-gradient(115deg, rgb(7 24 32 / 0.2) 0%, transparent 45%);
   animation: page-hero-glow 12s ease-in-out infinite alternate;
+}
+
+.page-hero-media img {
+  transform: scale(1.02);
+  filter: brightness(0.72) contrast(1.05) saturate(1.05);
+}
+
+.page-hero-scrim {
+  background:
+    linear-gradient(
+      105deg,
+      rgb(7 24 32 / 0.92) 0%,
+      rgb(7 24 32 / 0.78) 42%,
+      rgb(7 24 32 / 0.55) 72%,
+      rgb(7 24 32 / 0.42) 100%
+    ),
+    linear-gradient(to top, rgb(7 24 32 / 0.55) 0%, transparent 45%);
 }
 
 .page-hero-copy {
@@ -1145,6 +1166,12 @@ html.js-reveal [data-stat].is-popped {
   text-wrap: balance;
 }
 
+.page-hero--photo .page-hero-title {
+  font-size: clamp(1.95rem, 4.6vw, 3.05rem);
+  max-width: 52rem;
+  text-shadow: 0 2px 28px rgb(7 24 32 / 0.45);
+}
+
 .page-hero-desc {
   margin-top: 1rem;
   max-width: 36rem;
@@ -1152,6 +1179,35 @@ html.js-reveal [data-stat].is-popped {
   line-height: 1.7;
   letter-spacing: 0.01em;
   color: rgb(226 232 240 / 0.95);
+}
+
+.page-hero--photo .page-hero-desc {
+  max-width: 38rem;
+  color: rgb(241 245 249 / 0.92);
+}
+
+/* Uniform yard gallery — fixed aspect tiles, even alignment */
+.update-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .update-gallery {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .update-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.update-gallery-item {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
 }
 
 @keyframes page-hero-glow {
@@ -1169,6 +1225,10 @@ html.js-reveal [data-stat].is-popped {
   .page-hero-atmosphere,
   .page-hero-copy {
     animation: none;
+  }
+
+  .page-hero-media img {
+    transform: none;
   }
 }
 
@@ -1552,6 +1612,14 @@ html.js-reveal [data-stat].is-popped {
 
 .update-card-media {
   box-shadow: none;
+}
+
+.updates-card-grid {
+  align-items: stretch;
+}
+
+.updates-card-grid > a {
+  min-height: 100%;
 }
 
 /* Markdown body on update detail pages */
