@@ -1,5 +1,6 @@
 ---
 import { products } from '../data/products';
+import { site } from '../data/site';
 
 interface Props {
   id?: string;
@@ -34,7 +35,7 @@ const preselected =
 
 <form
   id={id}
-  class="space-y-4"
+  class="quote-form space-y-4"
   action="https://formsubmit.co/ajax/navkartube@gmail.com"
   method="POST"
   data-quote-form
@@ -153,14 +154,10 @@ const preselected =
     ></textarea>
   </div>
 
-  {
-    !compact && (
-      <p class:list={['text-sm leading-relaxed', helpClass]}>
-        By submitting, you agree we may contact you about this enquiry.
-        <a href="/privacy/" class:list={['underline underline-offset-2', linkClass]}>Privacy policy</a>.
-      </p>
-    )
-  }
+  <p class:list={['text-sm leading-relaxed', helpClass]}>
+    By submitting, you agree we may contact you about this enquiry.
+    <a href="/privacy/" class:list={['underline underline-offset-2', linkClass]}>Privacy policy</a>.
+  </p>
 
   <div
     data-form-error
@@ -171,9 +168,9 @@ const preselected =
     <p class="font-semibold">Couldn’t send the enquiry.</p>
     <p class="mt-1">
       Try again, or call{' '}
-      <a href="tel:+919601702883" class="font-semibold underline underline-offset-2">+91 9601702883</a>
+      <a href={site.phones.salesTel} class="font-semibold underline underline-offset-2">{site.phones.sales}</a>
       {' / '}
-      <a href="https://wa.me/919601702883" target="_blank" rel="noopener noreferrer" class="font-semibold underline underline-offset-2">WhatsApp sales</a>.
+      <a href={site.phones.whatsapp} target="_blank" rel="noopener noreferrer" class="font-semibold underline underline-offset-2">WhatsApp sales</a>.
     </p>
   </div>
 
@@ -182,16 +179,12 @@ const preselected =
   </button>
 </form>
 
-{
-  !compact && (
-    <p class:list={['quote-form-alt mt-4 text-sm leading-relaxed', helpClass]}>
-      Or call{' '}
-      <a href="tel:+919601702883" class:list={['font-semibold', linkClass]}>+91 9601702883</a>
-      <span class="mx-1.5 text-slate-400" aria-hidden="true">·</span>
-      <a href="https://wa.me/919601702883" target="_blank" rel="noopener noreferrer" class:list={['font-semibold', linkClass]}>WhatsApp sales</a>
-    </p>
-  )
-}
+<p class:list={['quote-form-alt mt-4 text-sm leading-relaxed', helpClass]}>
+  Or call{' '}
+  <a href={site.phones.salesTel} class:list={['font-semibold', linkClass]}>{site.phones.sales}</a>
+  <span class="mx-1.5 text-slate-400" aria-hidden="true">·</span>
+  <a href={site.phones.whatsapp} target="_blank" rel="noopener noreferrer" class:list={['font-semibold', linkClass]}>WhatsApp sales</a>
+</p>
 
 <script is:inline>
   document.querySelectorAll('[data-quote-form]').forEach(function (form) {

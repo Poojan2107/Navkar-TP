@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SalesContactActions from '../components/SalesContactActions.astro';
 ---
 
 <BaseLayout
@@ -13,15 +14,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h1 class="font-display mb-4 text-4xl font-bold uppercase tracking-tight text-white sm:text-5xl">
         Page not found
       </h1>
-      <p class="mb-10 text-base leading-relaxed text-slate-300">
+      <p class="mb-8 text-base leading-relaxed text-slate-300">
         That URL does not exist — or it moved when we rebuilt the site. Try products, catalogue, or
         contact.
       </p>
-      <div class="flex flex-wrap items-center justify-center gap-3">
-        <a href="/" class="btn btn-primary px-7 py-3.5 text-sm">Go home</a>
+      <div class="mb-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="/" class="btn btn-teal px-7 py-3.5 text-sm">Go home</a>
         <a href="/products/" class="btn btn-outline-light px-7 py-3.5 text-sm">Products</a>
         <a href="/catalogue/" class="btn btn-outline-light px-7 py-3.5 text-sm">Catalogue</a>
         <a href="/contact/" class="btn btn-outline-light px-7 py-3.5 text-sm">Contact</a>
+      </div>
+      <div class="mx-auto max-w-md text-left">
+        <SalesContactActions layout="row" />
       </div>
     </div>
   </section>

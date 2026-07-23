@@ -2,14 +2,14 @@
 import Reveal from './Reveal.astro';
 import SectionHeading from './SectionHeading.astro';
 
-/** Curated export shots — landscape-first, no third-party brand crates */
+/** Curated export shots — landscape-first captions for portal tiles */
 const shots = [
-  { src: '/images/navkar/export/export-12.webp', alt: 'MS pipes staged for container loading at Navkar Tubes', w: 1280, h: 960 },
-  { src: '/images/navkar/export/export-09.webp', alt: 'Export packing of MS pipes at Ahmedabad stockyard', w: 1280, h: 960 },
-  { src: '/images/navkar/export/export-10.webp', alt: 'MS pipe ends staged for outbound dispatch', w: 1280, h: 960 },
-  { src: '/images/navkar/export/export-19.webp', alt: 'Outbound export packing crate at Navkar Tubes', w: 1280, h: 963 },
-  { src: '/images/navkar/updates/yard-16-960.webp', alt: 'Pipe load ready for dispatch from Ahmedabad yard', w: 960, h: 640 },
-  { src: '/images/navkar/updates/yard-04-960.webp', alt: 'MS ERW pipe stock stacked at Navkar Tubes yard', w: 960, h: 640 },
+  { src: '/images/navkar/export/export-12.webp', caption: 'Container staging', alt: 'MS pipes staged for container loading at Navkar Tubes', w: 1280, h: 960 },
+  { src: '/images/navkar/export/export-09.webp', caption: 'Export packing', alt: 'Export packing of MS pipes at Ahmedabad stockyard', w: 1280, h: 960 },
+  { src: '/images/navkar/export/export-10.webp', caption: 'Pipe ends ready', alt: 'MS pipe ends staged for outbound dispatch', w: 1280, h: 960 },
+  { src: '/images/navkar/export/export-19.webp', caption: 'Outbound crate', alt: 'Outbound export packing crate at Navkar Tubes', w: 1280, h: 963 },
+  { src: '/images/navkar/updates/yard-16-960.webp', caption: 'Dispatch load', alt: 'Pipe load ready for dispatch from Ahmedabad yard', w: 960, h: 640 },
+  { src: '/images/navkar/updates/yard-04-960.webp', caption: 'Yard stock', alt: 'MS ERW pipe stock stacked at Navkar Tubes yard', w: 960, h: 640 },
 ] as const;
 ---
 
@@ -37,10 +37,8 @@ const shots = [
         shots.map((shot, i) => (
           <Reveal delay={i * 50} variant="fade-up">
             <a
-              href={shot.src}
+              href="/contact/?product=erw-pipes"
               class="portal-card group relative block aspect-[4/3] overflow-hidden bg-slate-100"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <img
                 src={shot.src}
@@ -53,9 +51,20 @@ const shots = [
                 decoding="async"
               />
               <div
-                class="absolute inset-0 bg-gradient-to-t from-navy-brand/80 via-navy-brand/20 to-transparent opacity-70 transition-all duration-500 group-hover:from-navy-dark group-hover:via-teal-900/35 group-hover:opacity-95"
+                class="absolute inset-0 bg-gradient-to-t from-navy-brand/90 via-navy-brand/35 to-transparent transition-all duration-500 group-hover:from-navy-dark group-hover:via-teal-900/40"
                 aria-hidden="true"
               ></div>
+              <div class="relative z-[1] flex h-full flex-col justify-end p-3 sm:p-4">
+                <p class="font-display text-[13px] font-bold uppercase tracking-wide text-white sm:text-sm">
+                  {shot.caption}
+                </p>
+                <span class="mt-1 inline-flex items-center gap-1 text-[12px] font-semibold text-teal-200 transition group-hover:text-white">
+                  Request export quote
+                  <svg class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </span>
+              </div>
             </a>
           </Reveal>
         ))

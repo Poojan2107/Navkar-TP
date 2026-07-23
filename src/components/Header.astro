@@ -65,6 +65,7 @@ const currentPath = Astro.url.pathname;
             <a
               href={link.href}
               class:list={['nav-link header-nav-link px-2 py-1.5 lg:text-[14px] xl:text-[15px]', isActive && 'is-active']}
+              aria-current={isActive ? 'page' : undefined}
             >
               {link.label}
             </a>
@@ -98,20 +99,36 @@ const currentPath = Astro.url.pathname;
   >
     <div class="mobile-menu-inner flex flex-col gap-0.5 px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="rounded-xl px-3.5 py-3 text-base font-semibold text-white/88 transition-colors hover:bg-white/8 hover:text-teal-300 active:bg-white/8"
-          >
-            {link.label}
-          </a>
-        ))
+        navLinks.map((link) => {
+          const isActive =
+            link.href === '/' ? currentPath === '/' : currentPath.startsWith(link.href);
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'rounded-xl px-3.5 py-3 text-base font-semibold transition-colors hover:bg-white/8 hover:text-teal-300 active:bg-white/8',
+                isActive ? 'bg-white/10 text-teal-300' : 'text-white/88',
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
       }
       <a href={site.catalogueUrl} class="rounded-xl px-3.5 py-3 text-base font-semibold text-white/88 hover:bg-white/8 hover:text-teal-300">
         Catalogue
       </a>
       <a href={site.phones.salesTel} class="rounded-xl px-3.5 py-3 text-base font-semibold text-teal-300 hover:bg-white/8">
         Call sales {site.phones.sales}
+      </a>
+      <a
+        href={site.phones.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-xl px-3.5 py-3 text-base font-semibold text-teal-300 hover:bg-white/8"
+      >
+        WhatsApp sales
       </a>
       <a href="/contact/" class="btn btn-teal btn-shimmer mx-1 mt-3 mb-1 min-h-12 py-3.5 text-center shadow-lg">Get quote</a>
     </div>

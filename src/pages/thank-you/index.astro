@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SalesContactActions from '../../components/SalesContactActions.astro';
 import { site } from '../../data/site';
 ---
 
@@ -9,45 +10,33 @@ import { site } from '../../data/site';
   noindex
   overDarkHeader={false}
 >
-  <section class="section-padding flex flex-1 items-center bg-white">
-    <div class="container-narrow mx-auto max-w-lg border-t border-slate-200 pt-12 text-center">
-      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-teal-600">Enquiry sent</p>
-      <h1 class="font-display mb-4 text-3xl font-bold uppercase tracking-tight text-navy-brand sm:text-4xl">
-        Thank you
-      </h1>
-      <p class="mb-8 leading-relaxed text-steel-500">
-        We received your enquiry and will reply with stock and pricing. For urgent needs, call or
-        WhatsApp sales now.
-      </p>
-      <div class="mb-10 space-y-2 text-[15px] text-steel-500">
-        <p>
-          Sales
-          <a href={site.phones.salesTel} class="font-semibold text-teal-600 hover:text-teal-700">
-            {site.phones.sales}
+  <section class="section-padding flex flex-1 items-center bg-surface">
+    <div class="container-narrow mx-auto max-w-lg">
+      <div class="overflow-hidden rounded-2xl border border-slate-200/90 bg-white px-6 py-10 text-center shadow-sm sm:px-10 sm:py-12">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-teal-600">Enquiry sent</p>
+        <h1 class="font-display mb-4 text-3xl font-bold uppercase tracking-tight text-navy-brand sm:text-4xl">
+          Thank you
+        </h1>
+        <p class="mb-8 leading-relaxed text-steel-500">
+          We received your enquiry and will reply with stock and pricing from Ahmedabad, Gujarat.
+          For urgent needs, call or WhatsApp sales now.
+        </p>
+
+        <SalesContactActions layout="row" class="mb-8 text-left" />
+
+        <p class="mb-8 text-[14px] text-steel-500">
+          Or email
+          <a href={`mailto:${site.email}`} class="font-semibold text-teal-600 hover:text-teal-700">
+            {site.email}
           </a>
         </p>
-        <p>
-          Urgent
-          <a href={site.phones.primaryTel} class="font-semibold text-teal-600 hover:text-teal-700">
-            {site.phones.primary}
+
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/products/" class="btn btn-teal px-7 py-3.5 text-sm">Browse products</a>
+          <a href="/" class="btn border border-slate-200 px-7 py-3.5 text-sm text-navy-brand hover:border-teal-400">
+            Back to home
           </a>
-        </p>
-        <p>
-          <a
-            href={site.phones.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-semibold text-teal-600 hover:text-teal-700"
-          >
-            WhatsApp sales →
-          </a>
-        </p>
-      </div>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href="/products/" class="btn btn-teal px-7 py-3.5 text-sm">Browse products</a>
-        <a href="/" class="btn border border-slate-200 px-7 py-3.5 text-sm text-navy-brand hover:border-teal-400">
-          Back to home
-        </a>
+        </div>
       </div>
     </div>
   </section>

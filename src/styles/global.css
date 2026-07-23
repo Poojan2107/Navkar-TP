@@ -1363,11 +1363,23 @@ html.js-reveal [data-stat].is-popped {
   padding-bottom: max(2.5rem, calc(1.5rem + env(safe-area-inset-bottom, 0px)));
 }
 
+body.mobile-cta-visible .contact-band-form,
+body.mobile-cta-visible .update-rail,
+body.mobile-cta-visible [data-quote-form] {
+  padding-bottom: calc(var(--mobile-cta-h, 4.5rem) + 1rem);
+}
+
 @media (min-width: 1024px) {
   .contact-band-form {
     border-top: none;
     border-left: 1px solid rgb(226 232 240);
     padding-bottom: 3rem;
+  }
+
+  body.mobile-cta-visible .contact-band-form,
+  body.mobile-cta-visible .update-rail,
+  body.mobile-cta-visible [data-quote-form] {
+    padding-bottom: 0;
   }
 }
 
@@ -2933,8 +2945,9 @@ html.js-reveal [data-stat].is-popped {
 
 @media (min-width: 1024px) {
   .back-to-top {
-    bottom: 1.5rem;
-    right: 1.5rem;
+    /* Sit above desktop FAB stack (WhatsApp + Call) */
+    bottom: 8.5rem;
+    right: 1.35rem;
   }
 }
 

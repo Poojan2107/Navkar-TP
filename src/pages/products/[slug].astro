@@ -5,6 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import RelatedProducts from '../../components/RelatedProducts.astro';
 import Reveal from '../../components/Reveal.astro';
 import PipeWeightCalc from '../../components/PipeWeightCalc.astro';
+import UpdateContactRail from '../../components/UpdateContactRail.astro';
 import { products, getProduct } from '../../data/products';
 import { site } from '../../data/site';
 
@@ -81,9 +82,13 @@ const schemas = [
         <img
           src={product.image}
           alt={product.title}
-          class="aspect-[16/10] w-full rounded-2xl object-cover"
+          class="aspect-[16/10] w-full rounded-2xl object-cover ring-1 ring-slate-200/70"
           loading="eager"
         />
+
+        <div class="mt-6 lg:hidden">
+          <UpdateContactRail productHint={product.title} formId={`product-form-mobile-${product.slug}`} />
+        </div>
 
         <div class="mt-10">
           <h2 class="font-display mb-4 text-2xl font-bold uppercase tracking-tight text-navy-brand">
@@ -135,10 +140,12 @@ const schemas = [
           <h2 class="font-display mb-4 text-2xl font-bold uppercase tracking-tight text-navy-brand">
             Applications
           </h2>
-          <ul class="mb-10 flex flex-wrap gap-x-6 gap-y-2">
+          <ul class="mb-10 flex flex-wrap gap-2">
             {
               product.applications.map((app) => (
-                <li class="text-[15px] font-medium text-steel-500">{app}</li>
+                <li class="rounded-lg border border-teal-200/80 bg-teal-50/80 px-3 py-1.5 text-[13px] font-semibold text-teal-800">
+                  {app}
+                </li>
               ))
             }
           </ul>
@@ -151,7 +158,7 @@ const schemas = [
         </div>
       </Reveal>
 
-      <aside class="space-y-8 lg:sticky lg:top-28 lg:self-start">
+      <aside class="hidden space-y-6 lg:sticky lg:top-28 lg:block lg:self-start">
         <Reveal delay={150} variant="fade-right">
           <div class={`rounded-2xl bg-gradient-to-br ${product.gradient} p-8 text-white`}>
             <p class="text-xs font-bold uppercase tracking-widest text-white/70">Navkar Tubes</p>
@@ -170,8 +177,8 @@ const schemas = [
         {
           product.standards && (
             <Reveal delay={200} variant="fade-up">
-              <div>
-                <h3 class="font-display mb-3 text-sm font-bold uppercase tracking-wider text-navy-brand">
+              <div class="rounded-2xl border border-slate-200/90 bg-surface/60 px-5 py-4">
+                <h3 class="font-display mb-2 text-sm font-bold uppercase tracking-wider text-navy-brand">
                   Standards
                 </h3>
                 <p class="text-sm leading-relaxed text-steel-500">{product.standards.join(' · ')}</p>
@@ -183,8 +190,8 @@ const schemas = [
         {
           product.materials && (
             <Reveal delay={250} variant="fade-up">
-              <div>
-                <h3 class="font-display mb-3 text-sm font-bold uppercase tracking-wider text-navy-brand">
+              <div class="rounded-2xl border border-slate-200/90 bg-surface/60 px-5 py-4">
+                <h3 class="font-display mb-2 text-sm font-bold uppercase tracking-wider text-navy-brand">
                   Materials
                 </h3>
                 <ul class="space-y-1.5 text-sm text-steel-500">
@@ -197,31 +204,7 @@ const schemas = [
           )
         }
 
-        <Reveal delay={300} variant="fade-up">
-          <div class="space-y-3 border-t border-slate-200 pt-6">
-            <a
-              href={`/contact/?product=${product.slug}`}
-              class="btn btn-teal block w-full py-3.5 text-center text-sm"
-            >
-              Get quote — {product.title}
-            </a>
-            <a
-              href={`https://wa.me/919601702883?text=${encodeURIComponent(`Hi, I need a quote for ${product.title}${product.sizes ? ` (${product.sizes})` : ''}.`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn block w-full border border-slate-200 py-3.5 text-center text-sm text-navy-brand hover:border-teal-400 hover:text-teal-700"
-            >
-              WhatsApp this product
-            </a>
-            <a
-              href="/catalogue.pdf"
-              download="Navkar-Tubes-Brochure.pdf"
-              class="block w-full py-2 text-center text-sm font-semibold text-teal-600 hover:text-teal-700"
-            >
-              Download brochure (PDF)
-            </a>
-          </div>
-        </Reveal>
+        <UpdateContactRail productHint={product.title} formId={`product-form-${product.slug}`} />
       </aside>
     </div>
   </section>
