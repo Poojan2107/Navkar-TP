@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import YardCinematic from '../components/YardCinematic.astro';
 import WhyNavkarIntro from '../components/WhyNavkarIntro.astro';
 import ProductRange from '../components/ProductRange.astro';
 import JindalBand from '../components/JindalBand.astro';
@@ -24,6 +25,7 @@ const homeDescription = metaDescriptionFor('home');
   schemas={[faqSchema([...homeFaqs])]}
 >
   <Hero />
+  <YardCinematic />
   <div class="cv-auto">
     <WhyNavkarIntro />
     <ProductRange />

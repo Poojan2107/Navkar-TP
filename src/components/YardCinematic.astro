@@ -1,0 +1,136 @@
+---
+import { site } from '../data/site';
+
+const videoSrc = '/media/yard-tour.mp4';
+const posterSrc = '/images/navkar/yard-tour-poster.jpg';
+---
+
+<section class="yard-cinematic" data-yard-cinematic aria-label="Yard walkthrough video">
+  <div class="yard-cinematic-track">
+    <div class="yard-cinematic-sticky">
+      <div class="yard-cinematic-stage" data-yard-stage>
+        <video
+          class="yard-cinematic-video"
+          data-yard-video
+          poster={posterSrc}
+          muted
+          playsinline
+          loop
+          preload="metadata"
+          width="1280"
+          height="720"
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+
+        <div class="yard-cinematic-scrim" aria-hidden="true"></div>
+        <div class="yard-cinematic-vignette" aria-hidden="true"></div>
+
+        <div class="yard-cinematic-copy container-narrow px-4 sm:px-6 lg:px-8">
+          <p class="section-eyebrow mb-3 !text-teal-300/90">From the yard</p>
+          <h2 class="yard-cinematic-title">
+            Stock you can see.<br class="hidden sm:block" />
+            Dispatch you can trust.
+          </h2>
+          <p class="yard-cinematic-lede">
+            A quick look through our Ahmedabad yard — ERW pipes, hollow sections and project-ready stock.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/updates/" class="btn btn-teal px-5 py-2.5 text-sm">
+              View yard updates
+            </a>
+            <a
+              href={site.phones.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline-light px-5 py-2.5 text-sm"
+            >
+              WhatsApp sales
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const root = document.querySelector('[data-yard-cinematic]');
+    if (!root) return;
+
+    const stage = root.querySelector('[data-yard-stage]');
+    const video = root.querySelector('[data-yard-video]');
+    if (!(stage instanceof HTMLElement) || !(video instanceof HTMLVideoElement)) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function setProgress(progress) {
+      const p = Math.min(Math.max(progress, 0), 1);
+      // Hold full opacity for first ~35%, then fade/scale out
+      const fade = p < 0.35 ? 0 : (p - 0.35) / 0.65;
+      const opacity = 1 - fade * 0.92;
+      const scale = 1 - fade * 0.08;
+      const y = fade * 28;
+      stage.style.setProperty('--yard-opacity', String(opacity));
+      stage.style.setProperty('--yard-scale', String(scale));
+      stage.style.setProperty('--yard-y', `${y}px`);
+      stage.style.setProperty('--yard-scrim', String(0.35 + fade * 0.45));
+    }
+
+    function update() {
+      const rect = root.getBoundingClientRect();
+      const total = root.offsetHeight - window.innerHeight;
+      if (total <= 0) {
+        setProgress(0);
+        return;
+      }
+      const scrolled = Math.min(Math.max(-rect.top, 0), total);
+      setProgress(scrolled / total);
+    }
+
+    function playIfVisible() {
+      if (prefersReduced.matches) {
+        video.pause();
+        return;
+      }
+      const rect = root.getBoundingClientRect();
+      const visible = rect.top < window.innerHeight * 0.75 && rect.bottom > window.innerHeight * 0.2;
+      if (visible) {
+        const play = video.play();
+        if (play && typeof play.catch === 'function') play.catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+
+    if (prefersReduced.matches) {
+      setProgress(0);
+      stage.style.setProperty('--yard-opacity', '1');
+      stage.style.setProperty('--yard-scale', '1');
+      stage.style.setProperty('--yard-y', '0px');
+      return;
+    }
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        playIfVisible();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) video.pause();
+      else playIfVisible();
+    });
+
+    update();
+    playIfVisible();
+  })();
+</script>
