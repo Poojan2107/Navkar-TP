@@ -1,0 +1,40 @@
+---
+import { products, getProduct } from '../data/products';
+import ProductCard from './ProductCard.astro';
+import SectionHeading from './SectionHeading.astro';
+import Reveal from './Reveal.astro';
+
+interface Props {
+  currentSlug: string;
+  limit?: number;
+}
+
+const { currentSlug, limit = 3 } = Astro.props;
+const current = getProduct(currentSlug);
+
+const related = products
+  .filter((p) => p.slug !== currentSlug)
+  .sort((a, b) => {
+    const aMatch = Number(a.jindalAuthorized === current?.jindalAuthorized);
+    const bMatch = Number(b.jindalAuthorized === current?.jindalAuthorized);
+    return bMatch - aMatch;
+  })
+  .slice(0, limit);
+---
+
+{
+  related.length > 0 && (
+    <section class="section-padding border-t border-slate-100 bg-surface">
+      <div class="container-narrow">
+        <Reveal variant="fade-up">
+          <SectionHeading label="Related" title="You may also need" />
+        </Reveal>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {related.map((product, i) => (
+            <ProductCard product={product} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

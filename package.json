@@ -1,0 +1,29 @@
+{
+  "name": "navkar-tubes",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "dev:bg": "astro dev --background",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "process:updates": "node scripts/process-updates-media.mjs",
+    "new:update": "node scripts/new-update.mjs",
+    "auto:update": "node scripts/auto-publish-update.mjs",
+    "make:og": "node scripts/make-og-image.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}

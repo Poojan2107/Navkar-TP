@@ -1,0 +1,49 @@
+---
+import { proofBand } from '../data/site';
+import Reveal from './Reveal.astro';
+---
+
+<section class="stats-band border-y border-slate-200/80 bg-white">
+  <Reveal variant="fade-up" class="container-narrow grid grid-cols-2 lg:grid-cols-4">
+    {
+      proofBand.map((stat, i) => (
+        <div
+          data-stat
+          class:list={[
+            'stats-band-cell group relative px-4 py-7 text-center sm:px-6 sm:py-9',
+            i > 0 && 'border-l border-slate-200/80',
+            i >= 2 && 'border-t border-slate-200/80 lg:border-t-0',
+          ]}
+        >
+          <span class="stats-band-accent" aria-hidden="true"></span>
+          <p class="font-display text-3xl font-bold uppercase tracking-tight text-navy-brand transition-colors duration-300 group-hover:text-teal-600 sm:text-4xl">
+            {stat.value}
+          </p>
+          <p class="mt-2 text-sm font-medium text-steel-500">{stat.label}</p>
+        </div>
+      ))
+    }
+  </Reveal>
+</section>
+
+<style>
+  .stats-band-cell {
+    position: relative;
+  }
+
+  .stats-band-accent {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 3px;
+    width: 0;
+    transform: translateX(-50%);
+    background: var(--color-teal-500);
+    transition: width 0.5s var(--ease-out-expo);
+  }
+
+  .stats-band-cell:hover .stats-band-accent,
+  .stats-band-cell.is-popped .stats-band-accent {
+    width: 2.5rem;
+  }
+</style>

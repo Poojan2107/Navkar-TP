@@ -1,0 +1,78 @@
+{
+  "redirects": [
+    { "source": "/our-products", "destination": "/products/", "permanent": true },
+    { "source": "/our-products/", "destination": "/products/", "permanent": true },
+    { "source": "/about-us", "destination": "/about/", "permanent": true },
+    { "source": "/about-us/", "destination": "/about/", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact/", "permanent": true },
+    { "source": "/contact-us/", "destination": "/contact/", "permanent": true },
+    { "source": "/download-catalogue", "destination": "/catalogue/", "permanent": true },
+    { "source": "/download-catalogue/", "destination": "/catalogue/", "permanent": true },
+    { "source": "/jindal", "destination": "/jindal-authorized-partner/", "permanent": true },
+    { "source": "/jindal/", "destination": "/jindal-authorized-partner/", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/home/", "destination": "/", "permanent": true },
+    { "source": "/index.php", "destination": "/", "permanent": true },
+    { "source": "/erw-pipes", "destination": "/products/erw-pipes/", "permanent": true },
+    { "source": "/erw-pipes/", "destination": "/products/erw-pipes/", "permanent": true },
+    { "source": "/ms-fittings", "destination": "/products/ms-fittings/", "permanent": true },
+    { "source": "/ms-fittings/", "destination": "/products/ms-fittings/", "permanent": true },
+    { "source": "/spiral-pipes", "destination": "/products/spiral-pipes/", "permanent": true },
+    { "source": "/spiral-pipes/", "destination": "/products/spiral-pipes/", "permanent": true },
+    { "source": "/ms-flanges", "destination": "/products/ms-flanges/", "permanent": true },
+    { "source": "/ms-flanges/", "destination": "/products/ms-flanges/", "permanent": true },
+    { "source": "/seamless-hydraulic-pipes", "destination": "/products/seamless-hydraulic-pipes/", "permanent": true },
+    { "source": "/seamless-hydraulic-pipes/", "destination": "/products/seamless-hydraulic-pipes/", "permanent": true },
+    { "source": "/ms-hollow-sections", "destination": "/products/ms-hollow-sections/", "permanent": true },
+    { "source": "/ms-hollow-sections/", "destination": "/products/ms-hollow-sections/", "permanent": true },
+    { "source": "/lancing-pipes", "destination": "/products/lancing-pipes/", "permanent": true },
+    { "source": "/lancing-pipes/", "destination": "/products/lancing-pipes/", "permanent": true },
+    { "source": "/ceramic-lancing-pipes", "destination": "/products/lancing-pipes/", "permanent": true },
+    { "source": "/ceramic-lancing-pipes/", "destination": "/products/lancing-pipes/", "permanent": true },
+    { "source": "/news", "destination": "/updates/", "permanent": true },
+    { "source": "/news/", "destination": "/updates/", "permanent": true },
+    { "source": "/blog", "destination": "/updates/", "permanent": true },
+    { "source": "/blog/", "destination": "/updates/", "permanent": true },
+    { "source": "/ms-pipes-dealer-ahmedabad", "destination": "/locations/ms-pipes-dealer-ahmedabad/", "permanent": true },
+    { "source": "/ms-pipes-dealer-ahmedabad/", "destination": "/locations/ms-pipes-dealer-ahmedabad/", "permanent": true },
+    { "source": "/erw-pipes-supplier-gujarat", "destination": "/locations/erw-pipes-supplier-gujarat/", "permanent": true },
+    { "source": "/erw-pipes-supplier-gujarat/", "destination": "/locations/erw-pipes-supplier-gujarat/", "permanent": true },
+    { "source": "/gi-pipes-dealer-ahmedabad", "destination": "/locations/gi-pipes-dealer-ahmedabad/", "permanent": true },
+    { "source": "/gi-pipes-dealer-ahmedabad/", "destination": "/locations/gi-pipes-dealer-ahmedabad/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(js|css|svg|woff2|webp|png|jpg|jpeg)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+---
+import Reveal from './Reveal.astro';
+import { images } from '../data/images';
+---
+
+<section class="border-t border-slate-200 bg-surface px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div class="container-narrow grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+    <Reveal variant="fade-right">
+      <div>
+        <p class="text-sm font-semibold text-teal-600">Ahmedabad · Gujarat · India</p>
+        <h2 class="font-display mt-1 text-2xl font-bold uppercase tracking-tight text-navy-brand sm:text-[2rem]">
+          MS pipes dealer &amp; Jindal stockist
+        </h2>
+        <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-steel-500">
+          <p>
+            <strong class="font-semibold text-navy-brand">Navkar Tubes &amp; Tools</strong> is an authorized
+            <a href="/jindal-authorized-partner/" class="font-semibold text-teal-600 hover:text-teal-700"> Jindal channel partner </a>
+            and leading <strong class="font-semibold text-navy-brand">MS pipes dealer in Ahmedabad</strong>, supplying
+            <a href="/products/erw-pipes/" class="font-semibold text-teal-600 hover:text-teal-700"> ERW pipes </a>,
+            <a href="/products/ms-hollow-sections/" class="font-semibold text-teal-600 hover:text-teal-700"> GI hollow sections </a>,
+            <a href="/products/spiral-pipes/" class="font-semibold text-teal-600 hover:text-teal-700"> spiral pipes </a>,
+            <a href="/products/ms-fittings/" class="font-semibold text-teal-600 hover:text-teal-700"> MS fittings </a>
+            and <a href="/products/ms-flanges/" class="font-semibold text-teal-600 hover:text-teal-700"> flanges </a>
+            from Vatva &amp; Rakhial stockyards.
+          </p>
+          <p>
+            We also stock <strong class="font-semibold text-navy-brand">Asian pipes</strong> and allied mill lines for Gujarat
+            projects — cement, chemical, oil &amp; gas, refineries and heavy engineering. Sizes typically
+            <strong class="font-semibold text-navy-brand"> 15 MM to 500 MM</strong> with quick, detailed free quotations.
+          </p>
+          <p>
+            See live <a href="/updates/" class="font-semibold text-teal-600 hover:text-teal-700">yard stock updates</a>,
+            download our <a href="/catalogue/" class="font-semibold text-teal-600 hover:text-teal-700">catalogue</a>,
+            or <a href="/contact/" class="font-semibold text-teal-600 hover:text-teal-700">request a quote</a> for dispatch anywhere in India.
+          </p>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/products/" class="btn btn-teal px-5 py-2.5 text-sm">Browse products</a>
+          <a href="/contact/" class="btn border border-slate-200 px-5 py-2.5 text-sm text-navy-brand hover:border-teal-400">
+            Get free quote
+          </a>
+        </div>
+      </div>
+    </Reveal>
+
+    <Reveal delay={100} variant="fade-left">
+      <figure class="overflow-hidden rounded-2xl border border-slate-200 shadow-lg shadow-navy-brand/8">
+        <img
+          src={images.updates.erwStock}
+          alt="Jindal ERW pipe stock at Navkar Tubes yard, Ahmedabad"
+          class="aspect-[4/3] w-full object-cover"
+          width="960"
+          height="720"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="border-t border-slate-100 bg-white px-4 py-3 text-sm text-steel-500">
+          Real yard stock — Vatva &amp; Rakhial, Ahmedabad
+        </figcaption>
+      </figure>
+    </Reveal>
+  </div>
+</section>

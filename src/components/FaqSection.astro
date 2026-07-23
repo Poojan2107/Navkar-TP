@@ -1,0 +1,46 @@
+---
+import { homeFaqs } from '../data/faqs';
+import Reveal from './Reveal.astro';
+---
+
+<section class="section-padding bg-white" id="faqs">
+  <div class="container-narrow max-w-3xl">
+    <Reveal variant="fade-up" class="mb-8 text-center lg:text-left">
+      <p class="section-eyebrow mb-1.5">FAQ</p>
+      <h2 class="font-display text-2xl font-bold uppercase tracking-tight text-navy-brand sm:text-[1.85rem]">
+        MS pipes — common questions
+      </h2>
+      <p class="mt-2 text-[15px] text-steel-500">
+        Quick answers for buyers searching for Jindal pipes, ERW stock and Ahmedabad dealers.
+      </p>
+    </Reveal>
+
+    <div class="border-t border-slate-200">
+      {
+        homeFaqs.map((faq, i) => (
+          <Reveal delay={i * 50} variant="fade-up">
+            <details class="faq-item group border-b border-slate-200 open:border-b-slate-200">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left font-semibold text-navy-brand marker:content-none">
+                <span class="text-[15px] leading-snug">{faq.question}</span>
+                <span class="faq-chevron shrink-0 text-teal-500 transition-transform duration-300 group-open:rotate-180" aria-hidden="true">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </span>
+              </summary>
+              <div class="pb-4 text-[15px] leading-relaxed text-steel-500">
+                {faq.answer}
+              </div>
+            </details>
+          </Reveal>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

@@ -1,0 +1,32 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+}
+
+const { eyebrow, title, description } = Astro.props;
+---
+
+<section class="page-hero relative overflow-hidden">
+  <div class="page-hero-atmosphere pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div class="container-narrow relative px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+    <div class="page-hero-copy">
+      <slot name="breadcrumb" />
+      {
+        eyebrow && (
+          <p class="section-eyebrow mb-3 !text-teal-300/90">{eyebrow}</p>
+        )
+      }
+      <h1 class="page-hero-title">
+        {title}
+      </h1>
+      {
+        description && (
+          <p class="page-hero-desc">{description}</p>
+        )
+      }
+      <slot />
+    </div>
+  </div>
+</section>

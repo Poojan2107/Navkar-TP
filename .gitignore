@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+.astro/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+.cursor/
+
+# Local scrape / debug leftovers
+public/scraped-home.html
+public/images/navkar/sources.json
+hero-logo-check.png
+hero-full-check.png
+_tmp_refs/
+
+# WordPress dump & host leftovers (Astro site only)
+wp-content/
+plugins/
+themes/
+uploads/
+mu-plugins/
+litespeed/
+navkar-site/
+updraft/
+upgrade/
+upgrade-temp-backup/
+wflogs/
+index.php
+object-cache.php
+.htaccess
+.litespeed_conf.dat
+*.sql
+*.sql.gz
+
+# Local tooling
+.vercel/
+.netlify/
+.turbo/
+
+# SEO / working files
+*.xlsx
+.tmp-*.json

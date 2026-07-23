@@ -1,0 +1,200 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22.12.0"
+  NPM_FLAGS = "--prefer-offline --no-audit"
+
+[[redirects]]
+  from = "/our-products"
+  to = "/products/"
+  status = 301
+
+[[redirects]]
+  from = "/our-products/"
+  to = "/products/"
+  status = 301
+
+[[redirects]]
+  from = "/about-us"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/about-us/"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/download-catalogue"
+  to = "/catalogue/"
+  status = 301
+
+[[redirects]]
+  from = "/download-catalogue/"
+  to = "/catalogue/"
+  status = 301
+
+[[redirects]]
+  from = "/jindal"
+  to = "/jindal-authorized-partner/"
+  status = 301
+
+[[redirects]]
+  from = "/jindal/"
+  to = "/jindal-authorized-partner/"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/index.php"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/erw-pipes"
+  to = "/products/erw-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/erw-pipes/"
+  to = "/products/erw-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/ms-fittings"
+  to = "/products/ms-fittings/"
+  status = 301
+
+[[redirects]]
+  from = "/ms-fittings/"
+  to = "/products/ms-fittings/"
+  status = 301
+
+[[redirects]]
+  from = "/spiral-pipes"
+  to = "/products/spiral-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/spiral-pipes/"
+  to = "/products/spiral-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/ms-flanges"
+  to = "/products/ms-flanges/"
+  status = 301
+
+[[redirects]]
+  from = "/ms-flanges/"
+  to = "/products/ms-flanges/"
+  status = 301
+
+[[redirects]]
+  from = "/seamless-hydraulic-pipes"
+  to = "/products/seamless-hydraulic-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/seamless-hydraulic-pipes/"
+  to = "/products/seamless-hydraulic-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/ms-hollow-sections"
+  to = "/products/ms-hollow-sections/"
+  status = 301
+
+[[redirects]]
+  from = "/ms-hollow-sections/"
+  to = "/products/ms-hollow-sections/"
+  status = 301
+
+[[redirects]]
+  from = "/lancing-pipes"
+  to = "/products/lancing-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/lancing-pipes/"
+  to = "/products/lancing-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/ceramic-lancing-pipes"
+  to = "/products/lancing-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/ceramic-lancing-pipes/"
+  to = "/products/lancing-pipes/"
+  status = 301
+
+[[redirects]]
+  from = "/news"
+  to = "/updates/"
+  status = 301
+
+[[redirects]]
+  from = "/news/"
+  to = "/updates/"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

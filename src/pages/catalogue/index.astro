@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Reveal from '../../components/Reveal.astro';
+import { site } from '../../data/site';
+import { images } from '../../data/images';
+
+const brochureIncludes = [
+  'MS ERW black pipes — size overview',
+  'GI square & rectangular hollow sections',
+  'Fittings, flanges & spiral lines',
+  'Lancing pipes & project supply notes',
+];
+---
+
+<BaseLayout
+  title="Download Catalogue"
+  description="Download the Navkar Tubes & Tools product brochure — MS ERW, hollow sections, fittings, flanges and Jindal authorized lines from Ahmedabad."
+>
+  <PageHero
+    eyebrow="Catalogue"
+    title="Product brochure"
+    description="Download our brochure for the product range, or request a quote with size and quantity for current stock and pricing."
+  >
+    <Breadcrumbs
+      slot="breadcrumb"
+      items={[{ label: 'Home', href: '/' }, { label: 'Catalogue' }]}
+    />
+  </PageHero>
+
+  <section class="bg-white px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <div class="container-narrow grid gap-6 lg:grid-cols-[240px_1fr] lg:gap-10 xl:grid-cols-[260px_1fr]">
+      <Reveal variant="fade-up">
+        <img
+          src={images.catalogue}
+          alt="Navkar Tubes product brochure"
+          class="mx-auto aspect-[3/4] w-full max-w-[240px] rounded-xl object-cover shadow-md ring-1 ring-slate-200 lg:mx-0"
+          loading="lazy"
+        />
+      </Reveal>
+
+      <Reveal delay={80} variant="fade-up" class="flex flex-col justify-center">
+        <p class="mb-1.5 text-meta uppercase tracking-[0.18em] text-teal-600">PDF download</p>
+        <h2 class="font-display mb-2 text-2xl font-bold uppercase tracking-tight text-navy-brand">
+          Navkar Tubes brochure
+        </h2>
+        <p class="mb-4 max-w-xl text-[15px] leading-relaxed text-steel-500">
+          Browse the range online, download the brochure, or send product, size and quantity for a
+          detailed free quote from Ahmedabad stock.
+        </p>
+
+        <ul class="mb-5 grid gap-2 sm:grid-cols-2">
+          {
+            brochureIncludes.map((item) => (
+              <li class="flex gap-2 text-[14px] text-navy-brand">
+                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 bg-teal-500" aria-hidden="true" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="/catalogue.pdf"
+            download="Navkar-Tubes-Brochure.pdf"
+            class="btn btn-teal px-7 py-3 text-sm"
+          >
+            Download PDF
+          </a>
+          <a
+            href="/contact/"
+            class="btn border border-slate-200 px-5 py-3 text-sm text-navy-brand hover:border-teal-400 hover:text-teal-700"
+          >
+            Request quote
+          </a>
+          <a href="/products/" class="text-sm font-semibold text-teal-600 hover:text-teal-700">
+            Browse products →
+          </a>
+        </div>
+        <p class="mt-4 text-sm text-steel-500">
+          Sales
+          <a href={site.phones.salesTel} class="font-semibold text-teal-600 hover:text-teal-700">
+            {site.phones.sales}
+          </a>
+        </p>
+      </Reveal>
+    </div>
+  </section>
+
+</BaseLayout>

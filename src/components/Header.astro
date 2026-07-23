@@ -1,0 +1,119 @@
+---
+import { site, navLinks } from '../data/site';
+import Logo from './Logo.astro';
+
+interface Props {
+  /** Dark frosted header over homepage / photo heroes */
+  overDark?: boolean;
+}
+
+const { overDark = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  id="site-header"
+  class:list={[
+    'top-0 z-50',
+    overDark
+      ? 'header-over-dark fixed inset-x-0'
+      : 'header-solid sticky shadow-sm',
+  ]}
+  data-over-dark={overDark ? 'true' : 'false'}
+>
+  <div
+    class:list={[
+      'header-utility hidden border-b lg:block',
+      overDark ? 'header-utility--over-dark border-white/10' : 'border-white/8',
+    ]}
+  >
+    <div class="container-narrow flex items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
+      <p class="header-util-text truncate text-[12px] font-medium tracking-wide">
+        Vatva &amp; Rakhial · Ahmedabad
+      </p>
+      <div class="flex items-center gap-4 sm:gap-6">
+        <a href={site.phones.salesTel} class="header-util-link shrink-0 text-[12px] font-semibold">
+          Sales {site.phones.sales}
+        </a>
+        <a
+          href={site.phones.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="header-util-link hidden shrink-0 text-[12px] font-semibold sm:inline"
+        >
+          WhatsApp quote →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-main container-narrow flex items-center justify-between gap-3 border-b px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4">
+    <a href="/" class="flex min-w-0 items-center gap-2 sm:gap-3" aria-label="Navkar Tubes & Tools home">
+      <Logo size="sm" />
+      <div class="min-w-0 leading-tight">
+        <span class="header-brand font-display block truncate text-[15px] font-bold uppercase tracking-[0.04em] sm:text-lg">Navkar Tubes</span>
+        <span class="header-tagline block text-[11px] font-medium tracking-[0.04em] sm:text-xs">and Tools · Ahmedabad</span>
+      </div>
+    </a>
+
+    <nav class="hidden items-center gap-0.5 lg:flex xl:gap-1" aria-label="Main navigation">
+      {
+        navLinks.map((link) => {
+          const isActive =
+            link.href === '/' ? currentPath === '/' : currentPath.startsWith(link.href);
+          return (
+            <a
+              href={link.href}
+              class:list={['nav-link header-nav-link px-2 py-1.5 lg:text-[14px] xl:text-[15px]', isActive && 'is-active']}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+      <a href={site.catalogueUrl} class="header-catalogue header-nav-link nav-link px-2 py-1.5 font-semibold lg:text-[14px] xl:text-[15px]">
+        Catalogue
+      </a>
+      <a href="/contact/" class="btn btn-teal btn-shimmer ml-2 px-4 py-2.5 text-[14px] shadow-md xl:px-5 xl:text-[15px]" data-magnetic>Get quote</a>
+    </nav>
+
+    <button
+      id="mobile-menu-btn"
+      type="button"
+      class="header-menu-btn -mr-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2.5 transition-colors lg:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="mobile-menu hidden max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-navy-950/98 backdrop-blur-lg lg:hidden"
+    aria-label="Mobile navigation"
+  >
+    <div class="mobile-menu-inner flex flex-col gap-0.5 px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-xl px-3.5 py-3 text-base font-semibold text-white/88 transition-colors hover:bg-white/8 hover:text-teal-300 active:bg-white/8"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href={site.catalogueUrl} class="rounded-xl px-3.5 py-3 text-base font-semibold text-white/88 hover:bg-white/8 hover:text-teal-300">
+        Catalogue
+      </a>
+      <a href={site.phones.salesTel} class="rounded-xl px-3.5 py-3 text-base font-semibold text-teal-300 hover:bg-white/8">
+        Call sales {site.phones.sales}
+      </a>
+      <a href="/contact/" class="btn btn-teal btn-shimmer mx-1 mt-3 mb-1 min-h-12 py-3.5 text-center shadow-lg">Get quote</a>
+    </div>
+  </nav>
+</header>

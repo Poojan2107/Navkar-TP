@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import WhyNavkarIntro from '../components/WhyNavkarIntro.astro';
+import ProductRange from '../components/ProductRange.astro';
+import JindalBand from '../components/JindalBand.astro';
+import LatestUpdates from '../components/LatestUpdates.astro';
+import ExportDispatch from '../components/ExportDispatch.astro';
+import FaqSection from '../components/FaqSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { metaDescriptionFor } from '../data/seo';
+import { faqSchema } from '../lib/schema';
+import { homeFaqs } from '../data/faqs';
+
+const homeDescription = metaDescriptionFor('home');
+---
+
+<BaseLayout
+  title="Jindal Pipes Dealer Ahmedabad | MS ERW & GI Pipes"
+  description={homeDescription}
+  ogImage="/images/navkar/logo-hero-center.webp"
+  preloadImage="/images/navkar/logo-hero-center.webp"
+  overDarkHeader={false}
+  schemas={[faqSchema([...homeFaqs])]}
+>
+  <Hero />
+  <div class="cv-auto">
+    <WhyNavkarIntro />
+    <ProductRange />
+    <JindalBand />
+    <ExportDispatch />
+    <LatestUpdates />
+    <FaqSection />
+    <ContactSection />
+  </div>
+</BaseLayout>

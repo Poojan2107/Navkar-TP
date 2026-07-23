@@ -1,0 +1,131 @@
+---
+/**
+ * Approximate MS pipe unit weight (kg/m).
+ * Formula: 0.02466 × T × (D − T) with D, T in mm — common India trade estimate.
+ * Always confirm with mill / invoice for commercial orders.
+ */
+interface Props {
+  /** Show only on pipe-like products */
+  title?: string;
+}
+
+const { title = 'Pipe weight estimate' } = Astro.props;
+---
+
+<div class="pipe-weight relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl sm:p-8" data-pipe-weight>
+  <div class="flex items-center gap-3">
+    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-500/10 text-teal-600">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+      </svg>
+    </div>
+    <div>
+      <h3 class="font-display text-xl font-bold uppercase tracking-tight text-navy-brand">
+        {title}
+      </h3>
+      <p class="mt-0.5 text-[13px] leading-relaxed text-steel-500">
+        Quick kg/m estimate for MS &amp; ERW pipes. Enter OD, wall thickness, and length.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-6 grid gap-4 sm:grid-cols-3">
+    <label class="block text-sm">
+      <span class="mb-1.5 block font-semibold text-navy-brand">Outer Diameter (OD mm)</span>
+      <input
+        type="number"
+        inputmode="decimal"
+        min="10"
+        max="600"
+        step="0.1"
+        value="50"
+        data-pw-od
+        class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] font-semibold text-navy-brand outline-none transition-colors focus:border-teal-500 focus:bg-white focus:ring-2 focus:ring-teal-500/20"
+      />
+    </label>
+    <label class="block text-sm">
+      <span class="mb-1.5 block font-semibold text-navy-brand">Wall Thickness (mm)</span>
+      <input
+        type="number"
+        inputmode="decimal"
+        min="0.5"
+        max="40"
+        step="0.1"
+        value="3.2"
+        data-pw-wt
+        class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] font-semibold text-navy-brand outline-none transition-colors focus:border-teal-500 focus:bg-white focus:ring-2 focus:ring-teal-500/20"
+      />
+    </label>
+    <label class="block text-sm">
+      <span class="mb-1.5 block font-semibold text-navy-brand">Total Length (meters)</span>
+      <input
+        type="number"
+        inputmode="decimal"
+        min="0.1"
+        max="10000"
+        step="0.1"
+        value="6"
+        data-pw-len
+        class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] font-semibold text-navy-brand outline-none transition-colors focus:border-teal-500 focus:bg-white focus:ring-2 focus:ring-teal-500/20"
+      />
+    </label>
+  </div>
+
+  <div class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-teal-500/20 bg-gradient-to-r from-teal-50/60 to-slate-50/60 p-4 sm:p-5">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-wider text-teal-700">Approx. Unit &amp; Total Weight</p>
+      <div class="mt-1 flex items-baseline gap-3">
+        <p class="text-2xl font-bold text-navy-brand sm:text-3xl">
+          <span data-pw-kgm>—</span>
+          <span class="text-sm font-semibold text-steel-500"> kg/m</span>
+        </p>
+        <span class="text-slate-300">|</span>
+        <p class="text-lg font-bold text-navy-brand sm:text-xl">
+          Total ≈ <strong class="text-teal-600" data-pw-total>—</strong> kg
+        </p>
+      </div>
+    </div>
+    <a
+      href="/contact/?product=erw-pipes"
+      class="btn btn-teal btn-shimmer shrink-0 px-5 py-2.5 text-sm font-semibold shadow-md"
+    >
+      Confirm Quote →
+    </a>
+  </div>
+</div>
+
+<script>
+  function initPipeWeight() {
+    document.querySelectorAll('[data-pipe-weight]').forEach((root) => {
+      const od = root.querySelector('[data-pw-od]');
+      const wt = root.querySelector('[data-pw-wt]');
+      const len = root.querySelector('[data-pw-len]');
+      const kgmEl = root.querySelector('[data-pw-kgm]');
+      const totalEl = root.querySelector('[data-pw-total]');
+      if (!(od instanceof HTMLInputElement) || !(wt instanceof HTMLInputElement) || !(len instanceof HTMLInputElement)) return;
+      if (!kgmEl || !totalEl) return;
+
+      const calc = () => {
+        const D = parseFloat(od.value);
+        const T = parseFloat(wt.value);
+        const L = parseFloat(len.value);
+        if (![D, T, L].every((n) => Number.isFinite(n) && n > 0) || T >= D) {
+          kgmEl.textContent = '—';
+          totalEl.textContent = '—';
+          return;
+        }
+        // Standard approx for carbon steel pipe (India trade practice)
+        const kgm = 0.02466 * T * (D - T);
+        const total = kgm * L;
+        kgmEl.textContent = kgm.toFixed(2);
+        totalEl.textContent = total.toFixed(1);
+      };
+
+      [od, wt, len].forEach((input) => input.addEventListener('input', calc));
+      calc();
+    });
+  }
+
+  initPipeWeight();
+  document.addEventListener('astro:page-load', initPipeWeight);
+</script>

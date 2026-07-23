@@ -1,0 +1,284 @@
+---
+import { products } from '../data/products';
+
+interface Props {
+  id?: string;
+  showProductField?: boolean;
+  variant?: 'light' | 'dark';
+  /** Prefill product select (title or slug) */
+  selectedProduct?: string;
+  /** Shorter field set for sticky sidebars */
+  compact?: boolean;
+}
+
+const {
+  id = 'quote-form',
+  showProductField = true,
+  variant = 'light',
+  selectedProduct = '',
+  compact = false,
+} = Astro.props;
+
+const isDark = variant === 'dark';
+const labelClass = isDark ? 'text-white' : 'text-navy-brand';
+const inputClass = isDark
+  ? 'input-glow border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:border-teal-400 focus:ring-teal-400/20'
+  : 'input-glow border-slate-200 bg-white text-navy-brand hover:border-slate-300 focus:border-teal-500 focus:ring-teal-500/20';
+const helpClass = isDark ? 'text-white/60' : 'text-steel-500';
+const linkClass = isDark ? 'text-teal-300 hover:text-white' : 'text-navy-brand hover:text-teal-600';
+const errorClass = isDark ? 'border-red-400/40 bg-red-500/10 text-red-100' : 'border-red-200 bg-red-50 text-red-800';
+
+const preselected =
+  products.find((p) => p.slug === selectedProduct || p.title === selectedProduct)?.title ?? '';
+---
+
+<form
+  id={id}
+  class="space-y-4"
+  action="https://formsubmit.co/ajax/navkartube@gmail.com"
+  method="POST"
+  data-quote-form
+  novalidate={false}
+>
+  <input type="hidden" name="_subject" value="New enquiry from Navkar Tubes website" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+  <div class:list={['grid gap-4', compact ? '' : 'sm:grid-cols-2']}>
+    <div>
+      <label for={`${id}-name`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Name *</label>
+      <input type="text" id={`${id}-name`} name="name" required autocomplete="name" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Your name" />
+    </div>
+    {
+      !compact && (
+        <div>
+          <label for={`${id}-company`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Company *</label>
+          <input type="text" id={`${id}-company`} name="company" required autocomplete="organization" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Company name" />
+        </div>
+      )
+    }
+  </div>
+
+  {
+    compact ? (
+      <div>
+        <label for={`${id}-phone`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Phone *</label>
+        <input type="tel" id={`${id}-phone`} name="phone" required autocomplete="tel" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="+91" />
+      </div>
+    ) : (
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for={`${id}-phone`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Phone *</label>
+          <input type="tel" id={`${id}-phone`} name="phone" required autocomplete="tel" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="+91" />
+        </div>
+        <div>
+          <label for={`${id}-email`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Email</label>
+          <input type="email" id={`${id}-email`} name="email" autocomplete="email" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="you@company.com" />
+        </div>
+      </div>
+    )
+  }
+
+  {
+    compact && (
+      <input type="hidden" name="company" value="Website enquiry" />
+    )
+  }
+
+  {
+    showProductField && (
+      <div>
+        <label for={`${id}-product`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>
+          Product
+        </label>
+        <select
+          id={`${id}-product`}
+          name="product"
+          data-product-select
+          class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]}
+        >
+          <option value="">Select product line</option>
+          {products.map((p) => (
+            <option value={p.title} selected={p.title === preselected}>
+              {p.title}
+            </option>
+          ))}
+          <option value="Other / Mixed">Other / Mixed</option>
+        </select>
+      </div>
+    )
+  }
+
+  {
+    compact ? (
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label for={`${id}-size`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Size / OD *</label>
+          <input type="text" id={`${id}-size`} name="size" required class:list={['w-full rounded-xl border px-3 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="100 MM" />
+        </div>
+        <div>
+          <label for={`${id}-qty`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Qty *</label>
+          <input type="text" id={`${id}-qty`} name="quantity" required class:list={['w-full rounded-xl border px-3 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="50 lengths" />
+        </div>
+      </div>
+    ) : (
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div>
+          <label for={`${id}-size`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Size / OD *</label>
+          <input type="text" id={`${id}-size`} name="size" required class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="e.g. 100 MM" />
+        </div>
+        <div>
+          <label for={`${id}-qty`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Quantity *</label>
+          <input type="text" id={`${id}-qty`} name="quantity" required class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="e.g. 50 lengths" />
+        </div>
+        <div>
+          <label for={`${id}-city`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Delivery city</label>
+          <input type="text" id={`${id}-city`} name="city" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Ahmedabad" />
+        </div>
+      </div>
+    )
+  }
+
+  <div>
+    <label for={`${id}-message`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>
+      {compact ? 'Message' : 'Notes'}
+    </label>
+    <textarea
+      id={`${id}-message`}
+      name="message"
+      rows={compact ? 2 : 3}
+      data-message-field
+      class:list={['w-full resize-y rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]}
+      placeholder={compact ? 'Port, packing notes, timing…' : 'Standards, schedule, site timing…'}
+    ></textarea>
+  </div>
+
+  {
+    !compact && (
+      <p class:list={['text-sm leading-relaxed', helpClass]}>
+        By submitting, you agree we may contact you about this enquiry.
+        <a href="/privacy/" class:list={['underline underline-offset-2', linkClass]}>Privacy policy</a>.
+      </p>
+    )
+  }
+
+  <div
+    data-form-error
+    hidden
+    role="alert"
+    class:list={['rounded-xl border px-4 py-3 text-sm leading-relaxed', errorClass]}
+  >
+    <p class="font-semibold">Couldn’t send the enquiry.</p>
+    <p class="mt-1">
+      Try again, or call{' '}
+      <a href="tel:+919601702883" class="font-semibold underline underline-offset-2">+91 9601702883</a>
+      {' / '}
+      <a href="https://wa.me/919601702883" target="_blank" rel="noopener noreferrer" class="font-semibold underline underline-offset-2">WhatsApp sales</a>.
+    </p>
+  </div>
+
+  <button type="submit" class:list={['btn btn-teal min-h-12 w-full px-6 py-3.5', !compact && 'sm:w-auto']} data-submit-btn>
+    Submit enquiry
+  </button>
+</form>
+
+{
+  !compact && (
+    <p class:list={['quote-form-alt mt-4 text-sm leading-relaxed', helpClass]}>
+      Or call{' '}
+      <a href="tel:+919601702883" class:list={['font-semibold', linkClass]}>+91 9601702883</a>
+      <span class="mx-1.5 text-slate-400" aria-hidden="true">·</span>
+      <a href="https://wa.me/919601702883" target="_blank" rel="noopener noreferrer" class:list={['font-semibold', linkClass]}>WhatsApp sales</a>
+    </p>
+  )
+}
+
+<script is:inline>
+  document.querySelectorAll('[data-quote-form]').forEach(function (form) {
+    var params = new URLSearchParams(window.location.search);
+    var q = params.get('product');
+    var sector = params.get('sector');
+    var select = form.querySelector('[data-product-select]');
+    var notes = form.querySelector('[data-message-field]');
+    var btn = form.querySelector('[data-submit-btn]');
+    var errorBox = form.querySelector('[data-form-error]');
+
+    if (q && select && !select.value) {
+      var needle = q.toLowerCase().replace(/-/g, ' ');
+      Array.prototype.some.call(select.options, function (o) {
+        var val = o.value.toLowerCase();
+        if (val === q.toLowerCase() || val.indexOf(needle) !== -1) {
+          select.value = o.value;
+          return true;
+        }
+        return false;
+      });
+    }
+
+    if (sector && notes && !notes.value) {
+      notes.value = 'Sector: ' + sector;
+    }
+
+    function resetButton() {
+      if (!btn) return;
+      btn.disabled = false;
+      btn.textContent = 'Submit enquiry';
+      btn.classList.remove('opacity-70');
+    }
+
+    function showError() {
+      if (errorBox) {
+        errorBox.hidden = false;
+        errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      resetButton();
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (errorBox) errorBox.hidden = true;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        btn.classList.add('opacity-70');
+      }
+
+      var controller = new AbortController();
+      var timedOut = false;
+      var timer = setTimeout(function () {
+        timedOut = true;
+        controller.abort();
+      }, 15000);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+        signal: controller.signal,
+      })
+        .then(function (res) {
+          clearTimeout(timer);
+          if (!res.ok) throw new Error('submit-failed');
+          return res.json().catch(function () {
+            return {};
+          });
+        })
+        .then(function () {
+          window.location.href = '/thank-you/';
+        })
+        .catch(function () {
+          clearTimeout(timer);
+          if (timedOut) {
+            showError();
+            return;
+          }
+          showError();
+        });
+    });
+  });
+</script>

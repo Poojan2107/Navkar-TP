@@ -1,0 +1,23 @@
+{
+  "name": "Navkar Tubes & Tools",
+  "short_name": "Navkar Tubes",
+  "description": "Authorized Jindal channel partner in Ahmedabad — MS ERW pipes, hollow sections, fittings and flanges.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#005a7b",
+  "theme_color": "#005a7b",
+  "icons": [
+    {
+      "src": "/images/navkar/favicon.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

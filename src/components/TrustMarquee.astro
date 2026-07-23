@@ -1,0 +1,59 @@
+---
+import { trustPoints, site } from '../data/site';
+---
+
+<section class="trust-marquee overflow-hidden border-y border-white/8 bg-navy-950 py-3" aria-label="Why buyers choose Navkar">
+  <div class="marquee-wrap">
+    <div class="trust-marquee-track flex w-max gap-10 px-6">
+      {
+        [...trustPoints, ...trustPoints].map((point) => (
+          <span class="flex shrink-0 items-center gap-10 text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-100/85">
+            <span class="flex items-center gap-2.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-teal-400" aria-hidden="true"></span>
+              {point}
+            </span>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+  <a href={site.googleReviewsUrl} target="_blank" rel="noopener noreferrer" class="sr-only">
+    Read Google reviews for Navkar Tubes
+  </a>
+</section>
+
+<style>
+  .trust-marquee-track {
+    animation: trust-marquee 42s linear infinite;
+  }
+
+  .trust-marquee:hover .trust-marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes trust-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-wrap::before {
+    background: linear-gradient(to right, var(--color-navy-950), transparent);
+  }
+
+  .marquee-wrap::after {
+    background: linear-gradient(to left, var(--color-navy-950), transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .trust-marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+      justify-content: center;
+    }
+  }
+</style>

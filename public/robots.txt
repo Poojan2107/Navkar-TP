@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://navkartube.com/sitemap-index.xml
+
+# Yard stock updates RSS — submit in Google Search Console
+# https://navkartube.com/updates/rss.xml

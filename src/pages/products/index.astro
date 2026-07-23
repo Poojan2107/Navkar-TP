@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ProductsSeoBlock from '../../components/ProductsSeoBlock.astro';
+import Reveal from '../../components/Reveal.astro';
+import { products, getJindalProducts, getComplementaryProducts } from '../../data/products';
+import { brandLines, site } from '../../data/site';
+import { metaDescriptionFor } from '../../data/seo';
+import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+
+const jindalProducts = getJindalProducts();
+const featured = jindalProducts[0];
+const otherPrimary = jindalProducts.slice(1);
+const complementary = getComplementaryProducts();
+const gridProducts = [...otherPrimary, ...complementary];
+
+const productListSchema = itemListSchema(
+  products.map((p) => ({
+    name: p.title,
+    url: new URL(`/products/${p.slug}/`, site.url).href,
+    image: new URL(p.image, site.url).href,
+  })),
+);
+
+const schemas = [
+  productListSchema,
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: 'Products', url: `${site.url}/products/` },
+  ]),
+];
+---
+
+<BaseLayout
+  title="MS Pipes & Jindal ERW Products — Ahmedabad"
+  description={metaDescriptionFor('products')}
+  keywordsSlug="products"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Products"
+    title="Product range"
+    description="Authorized Jindal lines first — then Asian pipes stock, lancing pipes, fittings and flanges from Ahmedabad yards."
+  >
+    <Breadcrumbs
+      slot="breadcrumb"
+      items={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
+    />
+  </PageHero>
+
+  <section class="bg-white px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <div class="container-narrow space-y-8">
+      <Reveal variant="fade-up">
+        <div class="grid gap-0 divide-y divide-slate-200 rounded-xl border border-slate-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+          {
+            brandLines.map((brand) => (
+              <div class="px-5 py-4 sm:px-6 sm:py-5">
+                <p class="text-xs font-semibold uppercase tracking-wide text-teal-600">{brand.role}</p>
+                <h2 class="font-display mt-0.5 text-lg font-bold uppercase tracking-tight text-navy-brand">
+                  {brand.name}
+                </h2>
+                <p class="mt-1.5 text-[14px] leading-relaxed text-steel-500">{brand.detail}</p>
+                <a href={brand.href} class="mt-2 inline-block text-sm font-semibold text-teal-600 hover:text-teal-700">
+                  Learn more →
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </Reveal>
+
+      {
+        featured && (
+          <div>
+            <Reveal variant="fade-up" class="mb-4 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p class="text-sm font-semibold text-teal-600">Jindal authorized</p>
+                <h2 class="font-display mt-0.5 text-xl font-bold uppercase tracking-tight text-navy-brand sm:text-2xl">
+                  Primary stock lines
+                </h2>
+              </div>
+              <a href="/contact/" class="btn btn-teal px-5 py-2.5 text-sm">
+                Request bulk quote
+              </a>
+            </Reveal>
+            <ProductCard product={featured} featured />
+          </div>
+        )
+      }
+
+      <div>
+        <Reveal variant="fade-up" class="mb-4">
+          <p class="text-sm font-semibold text-teal-600">Also available</p>
+          <h2 class="font-display mt-0.5 text-xl font-bold uppercase tracking-tight text-navy-brand sm:text-2xl">
+            Hollow sections, lancing &amp; fittings
+          </h2>
+        </Reveal>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {gridProducts.map((product, i) => <ProductCard product={product} index={i + 1} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ProductsSeoBlock />
+</BaseLayout>

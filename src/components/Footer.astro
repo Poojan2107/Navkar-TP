@@ -1,0 +1,102 @@
+---
+import { site, navLinks } from '../data/site';
+import { products } from '../data/products';
+import Logo from './Logo.astro';
+
+const companyLinks = [
+  ...navLinks,
+  { href: '/catalogue/', label: 'Catalogue' },
+];
+const productLinks = products.slice(0, 5);
+---
+
+<footer class="relative overflow-hidden bg-navy-950 text-slate-300">
+  <div
+    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-500/40 to-transparent"
+    aria-hidden="true"
+  ></div>
+  <div class="container-narrow px-4 pb-8 pt-10 sm:px-6 lg:px-8 lg:pb-10 lg:pt-12">
+    <div class="mb-8 grid gap-8 border-b border-white/10 pb-8 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        <a href="/" class="mb-3 inline-flex items-center gap-3 transition-opacity hover:opacity-90">
+          <Logo size="sm" />
+          <span class="font-display font-bold uppercase leading-tight tracking-tight text-white">
+            Navkar Tubes<br />
+            <span class="font-sans text-xs font-medium normal-case tracking-normal text-teal-300">and Tools</span>
+          </span>
+        </a>
+        <p class="mb-4 max-w-sm text-[14px] leading-relaxed text-slate-400">
+          Authorized Jindal channel partner — MS ERW pipes, fittings &amp; flanges from Ahmedabad stockyards.
+        </p>
+        <a
+          href={site.phones.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[14px] font-semibold text-teal-300 transition hover:text-white"
+        >
+          WhatsApp sales →
+        </a>
+      </div>
+
+      <div class="grid gap-8 sm:grid-cols-3 lg:col-span-8">
+        <div>
+          <h3 class="mb-3 text-sm font-semibold text-teal-300">Company</h3>
+          <ul class="space-y-2 text-[14px]">
+            {
+              companyLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="footer-link">
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <h3 class="mb-3 text-sm font-semibold text-teal-300">Products</h3>
+          <ul class="space-y-2 text-[14px]">
+            {
+              productLinks.map((p) => (
+                <li>
+                  <a href={`/products/${p.slug}/`} class="footer-link">
+                    {p.title}
+                  </a>
+                </li>
+              ))
+            }
+            <li>
+              <a href="/products/" class="footer-link font-semibold text-teal-300">All products →</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="mb-3 text-sm font-semibold text-teal-300">Contact</h3>
+          <address class="space-y-2 text-[14px] not-italic text-slate-400">
+            <p class="leading-snug">
+              <span class="font-medium text-slate-300">Vatva</span> — {site.address.line1}
+            </p>
+            <p class="leading-snug">
+              <span class="font-medium text-slate-300">Rakhial</span> — {site.rakhial.line1}
+            </p>
+            <a href={site.phones.salesTel} class="footer-link block">
+              Sales {site.phones.sales}
+            </a>
+            <a href={`mailto:${site.email}`} class="footer-link block">
+              {site.email}
+            </a>
+          </address>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-start justify-between gap-2 text-sm text-slate-500 sm:flex-row sm:items-center">
+      <p>© {new Date().getFullYear()} {site.name}</p>
+      <div class="flex flex-wrap gap-4 text-sm">
+        <a href="/contact/" class="transition hover:text-white">Get quote</a>
+        <a href="/privacy/" class="transition hover:text-white">Privacy</a>
+        <span>Ahmedabad · Gujarat</span>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,214 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingActions from '../components/FloatingActions.astro';
+import MotionInit from '../components/MotionInit.astro';
+import { site } from '../data/site';
+import { metaKeywordsFor } from '../data/seo';
+import { reviews } from '../data/reviews';
+import { websiteSchema } from '../lib/schema';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  /** Extra JSON-LD objects (Product, BreadcrumbList, etc.) */
+  schemas?: Record<string, unknown>[];
+  /** Preload LCP image (homepage hero) */
+  preloadImage?: string;
+  preloadImageSrcset?: string;
+  preloadImageSizes?: string;
+  /** Transparent header over dark page heroes */
+  overDarkHeader?: boolean;
+  /** Optional product slug for curated meta keywords */
+  keywordsSlug?: string;
+}
+
+const {
+  title = site.tagline,
+  description = site.description,
+  ogImage = '/og-image.jpg',
+  noindex = false,
+  schemas = [],
+  preloadImage,
+  preloadImageSrcset,
+  preloadImageSizes,
+  overDarkHeader = false,
+  keywordsSlug,
+} = Astro.props;
+
+const pageTitle = title === site.tagline ? `${site.name} | ${title}` : `${title} | ${site.shortName}`;
+const canonical = new URL(Astro.url.pathname, site.url);
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'Store'],
+  '@id': `${site.url}/#business`,
+  name: site.name,
+  alternateName: site.shortName,
+  description: site.description,
+  url: site.url,
+  email: site.email,
+  telephone: [site.phones.primary, site.phones.sales, site.phones.rakhial],
+  image: new URL('/images/navkar/facility-signed.webp', site.url).href,
+  logo: new URL('/images/navkar/logo-full.png', site.url).href,
+  priceRange: '₹₹',
+  knowsAbout: [
+    'MS pipes',
+    'ERW pipes',
+    'Jindal pipes',
+    'GI hollow sections',
+    'MS fittings',
+    'MS flanges',
+    'Spiral pipes',
+  ],
+  review: reviews.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.name },
+    reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+    reviewBody: r.text,
+  })),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: `${site.address.line1}, ${site.address.line2}`,
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    addressCountry: 'IN',
+  },
+  location: [
+    {
+      '@type': 'Place',
+      name: 'Vatva — Main Office',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: `${site.address.line1}, ${site.address.line2}`,
+        addressLocality: site.address.city,
+        addressRegion: site.address.state,
+        addressCountry: 'IN',
+      },
+    },
+    {
+      '@type': 'Place',
+      name: 'Rakhial — Stockyard',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: `${site.rakhial.line1}, ${site.rakhial.line2}`,
+        addressLocality: site.rakhial.city,
+        addressRegion: site.rakhial.state,
+        addressCountry: 'IN',
+      },
+      telephone: site.phones.rakhial,
+    },
+  ],
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 22.9734,
+    longitude: 72.6369,
+  },
+  areaServed: ['Ahmedabad', 'Gujarat', 'India'],
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '09:00',
+    closes: '19:00',
+  },
+  sameAs: [...site.googleProfiles],
+};
+
+const globalSchemas = [websiteSchema(), ...schemas];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={metaKeywordsFor(keywordsSlug)} />
+    <meta name="theme-color" content="#005a7b" />
+    <meta name="geo.region" content="IN-GJ" />
+    <meta name="geo.placename" content="Ahmedabad" />
+    <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/webp" href="/images/navkar/favicon.webp" />
+    <link rel="alternate icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/navkar/favicon.webp" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title="Navkar Tubes Updates" href="/updates/rss.xml" />
+
+    <!-- Self-hosted fonts (preload critical body + display) -->
+    <link rel="preload" href="/fonts/source-sans-3-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin />
+
+    {
+      preloadImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={preloadImage}
+          imagesrcset={preloadImageSrcset}
+          imagesizes={preloadImageSizes}
+          fetchpriority="high"
+        />
+      )
+    }
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, site.url)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, site.url)} />
+    <title>{pageTitle}</title>
+    <noscript>
+      <style>
+        .reveal,
+        [data-stat] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    {
+      globalSchemas.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
+  </head>
+  <body
+    class:list={[
+      'flex min-h-screen flex-col lg:pb-0',
+      overDarkHeader && 'has-over-dark-header',
+    ]}
+  >
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-teal-500 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
+    >
+      Skip to content
+    </a>
+    <Header overDark={overDarkHeader} />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <FloatingActions />
+    <button id="back-to-top" type="button" class="back-to-top" aria-label="Back to top">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+      </svg>
+    </button>
+    <MotionInit />
+  </body>
+</html>

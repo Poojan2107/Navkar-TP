@@ -1,0 +1,62 @@
+---
+import QuoteForm from './QuoteForm.astro';
+import Reveal from './Reveal.astro';
+import { site } from '../data/site';
+---
+
+<section class="contact-band bg-navy-950">
+  <div class="lg:grid lg:grid-cols-[0.95fr_1.05fr]">
+    <Reveal variant="fade-right" class="contact-band-info relative flex flex-col justify-between p-8 sm:p-10 lg:min-h-[32rem] lg:p-12">
+      <div
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgb(89_161_168/0.2),transparent_55%)]"
+        aria-hidden="true"
+      ></div>
+      <div class="relative">
+        <p class="section-eyebrow mb-3 !text-teal-300/90">Contact</p>
+        <h2 class="contact-band-title text-white">
+          Get your quotation
+        </h2>
+        <p class="mt-3 max-w-sm text-[15px] leading-[1.65] tracking-[0.01em] text-slate-300">
+          Product, size and quantity — we reply with a detailed free quote from Ahmedabad stock.
+        </p>
+
+        <div class="mt-8 space-y-5 border-t border-white/10 pt-7">
+          <div>
+            <p class="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-300/80">Sales</p>
+            <a href={site.phones.salesTel} class="text-xl font-semibold tracking-tight text-white transition hover:text-teal-200 sm:text-2xl">
+              {site.phones.sales}
+            </a>
+          </div>
+          <div>
+            <p class="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-300/80">WhatsApp</p>
+            <a
+              href={site.phones.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-lg font-semibold text-white transition hover:text-teal-200"
+            >
+              Message sales →
+            </a>
+          </div>
+          <div>
+            <p class="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-300/80">Email</p>
+            <a href={`mailto:${site.email}`} class="text-[15px] font-semibold text-slate-200 transition hover:text-teal-200">
+              {site.email}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <p class="relative mt-10 text-sm leading-relaxed tracking-[0.02em] text-slate-400 lg:mt-12">
+        Vatva office · Rakhial stockyard · Ahmedabad
+      </p>
+    </Reveal>
+
+    <Reveal delay={100} variant="fade-left" class="contact-band-form bg-white p-8 sm:p-10 lg:p-12">
+      <h3 class="contact-band-title mb-6 text-navy-brand">
+        Send enquiry
+      </h3>
+      <QuoteForm id="home-contact-form" />
+    </Reveal>
+  </div>
+</section>

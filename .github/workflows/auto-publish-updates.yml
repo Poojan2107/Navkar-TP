@@ -1,0 +1,64 @@
+# Publishes a fresh yard stock update on schedule — no manual work.
+# Netlify/Vercel/Cloudflare rebuild automatically when this pushes to main.
+
+name: Auto-publish yard update
+
+on:
+  schedule:
+    # Mon, Wed, Fri at 06:30 IST (01:00 UTC)
+    - cron: '0 1 * * 1,3,5'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Publish even if one exists today'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-publish-update
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Auto-publish update
+        run: |
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            npm run auto:update -- --force
+          else
+            npm run auto:update
+          fi
+
+      - name: Verify build
+        run: npm run build
+
+      - name: Commit and push
+        run: |
+          git config user.name "navkar-update-bot"
+          git config user.email "updates@navkartube.com"
+          git add src/content/updates/ scripts/update-schedule-state.json public/images/navkar/updates/
+          if git diff --staged --quiet; then
+            echo "No changes to commit (already up to date for today)."
+            exit 0
+          fi
+          git commit -m "chore(updates): auto-publish yard stock update $(date -u +%Y-%m-%d)"
+          git push

@@ -1,0 +1,26 @@
+---
+import { images } from '../data/images';
+
+interface Props {
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { class: className, size = 'md' } = Astro.props;
+
+const sizes = {
+  sm: 'h-8 w-8 sm:h-9 sm:w-9',
+  md: 'h-11 w-11',
+  lg: 'h-14 w-14',
+};
+---
+
+<img
+  src={images.emblem}
+  alt="Navkar Tubes & Tools"
+  class:list={['logo-mark rounded-xl object-contain', sizes[size], className]}
+  width="96"
+  height="96"
+  loading="eager"
+  decoding="async"
+/>

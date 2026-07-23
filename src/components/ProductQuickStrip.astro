@@ -1,0 +1,35 @@
+---
+import { weServe } from '../data/site';
+---
+
+<section id="product-lines" class="scroll-mt-24 border-b border-slate-200 bg-white py-8 sm:py-10">
+  <div class="container-narrow px-4 sm:px-6 lg:px-8">
+    <div class="mb-5 flex items-end justify-between gap-3">
+      <h2 class="font-display text-2xl font-bold tracking-tight text-navy-brand sm:text-[1.65rem]">Core stock lines</h2>
+      <a href="/products/" class="text-sm font-semibold text-teal-600 hover:text-teal-700">View all →</a>
+    </div>
+
+    <div class="product-quick-scroll -mx-1 flex gap-4 overflow-x-auto px-1 pb-1 snap-x snap-mandatory sm:gap-5">
+      {
+        weServe.map((item) => (
+          <a
+            href={`/products/${item.slug}/`}
+            class="product-quick-card group w-[min(72vw,220px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-md sm:w-[240px]"
+          >
+            <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+              <img
+                src={item.image}
+                alt={item.title}
+                class="media-enhance h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                width="480"
+                height="360"
+                loading="lazy"
+              />
+            </div>
+            <p class="px-3 py-3 text-sm font-semibold text-navy-brand">{item.title}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

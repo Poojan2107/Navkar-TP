@@ -1,0 +1,20 @@
+---
+interface Props {
+  /** Stagger delay in ms (0, 100, 200, …) */
+  delay?: number;
+  /** fade-up | fade-in | fade-left | fade-right | scale */
+  variant?: 'fade-up' | 'fade-in' | 'fade-left' | 'fade-right' | 'scale';
+  class?: string;
+  tag?: 'div' | 'section' | 'article' | 'li';
+}
+
+const { delay = 0, variant = 'fade-up', class: className, tag: Tag = 'div' } = Astro.props;
+---
+
+<Tag
+  class:list={['reveal', `reveal--${variant}`, className]}
+  data-reveal
+  data-reveal-delay={delay}
+>
+  <slot />
+</Tag>

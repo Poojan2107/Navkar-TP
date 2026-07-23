@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import CtaBand from './CtaBand.astro';
+import LatestUpdates from './LatestUpdates.astro';
+import UpdatesRfqBand from './UpdatesRfqBand.astro';
+import Reveal from './Reveal.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { site } from '../data/site';
+import type { LandingPageData } from '../data/landing-pages';
+
+interface Props {
+  page: LandingPageData;
+}
+
+const { page } = Astro.props;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: page.heroTitle },
+  ]),
+];
+---
+
+<BaseLayout
+  title={page.metaTitle}
+  description={page.metaDescription}
+  keywordsSlug={page.keywordsSlug}
+  schemas={schemas}
+>
+  <PageHero eyebrow={page.eyebrow} title={page.heroTitle} description={page.heroDescription}>
+    <Breadcrumbs
+      slot="breadcrumb"
+      items={[{ label: 'Home', href: '/' }, { label: page.heroTitle }]}
+    />
+  </PageHero>
+
+  <section class="bg-white px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <div class="container-narrow max-w-3xl space-y-10">
+      {
+        page.sections.map((section) => (
+          <Reveal variant="fade-up">
+            <h2 class="font-display text-xl font-bold uppercase tracking-tight text-navy-brand sm:text-2xl">
+              {section.heading}
+            </h2>
+            <div class="mt-4 space-y-4 text-[15px] leading-relaxed text-steel-500">
+              {section.paragraphs.map((p) => <p set:html={p} />)}
+            </div>
+          </Reveal>
+        ))
+      }
+
+      <Reveal variant="fade-up">
+        <h2 class="font-display text-lg font-bold uppercase tracking-tight text-navy-brand">
+          Related products
+        </h2>
+        <ul class="mt-3 flex flex-wrap gap-2">
+          {
+            page.productLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="inline-flex rounded-full border border-teal-200 bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-700 hover:bg-teal-100"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </Reveal>
+    </div>
+  </section>
+
+  <LatestUpdates />
+  <CtaBand />
+  <UpdatesRfqBand />
+</BaseLayout>

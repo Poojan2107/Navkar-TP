@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import Reveal from '../../components/Reveal.astro';
+import YardSwitcher from '../../components/YardSwitcher.astro';
+import { site } from '../../data/site';
+import { metaDescriptionFor } from '../../data/seo';
+import { contactPageSchema, breadcrumbSchema } from '../../lib/schema';
+
+const selectedProduct = Astro.url.searchParams.get('product') ?? '';
+
+const schemas = [
+  contactPageSchema(),
+  breadcrumbSchema([
+    { name: 'Home', url: `${site.url}/` },
+    { name: 'Contact' },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Contact — MS Pipes Quote Ahmedabad"
+  description={metaDescriptionFor('contact')}
+  keywordsSlug="contact"
+  schemas={schemas}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Let's connect"
+    description="Tell us product, size and quantity — we respond with a detailed free quote. Call or visit Vatva and Rakhial."
+  >
+    <Breadcrumbs
+      slot="breadcrumb"
+      items={[{ label: 'Home', href: '/' }, { label: 'Contact Us' }]}
+    />
+  </PageHero>
+
+  <section class="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
+    <div class="container-narrow">
+      <Reveal variant="fade-up" class="mb-6">
+        <p class="section-eyebrow mb-2">Our yards</p>
+        <h2 class="section-title">Vatva &amp; Rakhial</h2>
+      </Reveal>
+
+      <Reveal variant="fade-up">
+        <YardSwitcher />
+      </Reveal>
+    </div>
+  </section>
+
+  <section class="contact-band bg-navy-950">
+    <div class="lg:grid lg:grid-cols-[0.95fr_1.05fr]">
+      <Reveal variant="fade-right" class="contact-band-info relative flex flex-col justify-between p-8 sm:p-10 lg:min-h-[32rem] lg:p-12">
+        <div
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgb(89_161_168/0.2),transparent_55%)]"
+          aria-hidden="true"
+        ></div>
+        <div class="relative">
+          <p class="section-eyebrow mb-3 !text-teal-300/90">Need help now?</p>
+          <h2 class="contact-band-title text-white">Sales desk</h2>
+          <p class="mt-3 max-w-sm text-[15px] leading-[1.65] tracking-[0.01em] text-slate-300">
+            Time-sensitive orders — call or message sales directly.
+          </p>
+
+          <div class="mt-8 space-y-5 border-t border-white/10 pt-7">
+            <div>
+              <p class="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-300/80">Sales</p>
+              <a href={site.phones.salesTel} class="text-xl font-semibold tracking-tight text-white transition hover:text-teal-200 sm:text-2xl">
+                {site.phones.sales}
+              </a>
+            </div>
+            <div>
+              <p class="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-300/80">Email</p>
+              <a href={`mailto:${site.email}`} class="text-[15px] font-semibold text-slate-200 transition hover:text-teal-200">
+                {site.email}
+              </a>
+            </div>
+            <div>
+              <p class="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-300/80">WhatsApp</p>
+              <a
+                href={site.phones.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[15px] font-semibold text-teal-300 transition hover:text-white"
+              >
+                Message sales →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <p class="relative mt-10 text-sm leading-relaxed tracking-[0.02em] text-slate-400 lg:mt-12">
+          Vatva office · Rakhial stockyard · Ahmedabad
+        </p>
+      </Reveal>
+
+      <Reveal delay={100} variant="fade-left" class="contact-band-form bg-white p-8 sm:p-10 lg:p-12">
+        <h2 class="contact-band-title mb-6 text-navy-brand">Get your quotation</h2>
+        <QuoteForm selectedProduct={selectedProduct} />
+      </Reveal>
+    </div>
+  </section>
+</BaseLayout>

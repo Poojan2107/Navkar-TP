@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import UpdateContactRail from '../../components/UpdateContactRail.astro';
+import RelatedUpdates from '../../components/RelatedUpdates.astro';
+import { getCollection, render } from 'astro:content';
+import { getUniqueUpdates } from '../../lib/updates';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('updates');
+  return entries
+    .filter((entry) => !entry.data.draft)
+    .map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry },
+    }));
+}
+
+interface Props {
+  entry: Awaited<ReturnType<typeof getCollection<'updates'>>>[number];
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, excerpt, image, tags, date, gallery, video } = entry.data;
+
+const displayDate = date.toLocaleDateString('en-IN', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const related = (await getUniqueUpdates())
+  .filter((e) => e.id !== entry.id)
+  .slice(0, 3);
+
+const productHint =
+  tags.find((t) =>
+    /erw|hollow|fitting|flange|spiral|hydraulic|lancing|pipe/i.test(t)
+  ) ?? '';
+
+/** Prefer landscape export shots; crop phone UI chrome at edges via object-position */
+const galleryShots = (gallery ?? []).filter(Boolean);
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: excerpt,
+  image: new URL(image, site.url).href,
+  datePublished: date.toISOString(),
+  author: { '@type': 'Organization', name: site.name },
+  publisher: {
+    '@type': 'Organization',
+    name: site.name,
+    logo: { '@type': 'ImageObject', url: new URL('/images/navkar/logo-full.png', site.url).href },
+  },
+  mainEntityOfPage: new URL(`/updates/${entry.id}/`, site.url).href,
+};
+---
+
+<BaseLayout
+  title={title}
+  description={excerpt}
+  ogImage={image}
+  schemas={[articleSchema]}
+>
+  <PageHero eyebrow="Yard update" title={title} description={excerpt}>
+    <Breadcrumbs
+      slot="breadcrumb"
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Updates', href: '/updates/' },
+        { label: title },
+      ]}
+    />
+  </PageHero>
+
+  <article class="update-article bg-white">
+    <div class="container-narrow px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+      <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:gap-12 xl:gap-14">
+        <div class="min-w-0">
+          <div class="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2">
+            <time class="text-sm font-medium text-steel-500" datetime={date.toISOString()}>
+              {displayDate}
+            </time>
+            {
+              tags.length > 0 && (
+                <>
+                  <span class="hidden text-slate-300 sm:inline" aria-hidden="true">·</span>
+                  <ul class="flex flex-wrap gap-2" aria-label="Categories">
+                    {tags.map((tag) => (
+                      <li>
+                        <span class="inline-flex items-center border border-teal-200/80 bg-teal-50/80 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-teal-700">
+                          {tag}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )
+            }
+          </div>
+
+          {
+            video ? (
+              <div class="mb-8 overflow-hidden bg-navy-950 ring-1 ring-slate-200/80">
+                <video
+                  class="aspect-video w-full"
+                  controls
+                  preload="metadata"
+                  poster={image}
+                >
+                  <source src={video} type="video/mp4" />
+                  Your browser does not support embedded video.
+                </video>
+              </div>
+            ) : (
+              <figure class="update-feature mb-8 overflow-hidden bg-slate-100 ring-1 ring-slate-200/80">
+                <img
+                  src={image}
+                  alt={title}
+                  class="media-enhance aspect-[16/10] w-full object-cover object-center"
+                  width="1280"
+                  height="800"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
+                />
+              </figure>
+            )
+          }
+
+          {/* Mobile contact strip — above the fold actions */}
+          <div class="mb-8 grid gap-2.5 sm:grid-cols-2 lg:hidden">
+            <a href={site.phones.salesTel} class="update-cta update-cta-call">
+              <span class="update-cta-icon" aria-hidden="true">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.25 1.01l-2.2 2.22z"></path>
+                </svg>
+              </span>
+              <span class="min-w-0 flex-1 text-left">
+                <span class="block text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-200/90">Call now</span>
+                <span class="block truncate text-[15px] font-bold tracking-tight">{site.phones.sales}</span>
+              </span>
+            </a>
+            <a
+              href={site.phones.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="update-cta update-cta-wa"
+            >
+              <span class="update-cta-icon" aria-hidden="true">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+                </svg>
+              </span>
+              <span class="min-w-0 flex-1 text-left">
+                <span class="block text-[11px] font-semibold uppercase tracking-[0.14em] text-white/75">WhatsApp</span>
+                <span class="block text-[15px] font-bold tracking-tight">Message sales</span>
+              </span>
+            </a>
+          </div>
+
+          <div class="prose-navkar text-[15.5px] leading-relaxed text-steel-500">
+            <Content />
+          </div>
+
+          {
+            galleryShots.length > 0 && (
+              <div class="mt-12 border-t border-slate-200 pt-10">
+                <p class="section-eyebrow mb-2">Gallery</p>
+                <h2 class="section-title !text-[1.35rem] sm:!text-[1.5rem]">More from the yard</h2>
+                <div class="update-gallery mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+                  {galleryShots.map((src, i) => (
+                    <a
+                      href={src}
+                      class:list={[
+                        'update-gallery-item group relative block overflow-hidden bg-slate-100 ring-1 ring-slate-200/70',
+                        i === 0 && 'col-span-2 aspect-[16/9] lg:col-span-2',
+                        i !== 0 && 'aspect-[4/3]',
+                      ]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={src}
+                        alt={`${title} — yard photo ${i + 1}`}
+                        class="media-enhance h-full w-full object-cover object-[center_35%] transition-transform duration-500 group-hover:scale-[1.03]"
+                        width="960"
+                        height="720"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+        </div>
+
+        <div class="hidden lg:block">
+          <div class="sticky top-28">
+            <UpdateContactRail productHint={productHint} formId={`update-form-${entry.id}`} />
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-slate-200 pt-10 lg:hidden">
+        <UpdateContactRail productHint={productHint} formId={`update-form-mobile-${entry.id}`} />
+      </div>
+
+      {
+        related.length > 0 && (
+          <div class="mt-14 border-t border-slate-200 pt-12">
+            <RelatedUpdates entries={related} heading="Related updates" layout="cards" />
+          </div>
+        )
+      }
+    </div>
+  </article>
+</BaseLayout>

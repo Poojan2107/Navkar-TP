@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import RelatedUpdates from '../../components/RelatedUpdates.astro';
+import UpdatesRfqBand from '../../components/UpdatesRfqBand.astro';
+import { getUniqueUpdates } from '../../lib/updates';
+import { metaDescriptionFor } from '../../data/seo';
+import { breadcrumbSchema } from '../../lib/schema';
+import { site } from '../../data/site';
+
+const sorted = await getUniqueUpdates();
+const lastUpdated = sorted[0]?.data.date;
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Navkar Tubes Stock Updates',
+  url: `${site.url}/updates/`,
+  description: metaDescriptionFor('updates'),
+  ...(lastUpdated ? { dateModified: lastUpdated.toISOString() } : {}),
+};
+---
+
+<BaseLayout
+  title="Updates"
+  description={metaDescriptionFor('updates')}
+  keywordsSlug="updates"
+  schemas={[
+    collectionSchema,
+    breadcrumbSchema([
+      { name: 'Home', url: `${site.url}/` },
+      { name: 'Updates', url: `${site.url}/updates/` },
+    ]),
+  ]}
+>
+  <PageHero
+    eyebrow="From the yard"
+    title="Updates"
+    description="Fresh stock from Vatva & Rakhial — ERW pipes, hollow sections, fittings and dispatch snapshots."
+  >
+    <Breadcrumbs
+      slot="breadcrumb"
+      items={[{ label: 'Home', href: '/' }, { label: 'Updates' }]}
+    />
+  </PageHero>
+
+  <section class="bg-surface px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <div class="container-narrow">
+      {
+        lastUpdated && (
+          <p class="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-steel-500">
+            <span>
+              Last updated{' '}
+              <time datetime={lastUpdated.toISOString()} class="font-semibold text-navy-brand">
+                {lastUpdated.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </time>
+            </span>
+            <a
+              href="/updates/rss.xml"
+              class="font-semibold text-teal-600 hover:text-teal-700"
+              title="RSS feed for Google and feed readers"
+            >
+              RSS feed →
+            </a>
+          </p>
+        )
+      }
+
+      {
+        sorted.length > 0 ? (
+          <RelatedUpdates entries={sorted} heading="" />
+        ) : (
+          <p class="text-sm text-steel-500">No updates published yet.</p>
+        )
+      }
+    </div>
+  </section>
+
+  <UpdatesRfqBand />
+</BaseLayout>

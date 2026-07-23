@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+---
+
+<BaseLayout
+  title="Thank you"
+  description="Your enquiry was submitted to Navkar Tubes & Tools."
+  noindex
+  overDarkHeader={false}
+>
+  <section class="section-padding flex flex-1 items-center bg-white">
+    <div class="container-narrow mx-auto max-w-lg border-t border-slate-200 pt-12 text-center">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-teal-600">Enquiry sent</p>
+      <h1 class="font-display mb-4 text-3xl font-bold uppercase tracking-tight text-navy-brand sm:text-4xl">
+        Thank you
+      </h1>
+      <p class="mb-8 leading-relaxed text-steel-500">
+        We received your enquiry and will reply with stock and pricing. For urgent needs, call or
+        WhatsApp sales now.
+      </p>
+      <div class="mb-10 space-y-2 text-[15px] text-steel-500">
+        <p>
+          Sales
+          <a href={site.phones.salesTel} class="font-semibold text-teal-600 hover:text-teal-700">
+            {site.phones.sales}
+          </a>
+        </p>
+        <p>
+          Urgent
+          <a href={site.phones.primaryTel} class="font-semibold text-teal-600 hover:text-teal-700">
+            {site.phones.primary}
+          </a>
+        </p>
+        <p>
+          <a
+            href={site.phones.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-semibold text-teal-600 hover:text-teal-700"
+          >
+            WhatsApp sales →
+          </a>
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/products/" class="btn btn-teal px-7 py-3.5 text-sm">Browse products</a>
+        <a href="/" class="btn border border-slate-200 px-7 py-3.5 text-sm text-navy-brand hover:border-teal-400">
+          Back to home
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,65 @@
+---
+import Reveal from './Reveal.astro';
+import SectionHeading from './SectionHeading.astro';
+
+/** Curated export shots — landscape-first, no third-party brand crates */
+const shots = [
+  { src: '/images/navkar/export/export-12.webp', alt: 'MS pipes staged for container loading at Navkar Tubes', w: 1280, h: 960 },
+  { src: '/images/navkar/export/export-09.webp', alt: 'Export packing of MS pipes at Ahmedabad stockyard', w: 1280, h: 960 },
+  { src: '/images/navkar/export/export-10.webp', alt: 'MS pipe ends staged for outbound dispatch', w: 1280, h: 960 },
+  { src: '/images/navkar/export/export-19.webp', alt: 'Outbound export packing crate at Navkar Tubes', w: 1280, h: 963 },
+  { src: '/images/navkar/updates/yard-16-960.webp', alt: 'Pipe load ready for dispatch from Ahmedabad yard', w: 960, h: 640 },
+  { src: '/images/navkar/updates/yard-04-960.webp', alt: 'MS ERW pipe stock stacked at Navkar Tubes yard', w: 960, h: 640 },
+] as const;
+---
+
+<section class="section-padding bg-white">
+  <div class="container-narrow">
+    <Reveal variant="fade-up" class="mb-7 flex flex-wrap items-end justify-between gap-4">
+      <SectionHeading
+        label="Export &amp; dispatch"
+        title="Container loading from our yard"
+        description="Real photos from recent export stuffing — MS pipes packed and dispatched from Ahmedabad."
+      />
+      <a
+        href="/contact/?product=erw-pipes"
+        class="link-arrow mb-1 inline-flex shrink-0 items-center gap-1.5 text-[15px] font-semibold text-teal-600 hover:text-teal-700"
+      >
+        Ask about export supply
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </Reveal>
+
+    <div class="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
+      {
+        shots.map((shot, i) => (
+          <Reveal delay={i * 50} variant="fade-up">
+            <a
+              href={shot.src}
+              class="group relative block aspect-[4/3] overflow-hidden bg-slate-100 ring-1 ring-slate-200/80"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                class="media-enhance h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                width={shot.w}
+                height={shot.h}
+                sizes="(max-width: 1023px) 50vw, 33vw"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </Reveal>
+        ))
+      }
+    </div>
+
+    <p class="mt-6 text-sm leading-relaxed text-steel-500">
+      Share destination port, size matrix and quantity — we confirm stuffing and dispatch from Vatva / Rakhial.
+    </p>
+  </div>
+</section>

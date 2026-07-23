@@ -1,0 +1,36 @@
+---
+import Reveal from './Reveal.astro';
+import CertificateLightbox from './CertificateLightbox.astro';
+import { jindalPartner } from '../data/site';
+---
+
+<section class="section-padding bg-white">
+  <div class="container-narrow">
+    <div class="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+      <Reveal variant="fade-right">
+        <p class="section-eyebrow mb-2.5">Jindal authorized</p>
+        <h2 class="font-display mb-4 text-2xl font-bold uppercase tracking-tight text-navy-brand sm:text-[1.85rem] lg:text-3xl">
+          Genuine Jindal — authorized stockist
+        </h2>
+        <p class="mb-3 max-w-xl text-[15px] leading-relaxed text-steel-500">
+          {jindalPartner.body}
+        </p>
+        <p class="mb-8 max-w-xl text-[14px] leading-relaxed text-steel-500">
+          {jindalPartner.sizeRange}. {jindalPartner.validityLabel}. Ask for mill / invoice docs with
+          your order.
+        </p>
+        <a href="/jindal-authorized-partner/" class="btn btn-teal btn-shimmer px-6 py-3 text-sm font-semibold">
+          View partnership details →
+        </a>
+      </Reveal>
+
+      <Reveal delay={120} variant="fade-up">
+        <CertificateLightbox
+          class="mx-auto w-full max-w-sm ring-1 ring-slate-200/90 transition duration-300 hover:ring-teal-400/50"
+          src={jindalPartner.certificateImage}
+          alt="Jindal (India) Limited authorized channel partner certificate"
+        />
+      </Reveal>
+    </div>
+  </div>
+</section>

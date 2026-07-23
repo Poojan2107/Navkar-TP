@@ -1,0 +1,83 @@
+---
+/**
+ * Click-to-enlarge certificate — no fancy modal chrome, just readable full view.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+}
+
+const { src, alt, class: className } = Astro.props;
+---
+
+<figure class:list={['cert-figure', className]}>
+  <button
+    type="button"
+    class="cert-open group relative block w-full overflow-hidden bg-white text-left ring-1 ring-slate-200 transition hover:ring-teal-300/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+    data-cert-open
+    aria-haspopup="dialog"
+    aria-controls="jindal-cert-dialog"
+  >
+    <img
+      src={src}
+      alt={alt}
+      class="aspect-[3/4] max-h-[340px] w-full object-contain object-top p-2.5 transition group-hover:opacity-95"
+      width="480"
+      height="640"
+      loading="lazy"
+      decoding="async"
+    />
+    <span class="absolute inset-x-0 bottom-0 bg-navy-950/85 px-3 py-2 text-center text-[12px] font-semibold text-white">
+      View full certificate
+    </span>
+  </button>
+</figure>
+
+<dialog
+  id="jindal-cert-dialog"
+  class="cert-dialog m-auto max-h-[92vh] w-[min(92vw,720px)] border-0 bg-transparent p-0 backdrop:bg-navy-950/80"
+>
+  <div class="relative overflow-hidden bg-white shadow-2xl">
+    <button
+      type="button"
+      class="absolute right-3 top-3 z-10 rounded bg-navy-950 px-3 py-1.5 text-xs font-semibold text-white hover:bg-navy-brand"
+      data-cert-close
+    >
+      Close
+    </button>
+    <img
+      src={src}
+      alt={alt}
+      class="max-h-[88vh] w-full object-contain"
+      width="960"
+      height="1280"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+</dialog>
+
+<script>
+  function initCertLightbox() {
+    const dialog = document.getElementById('jindal-cert-dialog');
+    if (!(dialog instanceof HTMLDialogElement)) return;
+
+    document.querySelectorAll('[data-cert-open]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        dialog.showModal();
+      });
+    });
+
+    dialog.querySelectorAll('[data-cert-close]').forEach((btn) => {
+      btn.addEventListener('click', () => dialog.close());
+    });
+
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  }
+
+  initCertLightbox();
+  document.addEventListener('astro:page-load', initCertLightbox);
+</script>
