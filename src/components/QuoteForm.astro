@@ -124,18 +124,18 @@ const preselected =
         </div>
       </div>
     ) : (
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-3 sm:grid-cols-2">
         <div>
           <label for={`${id}-size`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Size / OD *</label>
-          <input type="text" id={`${id}-size`} name="size" required class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="e.g. 100 MM" />
+          <input type="text" id={`${id}-size`} name="size" required class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="100 MM" />
         </div>
         <div>
           <label for={`${id}-qty`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Quantity *</label>
-          <input type="text" id={`${id}-qty`} name="quantity" required class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="e.g. 50 lengths" />
+          <input type="text" id={`${id}-qty`} name="quantity" required class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="50 lengths" />
         </div>
-        <div class="sm:col-span-2 lg:col-span-1">
+        <div class="sm:col-span-2">
           <label for={`${id}-city`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Delivery city</label>
-          <input type="text" id={`${id}-city`} name="city" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Ahmedabad" />
+          <input type="text" id={`${id}-city`} name="city" class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Ahmedabad" />
         </div>
       </div>
     )

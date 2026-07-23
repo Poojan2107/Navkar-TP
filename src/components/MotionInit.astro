@@ -38,12 +38,17 @@
       items.forEach((el) => {
         const rect = el.getBoundingClientRect();
         // Above-the-fold / near-fold content: show immediately (no empty holes)
-        if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
+        if (rect.top < window.innerHeight * 1.1 && rect.bottom > -100) {
           el.classList.add('is-visible');
           return;
         }
         observer.observe(el);
       });
+
+      // Safety net: Guarantee everything is visible after 800ms
+      window.setTimeout(() => {
+        items.forEach((el) => el.classList.add('is-visible'));
+      }, 800);
     }
 
     function initScrollUI() {
