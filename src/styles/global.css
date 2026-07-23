@@ -2836,12 +2836,12 @@ body.mobile-cta-visible [data-quote-form] {
 }
 
 .yard-cinematic-track {
-  height: 155vh;
+  height: 160vh;
 }
 
 @media (min-width: 768px) {
   .yard-cinematic-track {
-    height: 170vh;
+    height: 180vh;
   }
 }
 
@@ -2849,31 +2849,36 @@ body.mobile-cta-visible [data-quote-form] {
   position: sticky;
   top: 0;
   height: 100svh;
-  min-height: 28rem;
-  overflow: hidden;
+  min-height: 30rem;
+  overflow: clip;
 }
 
 .yard-cinematic-stage {
-  --yard-opacity: 1;
-  --yard-scale: 1;
-  --yard-y: 0px;
-  --yard-scrim: 0.4;
+  --yard-scrim: 0.55;
   position: relative;
   height: 100%;
   width: 100%;
-  opacity: var(--yard-opacity);
-  transform: translate3d(0, var(--yard-y), 0) scale(var(--yard-scale));
-  transform-origin: center 40%;
-  will-change: transform, opacity;
+}
+
+.yard-cinematic-media {
+  --media-scale: 1.04;
+  --media-y: 0px;
+  --media-blur: 0px;
+  --media-opacity: 1;
+  position: absolute;
+  inset: -2%;
+  opacity: var(--media-opacity);
+  transform: translate3d(0, var(--media-y), 0) scale(var(--media-scale));
+  filter: blur(var(--media-blur));
+  transform-origin: center 45%;
+  will-change: transform, opacity, filter;
 }
 
 .yard-cinematic-video {
-  position: absolute;
-  inset: 0;
   height: 100%;
   width: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 42%;
 }
 
 .yard-cinematic-scrim {
@@ -2881,61 +2886,144 @@ body.mobile-cta-visible [data-quote-form] {
   inset: 0;
   background:
     linear-gradient(
-      105deg,
-      rgb(7 24 32 / calc(0.55 + var(--yard-scrim) * 0.35)) 0%,
-      rgb(7 24 32 / 0.28) 48%,
+      100deg,
+      rgb(7 24 32 / calc(0.78 + var(--yard-scrim) * 0.12)) 0%,
+      rgb(7 24 32 / 0.52) 38%,
+      rgb(7 24 32 / 0.22) 68%,
       rgb(7 24 32 / 0.18) 100%
     ),
-    linear-gradient(to top, rgb(7 24 32 / 0.72) 0%, transparent 48%);
+    linear-gradient(
+      to top,
+      rgb(7 24 32 / 0.88) 0%,
+      rgb(7 24 32 / 0.45) 28%,
+      transparent 58%
+    );
   pointer-events: none;
 }
 
-.yard-cinematic-vignette {
+.yard-cinematic-edge {
   position: absolute;
   inset: 0;
-  box-shadow: inset 0 0 120px rgb(7 24 32 / 0.45);
+  box-shadow:
+    inset 0 0 100px rgb(7 24 32 / 0.35),
+    inset 0 -80px 90px rgb(7 24 32 / 0.4);
   pointer-events: none;
 }
 
 .yard-cinematic-copy {
+  --copy-opacity: 1;
+  --copy-y: 0px;
   position: relative;
   z-index: 2;
   display: flex;
   height: 100%;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: max(4.5rem, calc(3.5rem + env(safe-area-inset-bottom, 0px)));
-  padding-top: 6rem;
+  align-items: flex-end;
+  padding-top: 5.5rem;
+  padding-bottom: max(5rem, calc(3.75rem + env(safe-area-inset-bottom, 0px)));
+  opacity: var(--copy-opacity);
+  transform: translate3d(0, var(--copy-y), 0);
+  will-change: transform, opacity;
+}
+
+.yard-cinematic-panel {
+  width: min(100%, 36rem);
+  padding: 1.35rem 1.4rem 1.5rem;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(
+      160deg,
+      rgb(7 24 32 / 0.82) 0%,
+      rgb(10 42 56 / 0.78) 55%,
+      rgb(7 24 32 / 0.88) 100%
+    );
+  border: 1px solid rgb(255 255 255 / 0.12);
+  box-shadow:
+    0 24px 60px -24px rgb(0 0 0 / 0.55),
+    inset 0 1px 0 rgb(255 255 255 / 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+@media (min-width: 640px) {
+  .yard-cinematic-panel {
+    padding: 1.65rem 1.75rem 1.85rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .yard-cinematic-copy {
+    align-items: center;
+    padding-bottom: 0;
+  }
+
+  .yard-cinematic-panel {
+    width: min(100%, 38rem);
+  }
+}
+
+.yard-cinematic-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(153 214 218);
+}
+
+.yard-cinematic-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: var(--color-teal-400, #59a1a8);
+  box-shadow: 0 0 0 4px rgb(89 161 168 / 0.22);
 }
 
 .yard-cinematic-title {
   font-family: var(--font-display);
-  max-width: 18ch;
-  font-size: clamp(1.85rem, 4.8vw, 3.25rem);
+  max-width: 14ch;
+  font-size: clamp(1.9rem, 4.6vw, 3.15rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: 0.02em;
+  line-height: 1.02;
+  letter-spacing: 0.015em;
   text-transform: uppercase;
   color: #fff;
   text-wrap: balance;
-  text-shadow: 0 2px 28px rgb(7 24 32 / 0.45);
+  text-shadow: 0 2px 18px rgb(0 0 0 / 0.35);
 }
 
 .yard-cinematic-lede {
-  margin-top: 0.85rem;
-  max-width: 34rem;
-  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+  margin-top: 0.9rem;
+  max-width: 32rem;
+  font-size: clamp(0.95rem, 1.45vw, 1.08rem);
   line-height: 1.65;
-  color: rgb(226 232 240 / 0.92);
+  color: rgb(241 245 249 / 0.92);
+}
+
+.yard-cinematic-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
 }
 
 @media (max-width: 639px) {
   .yard-cinematic-track {
-    height: 135vh;
+    height: 145vh;
   }
 
   .yard-cinematic-copy {
-    padding-bottom: max(5.5rem, calc(4.25rem + env(safe-area-inset-bottom, 0px)));
+    padding-bottom: max(6rem, calc(4.75rem + env(safe-area-inset-bottom, 0px)));
+  }
+
+  .yard-cinematic-panel {
+    padding: 1.15rem 1.15rem 1.3rem;
+  }
+
+  .yard-cinematic-title {
+    font-size: clamp(1.65rem, 8vw, 2.1rem);
   }
 }
 
@@ -2946,12 +3034,14 @@ body.mobile-cta-visible [data-quote-form] {
 
   .yard-cinematic-sticky {
     position: relative;
-    height: min(70vh, 36rem);
+    height: min(72vh, 38rem);
   }
 
-  .yard-cinematic-stage {
+  .yard-cinematic-media,
+  .yard-cinematic-copy {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
   }
 }
 
