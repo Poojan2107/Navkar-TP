@@ -49,15 +49,15 @@ const schemas = [
     />
   </PageHero>
 
-  <section class="bg-surface px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
-    <div class="container-narrow space-y-10 lg:space-y-12">
+  <section class="bg-surface px-4 py-7 sm:px-6 lg:px-8 lg:py-10">
+    <div class="container-narrow space-y-8 lg:space-y-10">
       <Reveal variant="fade-up">
         <div class="portal-grid grid gap-4 sm:grid-cols-2 sm:gap-5">
           {
             brandLines.map((brand) => (
               <a
                 href={brand.href}
-                class="portal-card group relative overflow-hidden bg-navy-brand px-5 py-6 transition sm:px-6 sm:py-7"
+                class="portal-card group relative overflow-hidden bg-navy-brand px-5 py-5 transition sm:px-6 sm:py-6"
               >
                 <div
                   class="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-500/25 via-transparent to-navy-dark/40 opacity-80 transition-opacity duration-500 group-hover:opacity-100"
@@ -116,7 +116,7 @@ const schemas = [
         </div>
       </div>
 
-      <div class="grid items-start gap-8 border-t border-slate-200/80 pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(300px,360px)] lg:gap-10">
+      <div class="products-enquiry grid items-start gap-6 rounded-2xl border border-slate-200/90 bg-white p-5 sm:gap-8 sm:p-7 lg:grid-cols-[minmax(0,1fr)_minmax(300px,360px)] lg:gap-8 lg:p-8">
         <Reveal variant="fade-up">
           <p class="section-eyebrow mb-1.5">Talk to sales</p>
           <h2 class="font-display mb-3 text-2xl font-bold uppercase tracking-tight text-navy-brand sm:text-3xl">
@@ -124,8 +124,21 @@ const schemas = [
           </h2>
           <p class="max-w-xl text-[15px] leading-relaxed text-steel-500">
             Share your bill of materials — we reply from Ahmedabad, Gujarat with availability, mill docs and a free quote.
-            Browse lines above or message sales with NB, thickness and quantity.
           </p>
+          <ul class="mt-5 space-y-2.5 text-[14px] text-navy-brand">
+            <li class="flex gap-2.5">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" aria-hidden="true"></span>
+              Confirm NB, wall thickness and quantity against yard stock
+            </li>
+            <li class="flex gap-2.5">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" aria-hidden="true"></span>
+              Match fittings and flanges in the same enquiry
+            </li>
+            <li class="flex gap-2.5">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" aria-hidden="true"></span>
+              Dispatch support across Gujarat and India
+            </li>
+          </ul>
         </Reveal>
         <div class="lg:sticky lg:top-28">
           <UpdateContactRail formId="products-quote-form" />

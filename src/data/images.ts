@@ -11,19 +11,19 @@ export const images = {
   heroVideo: '/images/navkar/hero-loop.mp4',
   heroVideoMobile: '/images/navkar/hero-loop-720.mp4',
   heroMain: '/images/navkar/hero-main.webp',
-  heroFallback: '/images/navkar/facility-signed.webp',
-  /** Facility exterior with teal NAVKAR TUBES & TOOLS sign */
-  warehouse: '/images/navkar/facility-signed.webp',
-  facility: '/images/navkar/facility-signed.webp',
+  heroFallback: '/images/navkar/facility-exterior.webp',
+  /** Facility exterior with teal NAVKAR TUBES & TOOLS sign — original yard photo */
+  warehouse: '/images/navkar/facility-exterior.webp',
+  facility: '/images/navkar/facility-exterior.webp',
   /** Sign-focused right panel (4:5) */
   heroSignPanel: '/images/navkar/hero-sign-panel.webp',
   /** Full-bleed yard stock — prefer updates/* for authentic yard shots */
   heroYard: '/images/navkar/updates/yard-04-960.webp',
   /** Tight crop of teal NAVKAR sign — brand badge only */
   signBadge: '/images/navkar/sign-badge.webp',
-  /** Real Ahmedabad facility with Navkar signboard (not generated office renders) */
-  aboutFacility: '/images/navkar/facility-signed.webp',
-  officeVatva: '/images/navkar/facility-signed.webp',
+  /** Original Ahmedabad facility exterior (from yard walkthrough) */
+  aboutFacility: '/images/navkar/facility-exterior.webp',
+  officeVatva: '/images/navkar/facility-exterior.webp',
   /** Real stockyard / pipe stock from yard photo set */
   officeRakhial: '/images/navkar/updates/yard-04-960.webp',
   jindalCertificate: '/images/navkar/jindal-certificate.webp',

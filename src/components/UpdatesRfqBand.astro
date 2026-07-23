@@ -4,32 +4,34 @@ import SalesContactActions from './SalesContactActions.astro';
 import { site } from '../data/site';
 ---
 
-<section class="border-t border-slate-200 bg-surface">
-  <div class="container-narrow grid gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-12 lg:px-8 lg:py-12">
-    <div>
-      <p class="section-eyebrow mb-2">Request for quotation</p>
-      <h2 class="section-title mb-3">Get your free quote</h2>
-      <p class="mb-7 max-w-lg text-[15px] leading-[1.65] text-steel-500">
-        Share product, size and quantity — sales replies from Ahmedabad, Gujarat with a detailed quotation.
-      </p>
-
-      <SalesContactActions layout="row" />
-
-      <div class="mt-6 space-y-3 border-t border-slate-200 pt-6 text-[14px] leading-relaxed text-steel-500">
-        <p>
-          <span class="font-semibold text-navy-brand">Location</span> — Ahmedabad, Gujarat
+<section class="border-t border-slate-200 bg-white">
+  <div class="container-narrow px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <div class="grid gap-6 rounded-2xl border border-slate-200/90 bg-surface/70 p-5 sm:gap-8 sm:p-7 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-8 lg:p-8">
+      <div>
+        <p class="section-eyebrow mb-2">Request for quotation</p>
+        <h2 class="section-title mb-3">Get your free quote</h2>
+        <p class="mb-6 max-w-md text-[15px] leading-[1.65] text-steel-500">
+          Share product, size and quantity — sales replies from Ahmedabad, Gujarat with a detailed quotation.
         </p>
-        <a href={`mailto:${site.email}`} class="inline-block font-semibold text-teal-600 hover:text-teal-700">
-          {site.email}
-        </a>
-      </div>
-    </div>
 
-    <div class="update-rail-form rounded-2xl bg-white p-5 ring-1 ring-slate-200/80 sm:p-7">
-      <h3 class="font-display mb-4 text-xl font-bold uppercase tracking-[0.03em] text-navy-brand">
-        Send enquiry
-      </h3>
-      <QuoteForm id="updates-quote-form" />
+        <SalesContactActions layout="row" />
+
+        <div class="mt-5 space-y-2 border-t border-slate-200/90 pt-5 text-[14px] leading-relaxed text-steel-500">
+          <p>
+            <span class="font-semibold text-navy-brand">Location</span> — Ahmedabad, Gujarat
+          </p>
+          <a href={`mailto:${site.email}`} class="inline-block font-semibold text-teal-600 hover:text-teal-700">
+            {site.email}
+          </a>
+        </div>
+      </div>
+
+      <div class="update-rail-form rounded-2xl bg-white p-5 ring-1 ring-slate-200/80 sm:p-6">
+        <h3 class="font-display mb-4 text-xl font-bold uppercase tracking-[0.03em] text-navy-brand">
+          Send enquiry
+        </h3>
+        <QuoteForm id="updates-quote-form" />
+      </div>
     </div>
   </div>
 </section>

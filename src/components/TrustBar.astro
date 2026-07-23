@@ -1,0 +1,60 @@
+---
+interface TrustItem {
+  title: string;
+  detail: string;
+  icon: 'calendar' | 'shield' | 'range' | 'truck';
+}
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const items: TrustItem[] = [
+  { title: 'Since 1995', detail: 'Trusted expertise', icon: 'calendar' },
+  { title: 'Jindal Authorized', detail: 'Channel Partner', icon: 'shield' },
+  { title: '15–500 MM', detail: 'Wide range', icon: 'range' },
+  { title: 'Quick Dispatch', detail: 'Across India', icon: 'truck' },
+];
+---
+
+<div class:list={['trust-bar', className]} role="list">
+  {
+    items.map((item) => (
+      <div class="trust-bar-item" role="listitem">
+        <span class="trust-bar-icon" aria-hidden="true">
+          {item.icon === 'calendar' && (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="3.5" y="5" width="17" height="15" rx="2"></rect>
+              <path stroke-linecap="round" d="M8 3.5V7M16 3.5V7M3.5 10h17"></path>
+            </svg>
+          )}
+          {item.icon === 'shield' && (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-2.8 7.8-7 9-4.2-1.2-7-4.5-7-9V6l7-3z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
+            </svg>
+          )}
+          {item.icon === 'range' && (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path stroke-linecap="round" d="M4 18V6M8 18V9M12 18V7M16 18V10M20 18V8"></path>
+            </svg>
+          )}
+          {item.icon === 'truck' && (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v8H3V7z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4l3 3v2h-7v-5z"></path>
+              <circle cx="7" cy="17.5" r="1.5"></circle>
+              <circle cx="17" cy="17.5" r="1.5"></circle>
+            </svg>
+          )}
+        </span>
+        <div>
+          <p class="trust-bar-title">{item.title}</p>
+          <p class="trust-bar-detail">{item.detail}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

@@ -3,9 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Reveal from '../../components/Reveal.astro';
+import TrustBar from '../../components/TrustBar.astro';
 import UpdateContactRail from '../../components/UpdateContactRail.astro';
 import {
-  stats,
   aboutIntro,
   aboutBody,
   aboutHighlights,
@@ -30,153 +30,142 @@ import { breadcrumbSchema } from '../../lib/schema';
     ]),
   ]}
 >
-  <PageHero
-    eyebrow="About"
-    title="Who we are"
-    description="Stockist since 1995 — authorized Jindal channel partner serving Gujarat and India from Ahmedabad."
-  >
-    <Breadcrumbs
-      slot="breadcrumb"
-      items={[{ label: 'Home', href: '/' }, { label: 'About' }]}
-    />
-  </PageHero>
+  <div class="about-page">
+    <PageHero
+      eyebrow="About"
+      title="Who we are"
+      description="Stockist since 1995 — authorized Jindal channel partner serving Gujarat and India from Ahmedabad."
+      image={images.aboutFacility}
+      imageAlt="Navkar Tubes & Tools facility — Ahmedabad, Gujarat"
+    >
+      <Breadcrumbs
+        slot="breadcrumb"
+        items={[{ label: 'Home', href: '/' }, { label: 'About' }]}
+      />
+    </PageHero>
 
-  <section class="bg-white px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-    <div class="container-narrow grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
-      <Reveal variant="fade-right">
-        <p class="mb-2 text-sm font-semibold text-teal-600">History</p>
-        <h2 class="font-display mb-5 text-3xl font-bold uppercase tracking-tight text-navy-brand">
-          Why Navkar Tubes
-        </h2>
-        <p class="mb-4 leading-relaxed text-steel-500">{aboutIntro}</p>
-        <p class="mb-7 leading-relaxed text-steel-500">{aboutBody}</p>
-        <a href="/contact/" class="btn btn-teal inline-flex items-center gap-2 px-6 py-3 text-sm">
-          Request a quote
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </Reveal>
-
-      <Reveal delay={150} variant="fade-left">
-        <div class="overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200/80">
-          <img
-            src={images.aboutFacility}
-            alt="Navkar Tubes & Tools facility and stockyard — Ahmedabad"
-            class="aspect-[4/3] w-full object-cover object-center"
-            width="1400"
-            height="1050"
-            sizes="(max-width: 1024px) 100vw, 640px"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </Reveal>
-    </div>
-
-    <div class="container-narrow mt-10 grid gap-7 border-t border-slate-200 pt-10 lg:grid-cols-2 lg:gap-10">
-      <Reveal variant="fade-up">
-        <p class="mb-2 text-sm font-semibold text-teal-600">Highlights</p>
-        <h3 class="font-display mb-3 text-xl font-bold uppercase tracking-tight text-navy-brand">
-          Brands &amp; stock
-        </h3>
-        <p class="leading-relaxed text-steel-500">{aboutHighlights}</p>
-      </Reveal>
-      <Reveal delay={100} variant="fade-up">
-        <p class="mb-2 text-sm font-semibold text-teal-600">Mission</p>
-        <h3 class="font-display mb-3 text-xl font-bold uppercase tracking-tight text-navy-brand">
-          How we work
-        </h3>
-        <p class="leading-relaxed text-steel-500">{aboutMission}</p>
-        <p class="mt-3 text-[15px] leading-relaxed text-steel-500">
-          {jindalPartner.sizeRange} · {jindalPartner.validityLabel}
-        </p>
-        <a
-          href="/jindal-authorized-partner/"
-          class="mt-3 inline-flex text-sm font-semibold text-teal-600 hover:text-teal-700"
-        >
-          View partnership details →
-        </a>
-      </Reveal>
-    </div>
-
-    <div class="container-narrow mt-10 border-t border-slate-200 pt-10">
-      <Reveal variant="fade-up" class="mb-8 text-center">
-        <p class="mb-2 text-sm font-semibold text-teal-600">Leadership</p>
-        <h2 class="font-display text-3xl font-bold uppercase tracking-tight text-navy-brand">
-          The people behind Navkar
-        </h2>
-      </Reveal>
-      <div class="mx-auto grid max-w-3xl gap-8 sm:grid-cols-2 sm:gap-8">
-        {
-          team.map((person, i) => (
-            <Reveal delay={i * 100} variant="fade-up">
-              <article class="text-center sm:text-left">
-                <div class="overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200/80">
-                  <img
-                    src={person.image}
-                    alt={`${person.name}, ${person.role} of Navkar Tubes & Tools`}
-                    class="aspect-[4/5] w-full object-cover object-top"
-                    width="800"
-                    height="1000"
-                    sizes="(max-width: 640px) 90vw, 360px"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div class="mt-4 px-0.5">
-                  <p class="text-sm font-semibold text-teal-600">{person.role}</p>
-                  <h3 class="mt-1 font-display text-xl font-bold uppercase tracking-tight text-navy-brand sm:text-2xl">
-                    {person.name}
-                  </h3>
-                  <a href={person.tel} class="mt-2 inline-block text-[15px] font-semibold text-teal-600 hover:text-teal-700">
-                    {person.phone}
-                  </a>
-                </div>
-              </article>
-            </Reveal>
-          ))
-        }
+    <div class="about-trust">
+      <div class="container-narrow px-4 sm:px-6 lg:px-8">
+        <TrustBar />
       </div>
     </div>
 
-    <div class="container-narrow mt-12 grid items-start gap-8 border-t border-slate-200 pt-12 lg:grid-cols-[minmax(0,1fr)_minmax(300px,360px)] lg:gap-10">
-      <Reveal variant="fade-up">
-        <p class="section-eyebrow mb-1.5">Talk to sales</p>
-        <h2 class="font-display mb-3 text-2xl font-bold uppercase tracking-tight text-navy-brand sm:text-3xl">
-          Ready to work with us?
-        </h2>
-        <p class="max-w-xl text-[15px] leading-relaxed text-steel-500">
-          Call or WhatsApp from Ahmedabad, Gujarat — share product, size and quantity for a free quote.
-        </p>
-      </Reveal>
-      <div class="lg:sticky lg:top-28">
-        <UpdateContactRail formId="about-quote-form" />
-      </div>
-    </div>
-
-    <div class="container-narrow mt-12 grid grid-cols-2 gap-0 border-t border-slate-200 lg:grid-cols-4">
-      {
-        stats.map((stat, i) => (
-          <Reveal delay={i * 80} variant="fade-up">
-            <div
-              class:list={[
-                'px-4 py-7 text-center',
-                i > 0 && 'border-l border-slate-200',
-                i >= 2 && 'border-t border-slate-200 lg:border-t-0',
-              ]}
-            >
-              <p class="font-display text-2xl font-bold uppercase tracking-tight text-navy-brand">
-                {stat.value}
-              </p>
-              <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-steel-500">
-                {stat.label}
-              </p>
-            </div>
+    <section class="about-section about-section--story">
+      <div class="container-narrow px-4 sm:px-6 lg:px-8">
+        <div class="about-story">
+          <Reveal variant="fade-right" class="about-story-copy">
+            <p class="section-eyebrow mb-2">History</p>
+            <h2 class="section-title mb-5">Why Navkar Tubes</h2>
+            <p class="about-prose mb-4">{aboutIntro}</p>
+            <p class="about-prose mb-7">{aboutBody}</p>
+            <a href="/contact/" class="btn btn-teal inline-flex items-center gap-2 px-6 py-3 text-sm">
+              Request a quote
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
           </Reveal>
-        ))
-      }
-    </div>
-  </section>
 
+          <Reveal delay={120} variant="fade-left" class="about-story-media">
+            <figure class="cinematic-frame about-cinematic">
+              <img
+                src={images.aboutFacility}
+                alt="Navkar Tubes & Tools Ahmedabad facility with NAVKAR signboard"
+                class="cinematic-frame-img media-enhance"
+                width="1600"
+                height="1067"
+                sizes="(max-width: 1024px) 100vw, 560px"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="cinematic-frame-caption">
+                Ahmedabad yard · Since 1995
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section about-section--pillars">
+      <div class="container-narrow px-4 sm:px-6 lg:px-8">
+        <div class="about-pillars">
+          <Reveal variant="fade-up" class="about-pillar">
+            <p class="section-eyebrow mb-2">Highlights</p>
+            <h3 class="about-pillar-title">Brands &amp; stock</h3>
+            <p class="about-prose">{aboutHighlights}</p>
+          </Reveal>
+          <Reveal delay={100} variant="fade-up" class="about-pillar">
+            <p class="section-eyebrow mb-2">Mission</p>
+            <h3 class="about-pillar-title">How we work</h3>
+            <p class="about-prose">{aboutMission}</p>
+            <p class="about-prose mt-3 text-[15px]">
+              {jindalPartner.sizeRange} · {jindalPartner.validityLabel}
+            </p>
+            <a
+              href="/jindal-authorized-partner/"
+              class="mt-4 inline-flex text-sm font-semibold text-teal-600 hover:text-teal-700"
+            >
+              View partnership details →
+            </a>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section about-section--team">
+      <div class="container-narrow px-4 sm:px-6 lg:px-8">
+        <Reveal variant="fade-up" class="about-team-head">
+          <p class="section-eyebrow mb-2">Leadership</p>
+          <h2 class="section-title">The people behind Navkar</h2>
+        </Reveal>
+        <div class="about-team-grid">
+          {
+            team.map((person, i) => (
+              <Reveal delay={i * 100} variant="fade-up">
+                <article class="about-person">
+                  <div class="cinematic-frame about-person-frame">
+                    <img
+                      src={person.image}
+                      alt={`${person.name}, ${person.role} of Navkar Tubes & Tools`}
+                      class="cinematic-frame-img media-enhance"
+                      width="800"
+                      height="1000"
+                      sizes="(max-width: 640px) 90vw, 360px"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="about-person-meta">
+                    <p class="text-sm font-semibold text-teal-600">{person.role}</p>
+                    <h3 class="about-person-name">{person.name}</h3>
+                    <a href={person.tel} class="about-person-phone">
+                      {person.phone}
+                    </a>
+                  </div>
+                </article>
+              </Reveal>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section about-section--contact">
+      <div class="container-narrow px-4 sm:px-6 lg:px-8">
+        <div class="about-contact">
+          <Reveal variant="fade-up" class="about-contact-copy">
+            <p class="section-eyebrow mb-2">Talk to sales</p>
+            <h2 class="section-title mb-3">Ready to work with us?</h2>
+            <p class="about-prose max-w-xl">
+              Call or WhatsApp from Ahmedabad, Gujarat — share product, size and quantity for a free quote.
+            </p>
+          </Reveal>
+          <div class="about-contact-rail">
+            <UpdateContactRail formId="about-quote-form" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </BaseLayout>

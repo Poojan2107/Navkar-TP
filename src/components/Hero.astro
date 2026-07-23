@@ -1,29 +1,7 @@
 ---
 import { weServe, site } from '../data/site';
 import Reveal from './Reveal.astro';
-
-const trust = [
-  {
-    title: 'Since 1995',
-    detail: 'Trusted expertise',
-    icon: 'calendar',
-  },
-  {
-    title: 'Jindal Authorized',
-    detail: 'Channel Partner',
-    icon: 'shield',
-  },
-  {
-    title: '15–500 MM',
-    detail: 'Wide range',
-    icon: 'range',
-  },
-  {
-    title: 'Quick Dispatch',
-    detail: 'Across India',
-    icon: 'truck',
-  },
-] as const;
+import TrustBar from './TrustBar.astro';
 ---
 
 <section class="hero-split">
@@ -115,45 +93,7 @@ const trust = [
     </div>
 
     <div class="hero-split-trust-wrap container-narrow relative z-20 px-4 pb-10 sm:px-6 lg:px-8 lg:pb-12">
-      <div class="hero-split-trust">
-        {
-          trust.map((item) => (
-            <div class="hero-split-trust-item">
-              <span class="hero-split-trust-icon" aria-hidden="true">
-                {item.icon === 'calendar' && (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                    <rect x="3.5" y="5" width="17" height="15" rx="2"></rect>
-                    <path stroke-linecap="round" d="M8 3.5V7M16 3.5V7M3.5 10h17"></path>
-                  </svg>
-                )}
-                {item.icon === 'shield' && (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-2.8 7.8-7 9-4.2-1.2-7-4.5-7-9V6l7-3z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path>
-                  </svg>
-                )}
-                {item.icon === 'range' && (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                    <path stroke-linecap="round" d="M4 18V6M8 18V9M12 18V7M16 18V10M20 18V8"></path>
-                  </svg>
-                )}
-                {item.icon === 'truck' && (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h11v8H3V7z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4l3 3v2h-7v-5z"></path>
-                    <circle cx="7" cy="17.5" r="1.5"></circle>
-                    <circle cx="17" cy="17.5" r="1.5"></circle>
-                  </svg>
-                )}
-              </span>
-              <div>
-                <p class="hero-split-trust-title">{item.title}</p>
-                <p class="hero-split-trust-detail">{item.detail}</p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
+      <TrustBar />
     </div>
   </div>
 </section>
