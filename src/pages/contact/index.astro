@@ -4,9 +4,9 @@ import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import Reveal from '../../components/Reveal.astro';
-import YardSwitcher from '../../components/YardSwitcher.astro';
 import SalesContactActions from '../../components/SalesContactActions.astro';
 import { site } from '../../data/site';
+import { images } from '../../data/images';
 import { metaDescriptionFor } from '../../data/seo';
 import { contactPageSchema, breadcrumbSchema } from '../../lib/schema';
 
@@ -30,7 +30,7 @@ const schemas = [
   <PageHero
     eyebrow="Contact"
     title="Let's connect"
-    description="Tell us product, size and quantity — we respond with a detailed free quote. Call or visit Vatva and Rakhial."
+    description="Tell us product, size and quantity — we respond with a detailed free quote from Ahmedabad, Gujarat."
   >
     <Breadcrumbs
       slot="breadcrumb"
@@ -41,19 +41,58 @@ const schemas = [
   <section class="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
     <div class="container-narrow">
       <Reveal variant="fade-up" class="mb-6">
-        <p class="section-eyebrow mb-2">Our yards</p>
-        <h2 class="section-title">Vatva &amp; Rakhial</h2>
+        <p class="section-eyebrow mb-2">Location</p>
+        <h2 class="section-title">Ahmedabad, Gujarat</h2>
       </Reveal>
 
       <Reveal variant="fade-up">
-        <YardSwitcher />
+        <div class="portal-card grid overflow-hidden lg:grid-cols-[1.05fr_0.95fr]">
+          <div class="relative min-h-[220px] bg-slate-100 sm:min-h-[280px]">
+            <img
+              src={images.officeVatva}
+              alt="Navkar Tubes & Tools facility — Ahmedabad, Gujarat"
+              class="absolute inset-0 h-full w-full object-cover object-center"
+              width="1400"
+              height="1050"
+              sizes="(max-width: 1024px) 100vw, 640px"
+              loading="eager"
+              decoding="async"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy-brand/50 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-navy-brand/10"
+              aria-hidden="true"
+            ></div>
+          </div>
+          <div class="flex flex-col justify-center bg-white px-5 py-6 sm:px-7 sm:py-8">
+            <h3 class="font-display text-xl font-bold uppercase tracking-tight text-navy-brand">
+              Yard &amp; sales desk
+            </h3>
+            <p class="mt-2 text-[15px] leading-relaxed text-steel-500">
+              Visit by appointment, or call / WhatsApp for availability, loading and project dispatch across Gujarat and India.
+            </p>
+            <address class="mt-4 text-[14px] not-italic leading-relaxed text-navy-brand">
+              {site.address.full}
+            </address>
+            <div class="mt-5 max-w-md">
+              <SalesContactActions />
+            </div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Navkar Tubes & Tools Ahmedabad Gujarat')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex text-sm font-semibold text-teal-600 hover:text-teal-700"
+            >
+              Open in Google Maps →
+            </a>
+          </div>
+        </div>
       </Reveal>
     </div>
   </section>
 
   <section class="contact-band bg-navy-950">
     <div class="lg:grid lg:grid-cols-[0.95fr_1.05fr]">
-      <Reveal variant="fade-right" class="contact-band-info relative flex flex-col justify-between p-8 sm:p-10 lg:min-h-[32rem] lg:p-12">
+      <Reveal variant="fade-right" class="contact-band-info relative flex flex-col justify-between gap-8 p-8 sm:p-10 lg:min-h-[32rem] lg:p-12">
         <div
           class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgb(89_161_168/0.2),transparent_55%)]"
           aria-hidden="true"
@@ -71,10 +110,7 @@ const schemas = [
 
           <div class="mt-6 space-y-2 border-t border-white/10 pt-6 text-[14px] leading-relaxed text-slate-300">
             <p>
-              <span class="font-semibold text-teal-200">Vatva</span> — {site.address.line1}
-            </p>
-            <p>
-              <span class="font-semibold text-teal-200">Rakhial</span> — {site.rakhial.line1}
+              <span class="font-semibold text-teal-200">Location</span> — Ahmedabad, Gujarat
             </p>
             <a href={`mailto:${site.email}`} class="inline-block font-semibold text-slate-200 transition hover:text-teal-200">
               {site.email}
@@ -82,8 +118,8 @@ const schemas = [
           </div>
         </div>
 
-        <p class="relative mt-10 text-sm leading-relaxed tracking-[0.02em] text-slate-400 lg:mt-12">
-          Vatva office · Rakhial stockyard · Ahmedabad
+        <p class="relative text-sm leading-relaxed tracking-[0.02em] text-slate-400">
+          Ahmedabad, Gujarat
         </p>
       </Reveal>
 

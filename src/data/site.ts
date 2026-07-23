@@ -20,21 +20,21 @@ export const site = {
   },
   address: {
     line1: 'Plot No. 1426/B, Trikampura Patiya',
-    line2: 'Phase-3, GIDC Vatva',
+    line2: 'Phase-3, GIDC',
     city: 'Ahmedabad',
     state: 'Gujarat',
     country: 'India',
-    full: 'Plot No. 1426/B, Trikampura Patiya, Phase-3, GIDC Vatva, Ahmedabad, Gujarat',
+    full: 'Plot No. 1426/B, Trikampura Patiya, Phase-3, GIDC, Ahmedabad, Gujarat',
   },
-  /** Stockyard — shown on Contact page only */
+  /** Secondary line — kept for phone routing; labels use Ahmedabad only in UI */
   rakhial: {
     line1: '8, Jaymangal Estate, Opp. Jagganath Estate',
-    line2: 'Nr. Gujarat Bottling, Rakhial',
+    line2: 'Nr. Gujarat Bottling',
     city: 'Ahmedabad',
     state: 'Gujarat',
-    full: '8, Jaymangal Estate, Opp. Jagganath Estate, Nr. Gujarat Bottling, Rakhial, Ahmedabad, Gujarat',
+    full: '8, Jaymangal Estate, Opp. Jagganath Estate, Nr. Gujarat Bottling, Ahmedabad, Gujarat',
   },
-  locations: ['Vatva', 'Rakhial'],
+  locations: ['Ahmedabad', 'Gujarat'],
   catalogueUrl: '/catalogue/',
   /**
    * Google Business Profile sticky search links (Knowledge Panel).

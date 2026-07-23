@@ -16,6 +16,9 @@ const {
   layout = 'cards',
   class: className,
 } = Astro.props;
+
+const remLg = entries.length % 3;
+const remSm = entries.length % 2;
 ---
 
 {
@@ -41,13 +44,22 @@ const {
 
       {layout === 'cards' ? (
         <div class="portal-grid updates-card-grid grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-          {entries.map((entry) => {
+          {entries.map((entry, i) => {
             const { title, excerpt, image, thumb, video } = entry.data;
             const href = `/updates/${entry.id}/`;
+            const isLast = i === entries.length - 1;
+            const centerOnLg = remLg === 1 && isLast;
+            const centerPairOnLg = remLg === 2 && i === entries.length - 2;
+            const centerOnSm = remSm === 1 && isLast;
             return (
               <a
                 href={href}
-                class="portal-card group relative flex min-h-[220px] flex-col overflow-hidden sm:min-h-[240px] md:min-h-[280px]"
+                class:list={[
+                  'portal-card group relative flex min-h-[220px] flex-col overflow-hidden sm:min-h-[240px] md:min-h-[280px]',
+                  centerOnSm && 'sm:col-start-1 sm:col-end-3 sm:max-w-[calc(50%-0.625rem)] sm:justify-self-center lg:col-end-auto lg:max-w-none lg:justify-self-stretch',
+                  centerOnLg && 'lg:col-start-2',
+                  centerPairOnLg && 'lg:col-start-2',
+                ]}
               >
                 <img
                   src={thumb ?? image}
@@ -58,9 +70,9 @@ const {
                   loading="lazy"
                   decoding="async"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-brand/95 via-navy-brand/45 to-transparent transition-all duration-500 group-hover:from-navy-brand"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-brand/95 via-navy-brand/50 to-transparent transition-all duration-500 group-hover:from-navy-dark group-hover:via-teal-900/45"></div>
                 {video && (
-                  <span class="absolute left-3 top-3 z-[1] rounded bg-navy-950/85 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
+                  <span class="absolute left-3 top-3 z-[1] rounded-md bg-navy-950/85 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
                     Video
                   </span>
                 )}
@@ -90,9 +102,9 @@ const {
             return (
               <a
                 href={href}
-                class="group grid grid-cols-[88px_1fr] items-start gap-3.5 overflow-hidden rounded-xl border border-slate-200/90 bg-white p-3.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-200/80 hover:shadow-md sm:grid-cols-[100px_1fr] sm:gap-4 sm:p-4"
+                class="group grid grid-cols-[88px_1fr] items-start gap-3.5 overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-3.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-200/80 hover:shadow-md sm:grid-cols-[100px_1fr] sm:gap-4 sm:p-4"
               >
-                <div class="relative aspect-square overflow-hidden rounded-lg bg-slate-100">
+                <div class="relative aspect-square overflow-hidden rounded-xl bg-slate-100">
                   <img
                     src={thumb ?? image}
                     alt=""

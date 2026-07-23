@@ -2818,7 +2818,7 @@ html.js-reveal [data-stat].is-popped {
 
 /* ─── Portal hover ─── */
 .portal-card {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
   transition:
     transform 0.5s var(--ease-out-expo),

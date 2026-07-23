@@ -95,9 +95,23 @@ const schemas = [
 
         <div class="portal-grid grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {
-            allProducts.map((product, i) => (
-              <ProductCard product={product} index={i} featured={product.slug === 'erw-pipes'} />
-            ))
+            allProducts.map((product, i) => {
+              const rem = allProducts.length % 3;
+              const isLast = i === allProducts.length - 1;
+              const centerOrphan = rem === 1 && isLast;
+              const centerPair = rem === 2 && i === allProducts.length - 2;
+              return (
+                <ProductCard
+                  product={product}
+                  index={i}
+                  featured={product.slug === 'erw-pipes'}
+                  class:list={[
+                    centerOrphan && 'lg:col-start-2',
+                    centerPair && 'lg:col-start-2',
+                  ]}
+                />
+              );
+            })
           }
         </div>
       </div>
