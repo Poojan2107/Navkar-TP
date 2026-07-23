@@ -5,7 +5,7 @@ excerpt: "Thick-wall MS pipe stacks photographed at our yard — ideal for press
 date: 2026-07-18
 image: "/images/navkar/updates/yard-13-960.webp"
 thumb: "/images/navkar/updates/yard-13-640.webp"
-tags: ["MS Pipes", "Inventory", "Vatva"]
+tags: ["MS Pipes", "Inventory", "Ahmedabad"]
 gallery:
   - "/images/navkar/updates/yard-14-960.webp"
   - "/images/navkar/updates/yard-15-960.webp"

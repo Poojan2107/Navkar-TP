@@ -5,7 +5,7 @@ export const site = {
   shortName: 'Navkar Tubes',
   tagline: 'Jindal Authorized Channel Partner · Ahmedabad',
   description:
-    'Authorized Jindal channel partner and MS pipes dealer in Ahmedabad — ERW black pipes, GI hollow sections, Asian pipes stock, ceramic coated lancing pipes, fittings and flanges from Vatva & Rakhial, Gujarat.',
+    'Authorized Jindal channel partner and MS pipes dealer in Ahmedabad, Gujarat — ERW black pipes, GI hollow sections, Asian pipes stock, ceramic coated lancing pipes, fittings and flanges.',
   url: 'https://navkartube.com',
   email: 'navkartube@gmail.com',
   phones: {
@@ -14,27 +14,27 @@ export const site = {
     primaryTel: 'tel:+918780422006',
     salesTel: 'tel:+919601702883',
     whatsapp: 'https://wa.me/919601702883',
-    /** Rakhial stockyard line from live contact page */
+    /** Secondary yard line from live contact page */
     rakhial: '+91 9825085947',
     rakhialTel: 'tel:+919825085947',
   },
   address: {
-    line1: 'Plot No. 1426/B, Trikampura Patiya',
-    line2: 'Phase-3, GIDC Vatva',
+    line1: 'Ahmedabad',
+    line2: 'Gujarat',
     city: 'Ahmedabad',
     state: 'Gujarat',
     country: 'India',
-    full: 'Plot No. 1426/B, Trikampura Patiya, Phase-3, GIDC Vatva, Ahmedabad, Gujarat',
+    full: 'Ahmedabad, Gujarat, India',
   },
-  /** Stockyard — from original contact-us page */
+  /** Secondary contact line — kept for phone routing */
   rakhial: {
-    line1: '8, Jaymangal Estate, Opp. Jagganath Estate',
-    line2: 'Nr. Gujarat Bottling, Rakhial',
+    line1: 'Ahmedabad',
+    line2: 'Gujarat',
     city: 'Ahmedabad',
     state: 'Gujarat',
-    full: '8, Jaymangal Estate, Opp. Jagganath Estate, Nr. Gujarat Bottling, Rakhial, Ahmedabad, Gujarat',
+    full: 'Ahmedabad, Gujarat, India',
   },
-  locations: ['Vatva', 'Rakhial'],
+  locations: ['Ahmedabad', 'Gujarat'],
   catalogueUrl: '/catalogue/',
   /**
    * Google Business Profile sticky search links (Knowledge Panel).
@@ -110,7 +110,7 @@ export const weServe = [
 export const trustPoints = [
   'Authorized Jindal channel partner',
   '15 MM to 500 MM pipe range',
-  'Vatva & Rakhial stockyards',
+  'Ahmedabad, Gujarat stockyards',
   'Detailed, quick & free quote',
   'Widest stock of large diameter pipe',
   'Government & private sector supplier',
@@ -139,7 +139,7 @@ export const valueCards = [
   {
     title: 'Authorized supply',
     description:
-      'Genuine Jindal MS ERW and GI hollow sections, plus fittings and flanges — stocked at Vatva and Rakhial, dispatched nationwide.',
+      'Genuine Jindal MS ERW and GI hollow sections, plus fittings and flanges — stocked in Ahmedabad, Gujarat and dispatched nationwide.',
   },
   {
     title: '15–500 MM range',
@@ -149,7 +149,7 @@ export const valueCards = [
   {
     title: 'Nationwide dispatch',
     description:
-      'Two Ahmedabad yards (Vatva & Rakhial) with lift-ready stock for Gujarat projects and freight dispatch across India.',
+      'Ahmedabad, Gujarat yards with lift-ready stock for Gujarat projects and freight dispatch across India.',
   },
 ] as const;
 
@@ -183,7 +183,7 @@ export const productRange = [
 
 export const proofBand = [
   { value: 'Est. 1995', label: 'Ahmedabad stockist' },
-  { value: '2 Yards', label: 'Vatva & Rakhial' },
+  { value: 'Ahmedabad', label: 'Gujarat stockyards' },
   { value: 'Jindal + Asian', label: 'Brands in stock' },
   { value: 'Govt & Pvt', label: 'Sector supply' },
 ] as const;
@@ -199,7 +199,7 @@ export const aboutIntro =
   'Navkar Tubes & Tools was established in 1995 in Ahmedabad. We are a leading stockist of MS seamless pipe, MS ERW pipe, MS square & rectangular pipe, fittings, oxygen lancing pipe and related sections — and an Authorized Channel Partner of Jindal (India) Limited.';
 
 export const aboutBody =
-  'From our Vatva office and Rakhial stockyard we supply government, public and private sector jobs — cement, chemical, oil & gas, sugar, fertilizer and heavy engineering — with fast quotes and reliable dispatch across Gujarat and India.';
+  'From Ahmedabad, Gujarat we supply government, public and private sector jobs — cement, chemical, oil & gas, sugar, fertilizer and heavy engineering — with fast quotes and reliable dispatch across Gujarat and India.';
 
 export const aboutHighlights =
   'We customize sizes to project requirements. Stocked and supplied brands include Jindal, MSL, JSL, Asian, Suryaprakash, Apollo and related mill lines.';
@@ -229,7 +229,7 @@ export const jindalPartner = {
   title: 'Authorized Channel Partner of Jindal (India) Limited',
   body: 'Navkar Tubes & Tools, Ahmedabad, is an Authorized Channel Partner of Jindal (India) Limited for MS ERW black pipes and GI square & rectangular pipes.',
   detail:
-    'Authorization covers retail and stock across 15 MM to 500 MM. Ask for mill / invoice documentation and current authorization with your order — we supply genuine Jindal material from Vatva and Rakhial.',
+    'Authorization covers retail and stock across 15 MM to 500 MM. Ask for mill / invoice documentation and current authorization with your order — we supply genuine Jindal material from Ahmedabad, Gujarat.',
   /** Last certificate period on file — confirm current status with sales */
   validFrom: '01/04/2025',
   validTo: '31/03/2026',

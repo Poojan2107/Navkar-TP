@@ -21,7 +21,7 @@ export const images = {
   heroYard: '/images/navkar/updates/yard-04-960.webp',
   /** Tight crop of teal NAVKAR sign — brand badge only */
   signBadge: '/images/navkar/sign-badge.webp',
-  /** Real Vatva facility with Navkar signboard (not generated office renders) */
+  /** Real Ahmedabad facility with Navkar signboard (not generated office renders) */
   aboutFacility: '/images/navkar/facility-signed.webp',
   officeVatva: '/images/navkar/facility-signed.webp',
   /** Real stockyard / pipe stock from yard photo set */

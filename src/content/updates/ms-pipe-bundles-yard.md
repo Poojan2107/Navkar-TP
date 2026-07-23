@@ -38,4 +38,4 @@ Navkar is set up for that **single-desk** model as a Jindal authorized partner w
 
 ## Request a matched quote
 
-WhatsApp your BOM or [submit a quote request](/contact/). Include NB, thickness, length and quantity for every line. We reply with what is ready now, what needs a short wait, and how dispatch from Vatva or Rakhial would run.
+WhatsApp your BOM or [submit a quote request](/contact/). Include NB, thickness, length and quantity for every line. We reply with what is ready now, what needs a short wait, and how dispatch from Ahmedabad would run.

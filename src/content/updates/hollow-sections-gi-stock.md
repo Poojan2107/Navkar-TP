@@ -34,4 +34,4 @@ Jobs that mix **hollow sections for frames and ERW for services** are common. Na
 
 ## Next step
 
-Send your size matrix to sales or open a [free quote request](/contact/). If you are near Vatva, ask for a short yard visit — seeing the bundles in person helps when finish and straightness matter for visible structures.
+Send your size matrix to sales or open a [free quote request](/contact/). If you are in Ahmedabad, ask for a short yard visit — seeing the bundles in person helps when finish and straightness matter for visible structures.

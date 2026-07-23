@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Reveal from '../../components/Reveal.astro';
 import CertificateLightbox from '../../components/CertificateLightbox.astro';
+import SalesContactActions from '../../components/SalesContactActions.astro';
 import { metaDescriptionFor } from '../../data/seo';
 import { breadcrumbSchema } from '../../lib/schema';
 import { jindalPartner, site } from '../../data/site';
@@ -66,7 +67,7 @@ import { jindalPartner, site } from '../../data/site';
       </Reveal>
 
       <Reveal delay={100} variant="fade-up">
-        <div class="flex h-full flex-col overflow-hidden bg-white ring-1 ring-slate-200">
+        <div class="flex h-full flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
           <CertificateLightbox
             src={jindalPartner.certificateImage}
             alt="Jindal authorized dealer certificate"
@@ -84,6 +85,19 @@ import { jindalPartner, site } from '../../data/site';
         </div>
       </Reveal>
     </div>
+
+    <Reveal variant="fade-up" class="container-narrow mt-8">
+      <div class="rounded-2xl border border-slate-200/90 bg-surface/70 px-5 py-6 sm:px-7 sm:py-7">
+        <p class="section-eyebrow mb-1.5">Talk to sales</p>
+        <h2 class="font-display mb-2 text-xl font-bold uppercase tracking-tight text-navy-brand sm:text-2xl">
+          Confirm Jindal stock &amp; authorization
+        </h2>
+        <p class="mb-5 max-w-xl text-[15px] leading-relaxed text-steel-500">
+          Call or WhatsApp from Ahmedabad, Gujarat — share size, quantity and delivery location for a free quote.
+        </p>
+        <SalesContactActions layout="row" class="max-w-2xl" />
+      </div>
+    </Reveal>
   </section>
 
 </BaseLayout>

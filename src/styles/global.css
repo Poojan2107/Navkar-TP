@@ -1207,7 +1207,24 @@ html.js-reveal [data-stat].is-popped {
 
 .update-gallery-item {
   aspect-ratio: 4 / 3;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-out-expo);
+}
+
+@media (min-width: 768px) {
+  .update-gallery:hover .update-gallery-item:not(:hover) {
+    opacity: 0.82;
+    transform: scale(0.988);
+  }
+
+  .update-gallery-item:hover {
+    z-index: 2;
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+  }
 }
 
 @keyframes page-hero-glow {

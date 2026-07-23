@@ -1,6 +1,6 @@
 ---
 title: "Pipe loading & Gujarat dispatch"
-excerpt: "Confirmed orders are staged and loaded from Vatva or Rakhial for sites across Gujarat. Share product, quantity and delivery location — we reply with availability, loading plan and transport options from Ahmedabad."
+excerpt: "Confirmed orders are staged and loaded from Ahmedabad for sites across Gujarat. Share product, quantity and delivery location — we reply with availability, loading plan and transport options from Ahmedabad."
 date: 2026-07-17
 image: "/images/navkar/updates/yard-16-960.webp"
 thumb: "/images/navkar/updates/yard-16-640.webp"
@@ -10,7 +10,7 @@ gallery:
   - "/images/navkar/updates/yard-18-960.webp"
 ---
 
-Once your order is confirmed, pipes do not sit in a spreadsheet — they are **physically staged, checked and loaded** from our Vatva or Rakhial locations. This update shows outbound handling for Gujarat project sites and regular industrial buyers who need predictable dispatch.
+Once your order is confirmed, pipes do not sit in a spreadsheet — they are **physically staged, checked and loaded** from our Ahmedabad locations. This update shows outbound handling for Gujarat project sites and regular industrial buyers who need predictable dispatch.
 
 ## How dispatch usually works
 
@@ -19,7 +19,7 @@ Once your order is confirmed, pipes do not sit in a spreadsheet — they are **p
 3. Loading is scheduled around vehicle type and site access
 4. Delivery or buyer pickup is coordinated with your site contact
 
-For large BOMs we may split loads across days or yards. You are told in advance if a line ships from Rakhial instead of Vatva.
+For large BOMs we may split loads across days or yards. You are told in advance if a line ships from our Ahmedabad yard.
 
 ## What to share for smooth logistics
 

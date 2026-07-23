@@ -9,12 +9,12 @@ const FALLBACK: UpdateEntry[] = [
     id: 'erw-pipe-stock-vatva-yard',
     collection: 'updates',
     data: {
-      title: 'Jindal ERW pipe stock — Vatva yard',
-      excerpt: 'MS ERW black pipes staged at Navkar Tubes Vatva yard — 15 MM to 500 MM on enquiry.',
+      title: 'Jindal ERW pipe stock — Ahmedabad yard',
+      excerpt: 'MS ERW black pipes staged at Navkar Tubes Ahmedabad yard — 15 MM to 500 MM on enquiry.',
       date: new Date('2026-07-22'),
       image: images.updates.erwStock,
       thumb: images.updates.erwStock,
-      tags: ['ERW Pipes', 'Jindal', 'Vatva'],
+      tags: ['ERW Pipes', 'Jindal', 'Ahmedabad'],
       featured: true,
     },
   },
@@ -62,7 +62,7 @@ const FALLBACK: UpdateEntry[] = [
     collection: 'updates',
     data: {
       title: 'Pipe loading — Gujarat dispatch',
-      excerpt: 'Outbound loading from Vatva for project sites across Gujarat.',
+      excerpt: 'Outbound loading from Ahmedabad for project sites across Gujarat.',
       date: new Date('2026-07-01'),
       image: images.updates.dispatch,
       thumb: images.updates.dispatch,
@@ -84,7 +84,7 @@ function titleKey(title: string): string {
   return title
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, ' ')
-    .replace(/\b(snapshot|stock|yard|vatva|ahmedabad|jindal|ms|pipe|pipes)\b/g, '')
+    .replace(/\b(snapshot|stock|yard|Ahmedabad|ahmedabad|jindal|ms|pipe|pipes)\b/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 28);

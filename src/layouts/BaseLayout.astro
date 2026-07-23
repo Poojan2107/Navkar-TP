@@ -80,26 +80,15 @@ const localBusinessSchema = {
   location: [
     {
       '@type': 'Place',
-      name: 'Vatva — Main Office',
+      name: 'Navkar Tubes & Tools — Ahmedabad',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: `${site.address.line1}, ${site.address.line2}`,
+        streetAddress: site.address.full,
         addressLocality: site.address.city,
         addressRegion: site.address.state,
         addressCountry: 'IN',
       },
-    },
-    {
-      '@type': 'Place',
-      name: 'Rakhial — Stockyard',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: `${site.rakhial.line1}, ${site.rakhial.line2}`,
-        addressLocality: site.rakhial.city,
-        addressRegion: site.rakhial.state,
-        addressCountry: 'IN',
-      },
-      telephone: site.phones.rakhial,
+      telephone: site.phones.sales,
     },
   ],
   geo: {

@@ -8,7 +8,7 @@ export const seoKeywords = {
     'ERW Pipes Supplier in Gujarat',
     'Jindal Pipes Dealer Ahmedabad',
     'GI Pipe Dealers in Ahmedabad',
-    'MS Pipe Stockist Vatva',
+    'MS Pipe Stockist Ahmedabad',
     'Asian Pipes Dealer Gujarat',
   ],
   products: [
@@ -20,12 +20,12 @@ export const seoKeywords = {
     'MS Pipes Stock Ahmedabad',
     'ERW Pipes Yard Gujarat',
     'Jindal Pipe Stock Update',
-    'Pipe Dealer Vatva Rakhial',
+    'Pipe Dealer Ahmedabad Gujarat',
   ],
   contact: [
     'MS Pipes Quote Ahmedabad',
     'Jindal Pipes Enquiry Gujarat',
-    'Pipe Dealer Contact Vatva',
+    'Pipe Dealer Contact Ahmedabad',
   ],
   about: [
     'Navkar Tubes About',
@@ -68,17 +68,17 @@ export const seoKeywords = {
 } as const;
 
 export const seoDescriptions: Record<string, string> = {
-  home: 'Jindal authorized MS pipes dealer in Ahmedabad — ERW black pipes, GI hollow sections, Asian pipes stock, fittings & flanges. Free quote from Vatva & Rakhial yards. Call +91 9601702883.',
+  home: 'Jindal authorized MS pipes dealer in Ahmedabad, Gujarat — ERW black pipes, GI hollow sections, Asian pipes stock, fittings & flanges. Free quote. Call +91 9601702883.',
   products:
-    'Browse Jindal ERW pipes, GI hollow sections, spiral pipes, MS fittings, flanges, hydraulic pipes & lancing pipes — stocked in Ahmedabad (Vatva & Rakhial). Request a free quote.',
+    'Browse Jindal ERW pipes, GI hollow sections, spiral pipes, MS fittings, flanges, hydraulic pipes & lancing pipes — stocked in Ahmedabad, Gujarat. Request a free quote.',
   contact:
-    'Contact Navkar Tubes for MS pipes quote in Ahmedabad. Vatva office & Rakhial stockyard. Sales +91 9601702883 · WhatsApp · Free quotation for ERW, GI & project supply.',
+    'Contact Navkar Tubes for MS pipes quote in Ahmedabad, Gujarat. Sales +91 9601702883 · WhatsApp · Free quotation for ERW, GI & project supply.',
   about:
-    'Navkar Tubes & Tools — MS pipe stockist in Ahmedabad since 1995. Jindal authorized channel partner. Founder Shripal Shah & MD Harsh Shah. Vatva & Rakhial supply.',
+    'Navkar Tubes & Tools — MS pipe stockist in Ahmedabad, Gujarat since 1995. Jindal authorized channel partner. Founder Shripal Shah & MD Harsh Shah.',
   jindal:
     'Authorized Jindal channel partner in Ahmedabad — genuine MS ERW black pipes & GI square/rectangular hollow sections, 15–500 MM. Certificate on file. Navkar Tubes & Tools.',
   updates:
-    'Live yard stock updates from Navkar Tubes — ERW pipes, spiral pipes, hollow sections & dispatch photos from Vatva & Rakhial, Ahmedabad.',
+    'Live yard stock updates from Navkar Tubes — ERW pipes, spiral pipes, hollow sections & dispatch photos from Ahmedabad, Gujarat.',
   catalogue: 'Download Navkar Tubes product catalogue — MS pipes, ERW, fittings, flanges and Jindal authorized lines from Ahmedabad, Gujarat.',
 };
 

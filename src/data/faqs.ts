@@ -8,12 +8,12 @@ export const homeFaqs = [
   {
     question: 'Which pipe sizes and products do you stock in Gujarat?',
     answer:
-      'We stock Jindal MS ERW pipes, GI hollow sections, spiral pipes, MS fittings, flanges, seamless hydraulic pipes and ceramic coated lancing pipes — typically 15 MM to 500 MM. Asian, MSL, JSL and allied mill lines are also available on enquiry from Vatva and Rakhial.',
+      'We stock Jindal MS ERW pipes, GI hollow sections, spiral pipes, MS fittings, flanges, seamless hydraulic pipes and ceramic coated lancing pipes — typically 15 MM to 500 MM. Asian, MSL, JSL and allied mill lines are also available on enquiry from Ahmedabad, Gujarat.',
   },
   {
-    question: 'Where are Navkar Tubes offices and stockyards located?',
+    question: 'Where is Navkar Tubes located?',
     answer:
-      'Main office at Plot No. 1426/B, Trikampura Patiya, Phase-3, GIDC Vatva, Ahmedabad. Stockyard at Jaymangal Estate, Rakhial, Ahmedabad. Both locations dispatch across Gujarat and India.',
+      'Navkar Tubes & Tools is based in Ahmedabad, Gujarat. We dispatch across Gujarat and India — call or WhatsApp sales to schedule a yard visit or arrange remote quotation.',
   },
   {
     question: 'How do I get a free quotation for MS pipes?',
@@ -28,6 +28,6 @@ export const homeFaqs = [
   {
     question: 'Can I visit the yard before placing an order?',
     answer:
-      'Yes. Call or WhatsApp sales to schedule a visit to our Vatva office or Rakhial stockyard. Yard photos and stock updates are also posted on our Updates page.',
+      'Yes. Call or WhatsApp sales to schedule a visit to our Ahmedabad, Gujarat yard. Yard photos and stock updates are also posted on our Updates page.',
   },
 ] as const;

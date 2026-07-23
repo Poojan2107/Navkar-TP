@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Reveal from '../../components/Reveal.astro';
+import SalesContactActions from '../../components/SalesContactActions.astro';
 import {
   stats,
   aboutIntro,
@@ -32,7 +33,7 @@ import { breadcrumbSchema } from '../../lib/schema';
   <PageHero
     eyebrow="About"
     title="Who we are"
-    description="Stockist since 1995 — authorized Jindal channel partner serving Gujarat and India from Vatva & Rakhial."
+    description="Stockist since 1995 — authorized Jindal channel partner serving Gujarat and India from Ahmedabad."
   >
     <Breadcrumbs
       slot="breadcrumb"
@@ -58,7 +59,7 @@ import { breadcrumbSchema } from '../../lib/schema';
       </Reveal>
 
       <Reveal delay={150} variant="fade-left">
-        <div class="overflow-hidden bg-slate-100 ring-1 ring-slate-200/80">
+        <div class="overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200/80">
           <img
             src={images.aboutFacility}
             alt="Navkar Tubes & Tools facility and stockyard — Ahmedabad"
@@ -111,7 +112,7 @@ import { breadcrumbSchema } from '../../lib/schema';
           team.map((person, i) => (
             <Reveal delay={i * 100} variant="fade-up">
               <article class="text-center sm:text-left">
-                <div class="overflow-hidden bg-slate-100 ring-1 ring-slate-200/80">
+                <div class="overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200/80">
                   <img
                     src={person.image}
                     alt={`${person.name}, ${person.role} of Navkar Tubes & Tools`}
@@ -138,6 +139,19 @@ import { breadcrumbSchema } from '../../lib/schema';
         }
       </div>
     </div>
+
+    <Reveal variant="fade-up" class="container-narrow mt-12">
+      <div class="rounded-2xl border border-slate-200/90 bg-surface/70 px-5 py-6 sm:px-7 sm:py-7">
+        <p class="section-eyebrow mb-1.5">Talk to sales</p>
+        <h2 class="font-display mb-2 text-xl font-bold uppercase tracking-tight text-navy-brand sm:text-2xl">
+          Ready to work with us?
+        </h2>
+        <p class="mb-5 max-w-xl text-[15px] leading-relaxed text-steel-500">
+          Call or WhatsApp from Ahmedabad, Gujarat — share product, size and quantity for a free quote.
+        </p>
+        <SalesContactActions layout="row" class="max-w-2xl" />
+      </div>
+    </Reveal>
 
     <div class="container-narrow mt-12 grid grid-cols-2 gap-0 border-t border-slate-200 lg:grid-cols-4">
       {
