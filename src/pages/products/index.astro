@@ -95,24 +95,13 @@ const schemas = [
 
         <div class="portal-grid products-card-grid grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {
-            allProducts.map((product, i) => {
-              const remLg = allProducts.length % 3;
-              const remSm = allProducts.length % 2;
-              const isLast = i === allProducts.length - 1;
-              const centerOnLg = remLg === 1 && isLast && allProducts.length > 3;
-              const centerOnSm = remSm === 1 && isLast && allProducts.length > 2;
-              return (
-                <ProductCard
-                  product={product}
-                  index={i}
-                  featured={product.slug === 'erw-pipes'}
-                  class:list={[
-                    centerOnSm && 'sm:col-span-2 sm:max-w-md sm:justify-self-center lg:col-span-1 lg:max-w-none lg:justify-self-stretch',
-                    centerOnLg && 'lg:col-start-2',
-                  ]}
-                />
-              );
-            })
+            allProducts.map((product, i) => (
+              <ProductCard
+                product={product}
+                index={i}
+                featured={product.slug === 'erw-pipes'}
+              />
+            ))
           }
         </div>
       </div>

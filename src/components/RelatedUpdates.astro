@@ -52,17 +52,10 @@ const remSm = entries.length % 2;
           {entries.map((entry, i) => {
             const { title, excerpt, image, thumb, video } = entry.data;
             const href = `/updates/${entry.id}/`;
-            const isLast = i === entries.length - 1;
-            const centerOnLg = remLg === 1 && isLast && entries.length > 3;
-            const centerOnSm = remSm === 1 && isLast && entries.length > 2;
             return (
               <a
                 href={href}
-                class:list={[
-                  'update-tile portal-card group',
-                  centerOnSm && 'sm:col-span-2 sm:max-w-md sm:justify-self-center lg:col-span-1 lg:max-w-none lg:justify-self-stretch',
-                  centerOnLg && 'lg:col-start-2',
-                ]}
+                class="update-tile portal-card group"
               >
                 <div class="update-tile-media">
                   <img

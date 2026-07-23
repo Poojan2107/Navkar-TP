@@ -2,8 +2,8 @@
 import { site } from '../data/site';
 ---
 
-<!-- Desktop FAB stack: back-to-top + WhatsApp + Call -->
-<div class="fab-stack fixed bottom-6 right-5 z-40 hidden flex-col items-center gap-2.5 lg:flex">
+<!-- Single Floating Action Stack (Desktop & Mobile Back-To-Top) -->
+<div class="fab-stack fixed bottom-6 right-5 z-40 flex flex-col items-center gap-2.5">
   <button
     id="back-to-top"
     type="button"
@@ -18,7 +18,7 @@ import { site } from '../data/site';
     href={site.phones.whatsapp}
     target="_blank"
     rel="noopener noreferrer"
-    class="fab-btn btn pulse-ring-whatsapp group flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl hover:bg-[#20bd5a]"
+    class="fab-btn btn pulse-ring-whatsapp group hidden h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl hover:bg-[#20bd5a] lg:flex"
     aria-label="Chat on WhatsApp"
   >
     <svg class="h-6 w-6 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -28,7 +28,7 @@ import { site } from '../data/site';
   </a>
   <a
     href={site.phones.salesTel}
-    class="fab-btn call-pulse btn flex h-12 w-12 items-center justify-center rounded-full bg-navy-brand text-white shadow-xl hover:bg-navy-dark"
+    class="fab-btn call-pulse btn hidden h-12 w-12 items-center justify-center rounded-full bg-navy-brand text-white shadow-xl hover:bg-navy-dark lg:flex"
     aria-label="Call Sales"
   >
     <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -61,15 +61,3 @@ import { site } from '../data/site';
     Call Sales
   </a>
 </div>
-
-<!-- Mobile back-to-top (desktop uses the FAB stack button) -->
-<button
-  id="back-to-top-mobile"
-  type="button"
-  class="back-to-top lg:hidden"
-  aria-label="Back to top"
->
-  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-  </svg>
-</button>

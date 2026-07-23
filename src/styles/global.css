@@ -4269,10 +4269,10 @@ body.yard-cinematic-owns.mobile-cta-visible {
   display: none;
 }
 
-/* Shared two-column page body: copy / proof + sticky enquiry rail */
+/* Shared two-column page body: copy / proof + enquiry rail */
 .page-split {
   display: grid;
-  align-items: start;
+  align-items: stretch;
   gap: 1.25rem;
 }
 
@@ -4282,10 +4282,12 @@ body.yard-cinematic-owns.mobile-cta-visible {
     gap: 1.75rem;
   }
 
-  /* No sticky rail — sticky next to short left columns creates huge empty voids */
   .page-split-rail {
     position: static;
     top: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 }
 
@@ -4294,17 +4296,23 @@ body.yard-cinematic-owns.mobile-cta-visible {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  height: 100%;
 }
 
-/* Enquiry intro — content-sized only (never force empty height) */
+/* Enquiry intro — stretches full height equal to form card */
 .enquiry-intro {
   display: flex;
   flex-direction: column;
   gap: 0;
   padding: 0;
+  height: 100%;
 }
 
 .enquiry-intro-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid rgb(226 232 240 / 0.95);
   background: #fff;
@@ -4330,6 +4338,12 @@ body.yard-cinematic-owns.mobile-cta-visible {
   font-size: 0.9375rem;
   line-height: 1.5;
   color: var(--color-navy-brand);
+}
+
+.update-rail-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Soften rail card hover so sticky columns don’t feel jumpy */
