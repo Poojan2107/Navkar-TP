@@ -46,16 +46,16 @@ const preselected =
   <input type="hidden" name="_template" value="table" />
   <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
 
-  <div class:list={['grid gap-4', compact ? '' : 'sm:grid-cols-2']}>
+  <div class:list={['grid gap-3.5', compact ? '' : 'sm:grid-cols-2']}>
     <div>
       <label for={`${id}-name`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Name *</label>
-      <input type="text" id={`${id}-name`} name="name" required autocomplete="name" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Your name" />
+      <input type="text" id={`${id}-name`} name="name" required autocomplete="name" class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Your name" />
     </div>
     {
       !compact && (
         <div>
           <label for={`${id}-company`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Company *</label>
-          <input type="text" id={`${id}-company`} name="company" required autocomplete="organization" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Company name" />
+          <input type="text" id={`${id}-company`} name="company" required autocomplete="organization" class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="Company name" />
         </div>
       )
     }
@@ -65,17 +65,17 @@ const preselected =
     compact ? (
       <div>
         <label for={`${id}-phone`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Phone *</label>
-        <input type="tel" id={`${id}-phone`} name="phone" required autocomplete="tel" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="+91" />
+        <input type="tel" id={`${id}-phone`} name="phone" required autocomplete="tel" class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="+91" />
       </div>
     ) : (
       <div class="grid gap-4 sm:grid-cols-2">
         <div>
           <label for={`${id}-phone`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Phone *</label>
-          <input type="tel" id={`${id}-phone`} name="phone" required autocomplete="tel" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="+91" />
+          <input type="tel" id={`${id}-phone`} name="phone" required autocomplete="tel" class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="+91" />
         </div>
         <div>
           <label for={`${id}-email`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Email</label>
-          <input type="email" id={`${id}-email`} name="email" autocomplete="email" class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="you@company.com" />
+          <input type="email" id={`${id}-email`} name="email" autocomplete="email" class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="you@company.com" />
         </div>
       </div>
     )
@@ -97,7 +97,7 @@ const preselected =
           id={`${id}-product`}
           name="product"
           data-product-select
-          class:list={['w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]}
+          class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]}
         >
           <option value="">Select product line</option>
           {products.map((p) => (
@@ -116,11 +116,11 @@ const preselected =
       <div class="grid gap-3 sm:grid-cols-2">
         <div>
           <label for={`${id}-size`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Size / OD *</label>
-          <input type="text" id={`${id}-size`} name="size" required class:list={['w-full rounded-xl border px-3 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="100 MM" />
+          <input type="text" id={`${id}-size`} name="size" required class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="100 MM" />
         </div>
         <div>
           <label for={`${id}-qty`} class:list={['mb-1.5 block text-sm font-medium', labelClass]}>Qty *</label>
-          <input type="text" id={`${id}-qty`} name="quantity" required class:list={['w-full rounded-xl border px-3 py-3 text-base outline-none transition focus:ring-2', inputClass]} placeholder="50 lengths" />
+          <input type="text" id={`${id}-qty`} name="quantity" required class:list={['w-full rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]} placeholder="50 lengths" />
         </div>
       </div>
     ) : (
@@ -150,7 +150,7 @@ const preselected =
       name="message"
       rows={compact ? 2 : 3}
       data-message-field
-      class:list={['w-full resize-y rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2', inputClass]}
+      class:list={['w-full resize-y rounded-xl border px-3.5 py-2.5 text-base outline-none transition focus:ring-2', inputClass]}
       placeholder={compact ? 'Port, packing notes, timing…' : 'Standards, schedule, site timing…'}
     ></textarea>
   </div>
