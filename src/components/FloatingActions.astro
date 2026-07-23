@@ -2,8 +2,18 @@
 import { site } from '../data/site';
 ---
 
-<!-- Desktop floating actions -->
-<div class="fab-stack fixed bottom-6 right-5 z-40 hidden flex-col items-center gap-3 lg:flex">
+<!-- Desktop FAB stack: back-to-top + WhatsApp + Call -->
+<div class="fab-stack fixed bottom-6 right-5 z-40 hidden flex-col items-center gap-2.5 lg:flex">
+  <button
+    id="back-to-top"
+    type="button"
+    class="fab-btn back-to-top-fab flex h-11 w-11 items-center justify-center rounded-full border border-teal-500/30 bg-navy-950 text-teal-300 shadow-xl transition hover:border-teal-400/50 hover:bg-navy-brand"
+    aria-label="Back to top"
+  >
+    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
   <a
     href={site.phones.whatsapp}
     target="_blank"
@@ -19,7 +29,7 @@ import { site } from '../data/site';
   <a
     href={site.phones.salesTel}
     class="fab-btn call-pulse btn flex h-12 w-12 items-center justify-center rounded-full bg-navy-brand text-white shadow-xl hover:bg-navy-dark"
-    aria-label="Call sales"
+    aria-label="Call Sales"
   >
     <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.25 1.01l-2.2 2.22z"></path>
@@ -51,3 +61,15 @@ import { site } from '../data/site';
     Call Sales
   </a>
 </div>
+
+<!-- Mobile back-to-top (desktop uses the FAB stack button) -->
+<button
+  id="back-to-top-mobile"
+  type="button"
+  class="back-to-top lg:hidden"
+  aria-label="Back to top"
+>
+  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+  </svg>
+</button>

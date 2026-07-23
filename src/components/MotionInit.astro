@@ -32,15 +32,26 @@
             observer.unobserve(el);
           });
         },
-        { threshold: 0.12, rootMargin: '0px 0px -4% 0px' }
+        { threshold: 0.08, rootMargin: '40px 0px 40px 0px' }
       );
 
-      items.forEach((el) => observer.observe(el));
+      items.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        // Above-the-fold / near-fold content: show immediately (no empty holes)
+        if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
+          el.classList.add('is-visible');
+          return;
+        }
+        observer.observe(el);
+      });
     }
 
     function initScrollUI() {
       const header = document.getElementById('site-header');
-      const backBtn = document.getElementById('back-to-top');
+      const backBtns = [
+        document.getElementById('back-to-top'),
+        document.getElementById('back-to-top-mobile'),
+      ].filter(Boolean);
       const mobileCta = document.querySelector('.mobile-cta-bar');
       const hero = document.querySelector('[data-hero-parallax]');
 
@@ -74,9 +85,9 @@
           }
         }
 
-        if (backBtn) {
-          backBtn.classList.toggle('is-visible', y > 480);
-        }
+        backBtns.forEach((btn) => {
+          btn.classList.toggle('is-visible', y > 480);
+        });
 
         if (mobileCta) {
           const threshold = Math.min(window.innerHeight * 0.55, 420);
@@ -109,11 +120,11 @@
       );
       onScroll();
 
-      if (backBtn) {
-        backBtn.addEventListener('click', () => {
+      backBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
           window.scrollTo({ top: 0, behavior: prefersReduced.matches ? 'auto' : 'smooth' });
         });
-      }
+      });
     }
 
     function initMobileMenu() {

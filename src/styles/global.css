@@ -514,31 +514,21 @@ html.js-reveal .reveal {
 }
 
 html.js-reveal .reveal--fade-up {
-  transform: translateY(24px);
+  transform: translateY(18px);
 }
 
 html.js-reveal .reveal--fade-in {
   transform: none;
 }
 
-html.js-reveal .reveal--fade-left {
-  transform: translateX(-36px);
-}
-
+/* Never use horizontal shifts — they clip content off the viewport */
+html.js-reveal .reveal--fade-left,
 html.js-reveal .reveal--fade-right {
-  transform: translateX(36px);
-}
-
-/* Side fades cause horizontal overflow on narrow viewports */
-@media (max-width: 1023px) {
-  html.js-reveal .reveal--fade-left,
-  html.js-reveal .reveal--fade-right {
-    transform: translateY(22px);
-  }
+  transform: translateY(18px);
 }
 
 html.js-reveal .reveal--scale {
-  transform: scale(0.94);
+  transform: scale(0.97);
 }
 
 html.js-reveal .reveal.is-visible {
@@ -627,6 +617,7 @@ html.js-reveal [data-stat].is-popped {
 
 /* ─── Header scroll ─── */
 #site-header {
+  z-index: 50;
   will-change: transform, background-color;
   transition:
     transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
@@ -675,10 +666,11 @@ html.js-reveal [data-stat].is-popped {
 
 #site-header.header-solid {
   padding-top: env(safe-area-inset-top, 0px);
-  background: var(--color-navy-950) !important;
+  background-color: #0a2a38 !important;
+  background-image: none !important;
   box-shadow: 0 1px 0 rgb(255 255 255 / 0.07), 0 4px 20px rgb(0 0 0 / 0.25);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 #site-header.header-solid .header-main {
@@ -2685,8 +2677,17 @@ body.mobile-cta-visible .contact-band-form {
 }
 
 .about-contact-meta {
+  display: grid;
+  gap: 0.75rem;
   padding-top: 1.25rem;
   border-top: 1px solid rgb(226 232 240);
+}
+
+.about-contact-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
 }
 
 @media (min-width: 1024px) {
@@ -2696,8 +2697,8 @@ body.mobile-cta-visible .contact-band-form {
   }
 
   .about-contact-rail {
-    position: sticky;
-    top: 7rem;
+    position: static;
+    top: auto;
   }
 }
 
@@ -3744,7 +3745,7 @@ body.yard-cinematic-owns.mobile-cta-visible {
   background: linear-gradient(to left, var(--color-surface), transparent);
 }
 
-/* Back to top — clears mobile CTA bar + safe area */
+/* Back to top — mobile only (desktop lives in .fab-stack) */
 .back-to-top {
   position: fixed;
   bottom: calc(var(--mobile-cta-h, 4.5rem) + 0.75rem);
@@ -3787,12 +3788,22 @@ body.yard-cinematic-owns.mobile-cta-visible {
   transform: translateY(-2px) scale(1);
 }
 
-@media (min-width: 1024px) {
-  .back-to-top {
-    /* Sit above desktop FAB stack (WhatsApp + Call) */
-    bottom: 8.5rem;
-    right: 1.35rem;
-  }
+.back-to-top-fab {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition:
+    opacity 0.35s var(--ease-out-expo),
+    transform 0.35s var(--ease-out-expo),
+    visibility 0.35s;
+}
+
+.back-to-top-fab.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
 }
 
 /* Mobile menu */
@@ -4271,9 +4282,10 @@ body.yard-cinematic-owns.mobile-cta-visible {
     gap: 1.75rem;
   }
 
+  /* No sticky rail — sticky next to short left columns creates huge empty voids */
   .page-split-rail {
-    position: sticky;
-    top: 6.5rem;
+    position: static;
+    top: auto;
   }
 }
 

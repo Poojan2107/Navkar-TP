@@ -99,7 +99,7 @@ const schemas = [
 
   <section class="contact-band bg-navy-950">
     <div class="lg:grid lg:grid-cols-[0.95fr_1.05fr]">
-      <Reveal variant="fade-right" class="contact-band-info relative flex flex-col justify-between gap-8 p-8 sm:p-10 lg:min-h-[32rem] lg:p-12">
+      <Reveal variant="fade-up" class="contact-band-info relative flex flex-col gap-8 p-8 sm:p-10 lg:p-12">
         <div
           class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgb(89_161_168/0.2),transparent_55%)]"
           aria-hidden="true"
@@ -126,14 +126,9 @@ const schemas = [
             </a>
           </div>
         </div>
-
-        <p class="relative inline-flex items-center gap-1.5 text-sm leading-relaxed tracking-[0.02em] text-slate-400">
-          <Icon name="map" class="h-3.5 w-3.5 opacity-70" />
-          Ahmedabad, Gujarat
-        </p>
       </Reveal>
 
-      <Reveal delay={100} variant="fade-left" class="contact-band-form bg-white p-8 sm:p-10 lg:p-12">
+      <Reveal delay={80} variant="fade-up" class="contact-band-form bg-white p-8 sm:p-10 lg:p-12">
         <h2 class="contact-band-title mb-6 text-navy-brand">Get Your Quotation</h2>
         <QuoteForm selectedProduct={selectedProduct} />
       </Reveal>
