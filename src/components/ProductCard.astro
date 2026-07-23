@@ -1,5 +1,6 @@
 ---
 import type { Product } from '../data/products';
+import Icon from './Icon.astro';
 
 interface Props {
   product: Product;
@@ -47,9 +48,7 @@ const standardBadge = product.standards?.[0];
     <p class="product-tile-text">{product.shortDescription}</p>
     <span class="product-tile-link">
       View Product
-      <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-      </svg>
+      <Icon name="arrow" class="h-3.5 w-3.5" />
     </span>
   </div>
 </a>

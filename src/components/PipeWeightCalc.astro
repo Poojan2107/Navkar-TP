@@ -4,23 +4,23 @@
  * Formula: 0.02466 × T × (D − T) with D, T in mm — common India trade estimate.
  * Always confirm with mill / invoice for commercial orders.
  */
+import Icon from './Icon.astro';
+
 interface Props {
   /** Show only on pipe-like products */
   title?: string;
 }
 
-const { title = 'Pipe weight estimate' } = Astro.props;
+const { title = 'Pipe Weight Estimate' } = Astro.props;
 ---
 
 <div class="pipe-weight relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl sm:p-8" data-pipe-weight>
   <div class="flex items-center gap-3">
     <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-500/10 text-teal-600">
-      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-      </svg>
+      <Icon name="calculator" class="h-5 w-5" />
     </div>
     <div>
-      <h3 class="font-display text-xl font-bold uppercase tracking-tight text-navy-brand">
+      <h3 class="font-display text-xl font-bold tracking-tight text-navy-brand">
         {title}
       </h3>
       <p class="mt-0.5 text-[13px] leading-relaxed text-steel-500">
@@ -87,9 +87,10 @@ const { title = 'Pipe weight estimate' } = Astro.props;
     </div>
     <a
       href="/contact/?product=erw-pipes"
-      class="btn btn-teal btn-shimmer shrink-0 px-5 py-2.5 text-sm font-semibold shadow-md"
+      class="btn btn-teal btn-shimmer inline-flex shrink-0 items-center gap-1.5 px-5 py-2.5 text-sm font-semibold shadow-md"
     >
-      Confirm Quote →
+      Confirm Quote
+      <Icon name="arrow" class="h-3.5 w-3.5" />
     </a>
   </div>
 </div>

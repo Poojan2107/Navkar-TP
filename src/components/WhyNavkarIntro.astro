@@ -2,6 +2,7 @@
 import { featuredIndustries } from '../data/site';
 import Reveal from './Reveal.astro';
 import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
 ---
 
 <section class="section-padding bg-white">
@@ -35,9 +36,13 @@ import SectionHeading from './SectionHeading.astro';
               <div class="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/35 to-navy-950/10 transition duration-500 group-hover:via-navy-950/50"></div>
               <div class="absolute inset-x-0 bottom-0 p-3.5 sm:p-5 md:p-6">
                 <div class="industry-line mb-2 h-0.5 w-6 bg-teal-400 sm:mb-3 sm:w-7"></div>
-                <h3 class="font-display text-[13px] font-bold uppercase leading-snug tracking-tight text-white sm:text-base md:text-lg">
+                <h3 class="font-display text-[13px] font-bold leading-snug tracking-tight text-white sm:text-base md:text-lg">
                   {industry.name}
                 </h3>
+                <span class="mt-1.5 inline-flex items-center gap-1 text-[11px] font-semibold text-teal-200/90 opacity-90 transition group-hover:opacity-100 sm:text-xs">
+                  Enquire
+                  <Icon name="arrow" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+                </span>
               </div>
             </a>
           </Reveal>
@@ -49,8 +54,9 @@ import SectionHeading from './SectionHeading.astro';
       <p class="max-w-2xl text-sm leading-relaxed text-steel-500">
         Sugar, fertilizer, heavy engineering and government departments — supplied nationwide from Ahmedabad.
       </p>
-      <a href="/contact/" class="shrink-0 text-sm font-semibold text-teal-600 hover:text-teal-700">
-        Enquire for your sector →
+      <a href="/contact/" class="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-teal-600 hover:text-teal-700">
+        Enquire For Your Sector
+        <Icon name="arrow" class="h-3.5 w-3.5" />
       </a>
     </Reveal>
   </div>

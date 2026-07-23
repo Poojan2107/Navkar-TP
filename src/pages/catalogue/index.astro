@@ -44,8 +44,8 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
               loading="lazy"
             />
             <div class="mt-5 flex flex-col justify-center sm:mt-0">
-              <p class="mb-1.5 text-meta uppercase tracking-[0.18em] text-teal-600">PDF download</p>
-              <h2 class="font-display mb-2 text-2xl font-bold uppercase tracking-tight text-navy-brand">
+              <p class="section-eyebrow mb-1.5">PDF Download</p>
+              <h2 class="font-display mb-2 text-2xl font-bold tracking-tight text-navy-brand">
                 Navkar Tubes Brochure
               </h2>
               <p class="mb-4 max-w-xl text-[15px] leading-relaxed text-steel-500">
@@ -57,7 +57,9 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
                 {
                   brochureIncludes.map((item) => (
                     <li class="flex gap-2 text-[14px] text-navy-brand">
-                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 bg-teal-500" aria-hidden="true" />
+                      <svg class="mt-0.5 h-4 w-4 shrink-0 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
                       {item}
                     </li>
                   ))
@@ -68,12 +70,18 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
                 <a
                   href="/catalogue.pdf"
                   download="Navkar-Tubes-Brochure.pdf"
-                  class="btn btn-teal px-7 py-3 text-sm"
+                  class="btn btn-teal inline-flex items-center gap-2 px-7 py-3 text-sm"
                 >
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                  </svg>
                   Download PDF
                 </a>
-                <a href="/products/" class="text-sm font-semibold text-teal-600 hover:text-teal-700">
-                  Browse Products →
+                <a href="/products/" class="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 hover:text-teal-700">
+                  Browse Products
+                  <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
                 </a>
               </div>
             </div>
@@ -83,7 +91,7 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
         <Reveal delay={80} variant="fade-up">
           <div class="rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6">
             <p class="section-eyebrow mb-1.5">Quick links</p>
-            <h3 class="font-display mb-4 text-lg font-bold uppercase tracking-tight text-navy-brand">
+            <h3 class="font-display mb-4 text-lg font-bold tracking-tight text-navy-brand">
               Core Stock Lines
             </h3>
             <div class="grid gap-2.5 sm:grid-cols-2">
@@ -106,7 +114,12 @@ const quickLinks = [...getJindalProducts(), ...getComplementaryProducts()].slice
                       <span class="block truncate text-[13px] font-bold text-navy-brand group-hover:text-teal-700">
                         {product.title}
                       </span>
-                      <span class="mt-0.5 block text-[12px] text-steel-500">View details →</span>
+                      <span class="mt-0.5 inline-flex items-center gap-1 text-[12px] text-steel-500">
+                        View Details
+                        <svg class="h-3 w-3 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </span>
                     </span>
                   </a>
                 ))

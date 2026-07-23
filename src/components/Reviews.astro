@@ -13,7 +13,7 @@ const featured = reviews;
       <Reveal variant="fade-up" class="min-w-0 flex-1">
         <SectionHeading
           label="Testimonials"
-          title="What buyers say"
+          title="What Buyers Say"
           description="Selected Google reviews from contractors and project buyers in Gujarat."
         />
       </Reveal>
@@ -22,9 +22,12 @@ const featured = reviews;
           href={site.googleReviewsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="mb-6 shrink-0 text-sm font-semibold text-teal-600 hover:text-teal-700 lg:mb-8"
+          class="mb-6 inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-teal-600 hover:text-teal-700 lg:mb-8"
         >
-          See Google reviews →
+          See Google Reviews
+          <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
         </a>
       </Reveal>
     </div>

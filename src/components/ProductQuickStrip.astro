@@ -1,12 +1,16 @@
 ---
 import { weServe } from '../data/site';
+import Icon from './Icon.astro';
 ---
 
 <section id="product-lines" class="scroll-mt-24 border-b border-slate-200 bg-white py-8 sm:py-10">
   <div class="container-narrow px-4 sm:px-6 lg:px-8">
     <div class="mb-5 flex items-end justify-between gap-3">
-      <h2 class="font-display text-2xl font-bold tracking-tight text-navy-brand sm:text-[1.65rem]">Core stock lines</h2>
-      <a href="/products/" class="text-sm font-semibold text-teal-600 hover:text-teal-700">View all →</a>
+      <h2 class="font-display text-2xl font-bold tracking-tight text-navy-brand sm:text-[1.65rem]">Core Stock Lines</h2>
+      <a href="/products/" class="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 hover:text-teal-700">
+        View All
+        <Icon name="arrow" class="h-3.5 w-3.5" />
+      </a>
     </div>
 
     <div class="product-quick-scroll -mx-1 flex gap-4 overflow-x-auto px-1 pb-1 snap-x snap-mandatory sm:gap-5">

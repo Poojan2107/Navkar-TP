@@ -1,25 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SalesContactActions from '../components/SalesContactActions.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <BaseLayout
-  title="Page not found"
+  title="Page Not Found"
   description="The page you are looking for does not exist on Navkar Tubes & Tools."
   noindex
 >
   <section class="section-padding flex flex-1 items-center bg-navy-950 pt-28 sm:pt-32">
     <div class="container-narrow mx-auto max-w-xl text-center">
+      <span class="mx-auto mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-500/15 text-teal-300">
+        <Icon name="search" class="h-7 w-7" />
+      </span>
       <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-teal-300">Error 404</p>
-      <h1 class="font-display mb-4 text-4xl font-bold uppercase tracking-tight text-white sm:text-5xl">
-        Page not found
+      <h1 class="font-display mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        Page Not Found
       </h1>
       <p class="mb-8 text-base leading-relaxed text-slate-300">
         That URL does not exist — or it moved when we rebuilt the site. Try products, catalogue, or
         contact.
       </p>
       <div class="mb-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/" class="btn btn-teal px-7 py-3.5 text-sm">Go home</a>
+        <a href="/" class="btn btn-teal px-7 py-3.5 text-sm">Go Home</a>
         <a href="/products/" class="btn btn-outline-light px-7 py-3.5 text-sm">Products</a>
         <a href="/catalogue/" class="btn btn-outline-light px-7 py-3.5 text-sm">Catalogue</a>
         <a href="/contact/" class="btn btn-outline-light px-7 py-3.5 text-sm">Contact</a>

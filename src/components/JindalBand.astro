@@ -1,6 +1,7 @@
 ---
 import Reveal from './Reveal.astro';
 import CertificateLightbox from './CertificateLightbox.astro';
+import Icon from './Icon.astro';
 import { jindalPartner } from '../data/site';
 ---
 
@@ -8,9 +9,9 @@ import { jindalPartner } from '../data/site';
   <div class="container-narrow">
     <div class="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
       <Reveal variant="fade-right">
-        <p class="section-eyebrow mb-2.5">Jindal authorized</p>
-        <h2 class="font-display mb-4 text-2xl font-bold uppercase tracking-tight text-navy-brand sm:text-[1.85rem] lg:text-3xl">
-          Genuine Jindal — authorized stockist
+        <p class="section-eyebrow mb-2.5">Jindal Authorized</p>
+        <h2 class="section-title mb-4 !text-[1.65rem] sm:!text-[1.85rem] lg:!text-[2rem]">
+          Genuine Jindal — Authorized Stockist
         </h2>
         <p class="mb-3 max-w-xl text-[15px] leading-relaxed text-steel-500">
           {jindalPartner.body}
@@ -19,8 +20,9 @@ import { jindalPartner } from '../data/site';
           {jindalPartner.sizeRange}. {jindalPartner.validityLabel}. Ask for mill / invoice docs with
           your order.
         </p>
-        <a href="/jindal-authorized-partner/" class="btn btn-teal btn-shimmer px-6 py-3 text-sm font-semibold">
-          View partnership details →
+        <a href="/jindal-authorized-partner/" class="btn btn-teal btn-shimmer inline-flex items-center gap-1.5 px-6 py-3 text-sm font-semibold">
+          View Partnership Details
+          <Icon name="arrow" class="h-4 w-4" />
         </a>
       </Reveal>
 

@@ -1,6 +1,7 @@
 ---
 import QuoteForm from './QuoteForm.astro';
 import SalesContactActions from './SalesContactActions.astro';
+import Icon from './Icon.astro';
 import { site } from '../data/site';
 ---
 
@@ -8,7 +9,7 @@ import { site } from '../data/site';
   <div class="container-narrow px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
     <div class="grid gap-6 rounded-2xl border border-slate-200/90 bg-surface/70 p-5 sm:gap-8 sm:p-7 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-8 lg:p-8">
       <div>
-        <p class="section-eyebrow mb-2">Request for quotation</p>
+        <p class="section-eyebrow mb-2">Request For Quotation</p>
         <h2 class="section-title mb-3">Get Your Free Quote</h2>
         <p class="mb-6 max-w-md text-[15px] leading-[1.65] text-steel-500">
           Share product, size and quantity — sales replies from Ahmedabad, Gujarat with a detailed quotation.
@@ -16,19 +17,21 @@ import { site } from '../data/site';
 
         <SalesContactActions layout="row" />
 
-        <div class="mt-5 space-y-2 border-t border-slate-200/90 pt-5 text-[14px] leading-relaxed text-steel-500">
-          <p>
-            <span class="font-semibold text-navy-brand">Location</span> — Ahmedabad, Gujarat
+        <div class="mt-5 space-y-2.5 border-t border-slate-200/90 pt-5 text-[14px] leading-relaxed text-steel-500">
+          <p class="inline-flex items-center gap-2">
+            <Icon name="map" class="h-4 w-4 text-teal-600" />
+            <span><span class="font-semibold text-navy-brand">Location</span> — Ahmedabad, Gujarat</span>
           </p>
-          <a href={`mailto:${site.email}`} class="inline-block font-semibold text-teal-600 hover:text-teal-700">
+          <a href={`mailto:${site.email}`} class="inline-flex items-center gap-2 font-semibold text-teal-600 hover:text-teal-700">
+            <Icon name="mail" class="h-4 w-4" />
             {site.email}
           </a>
         </div>
       </div>
 
       <div class="update-rail-form rounded-2xl bg-white p-5 ring-1 ring-slate-200/80 sm:p-6">
-        <h3 class="font-display mb-4 text-xl font-bold uppercase tracking-[0.03em] text-navy-brand">
-          Send enquiry
+        <h3 class="font-display mb-4 text-xl font-bold tracking-tight text-navy-brand">
+          Send Enquiry
         </h3>
         <QuoteForm id="updates-quote-form" />
       </div>

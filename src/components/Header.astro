@@ -1,6 +1,7 @@
 ---
 import { site, navLinks } from '../data/site';
 import Logo from './Logo.astro';
+import Icon from './Icon.astro';
 
 interface Props {
   /** Dark frosted header over homepage / photo heroes */
@@ -28,20 +29,24 @@ const currentPath = Astro.url.pathname;
     ]}
   >
     <div class="container-narrow flex items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
-      <p class="header-util-text truncate text-[12px] font-medium tracking-wide">
+      <p class="header-util-text inline-flex items-center gap-1.5 truncate text-[12px] font-medium tracking-wide">
+        <Icon name="map" class="h-3.5 w-3.5 shrink-0 opacity-80" />
         Ahmedabad, Gujarat
       </p>
       <div class="flex items-center gap-4 sm:gap-6">
-        <a href={site.phones.salesTel} class="header-util-link shrink-0 text-[12px] font-semibold">
+        <a href={site.phones.salesTel} class="header-util-link inline-flex shrink-0 items-center gap-1.5 text-[12px] font-semibold">
+          <Icon name="phone" class="h-3.5 w-3.5" />
           Sales {site.phones.sales}
         </a>
         <a
           href={site.phones.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          class="header-util-link hidden shrink-0 text-[12px] font-semibold sm:inline"
+          class="header-util-link hidden shrink-0 items-center gap-1.5 text-[12px] font-semibold sm:inline-flex"
         >
-          WhatsApp Quote →
+          <Icon name="whatsapp" class="h-3.5 w-3.5" />
+          WhatsApp Quote
+          <Icon name="arrow" class="h-3 w-3 opacity-70" />
         </a>
       </div>
     </div>
@@ -71,7 +76,10 @@ const currentPath = Astro.url.pathname;
       <a href={site.catalogueUrl} class="header-catalogue header-nav-link nav-link px-2 py-1.5 font-semibold lg:text-[14px] xl:text-[15px]">
         Catalogue
       </a>
-      <a href="/contact/" class="btn btn-teal btn-shimmer ml-2 px-4 py-2.5 text-[14px] shadow-md xl:px-5 xl:text-[15px]" data-magnetic>Get Quote</a>
+      <a href="/contact/" class="btn btn-teal btn-shimmer ml-2 inline-flex items-center gap-1.5 px-4 py-2.5 text-[14px] shadow-md xl:px-5 xl:text-[15px]" data-magnetic>
+        Get Quote
+        <Icon name="arrow" class="h-3.5 w-3.5" />
+      </a>
     </nav>
 
     <button
@@ -115,18 +123,23 @@ const currentPath = Astro.url.pathname;
       <a href={site.catalogueUrl} class="rounded-xl px-3.5 py-3 text-base font-semibold text-white/88 hover:bg-white/8 hover:text-teal-300">
         Catalogue
       </a>
-      <a href={site.phones.salesTel} class="rounded-xl px-3.5 py-3 text-base font-semibold text-teal-300 hover:bg-white/8">
-        Call sales {site.phones.sales}
+      <a href={site.phones.salesTel} class="inline-flex items-center gap-2 rounded-xl px-3.5 py-3 text-base font-semibold text-teal-300 hover:bg-white/8">
+        <Icon name="phone" class="h-4 w-4" />
+        Call Sales {site.phones.sales}
       </a>
       <a
         href={site.phones.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        class="rounded-xl px-3.5 py-3 text-base font-semibold text-teal-300 hover:bg-white/8"
+        class="inline-flex items-center gap-2 rounded-xl px-3.5 py-3 text-base font-semibold text-teal-300 hover:bg-white/8"
       >
-        WhatsApp sales
+        <Icon name="whatsapp" class="h-4 w-4" />
+        WhatsApp Sales
       </a>
-      <a href="/contact/" class="btn btn-teal btn-shimmer mx-1 mt-3 mb-1 min-h-12 py-3.5 text-center shadow-lg">Get quote</a>
+      <a href="/contact/" class="btn btn-teal btn-shimmer mx-1 mt-3 mb-1 inline-flex min-h-12 items-center justify-center gap-1.5 py-3.5 text-center shadow-lg">
+        Get Quote
+        <Icon name="arrow" class="h-4 w-4" />
+      </a>
     </div>
   </nav>
 </header>

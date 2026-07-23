@@ -2,6 +2,7 @@
 import { valueCards } from '../data/site';
 import Reveal from './Reveal.astro';
 import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
 ---
 
 <section class="section-padding bg-surface">
@@ -9,7 +10,7 @@ import SectionHeading from './SectionHeading.astro';
     <Reveal variant="fade-up">
       <SectionHeading
         label="Why choose us"
-        title="Stock, speed & authorized supply"
+        title="Stock, Speed & Authorized Supply"
         description="What project buyers expect from an Ahmedabad MS pipes dealer — without the runaround."
         centered
       />
@@ -20,14 +21,17 @@ import SectionHeading from './SectionHeading.astro';
         valueCards.map((card, i) => (
           <Reveal delay={i * 80} variant="fade-up">
             <article class="why-card h-full rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm shadow-navy-brand/4 sm:p-7">
-              <h3 class="font-display text-xl font-bold uppercase tracking-tight text-navy-brand">{card.title}</h3>
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-teal-500/10 text-teal-700">
+                <Icon name={card.icon} class="h-5 w-5" />
+              </div>
+              <h3 class="font-display text-xl font-bold tracking-tight text-navy-brand">{card.title}</h3>
               {
                 'bullets' in card && card.bullets ? (
                   <ul class="mt-4 space-y-2.5">
                     {
                       card.bullets.map((line) => (
                         <li class="flex gap-2.5 text-[15px] leading-relaxed text-steel-500">
-                          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" aria-hidden="true"></span>
+                          <Icon name="check" class="mt-1 h-4 w-4 shrink-0 text-teal-600" />
                           {line}
                         </li>
                       ))

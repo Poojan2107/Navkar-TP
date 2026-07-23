@@ -129,7 +129,8 @@ export const featuredIndustries = [
 /** Value props — homepage “Why choose us” grid */
 export const valueCards = [
   {
-    title: 'Stock & speed',
+    title: 'Stock & Speed',
+    icon: 'clock' as const,
     bullets: [
       'Large diameter pipe ready for urgent lifts',
       'Detailed free quote — product, size, quantity',
@@ -137,17 +138,20 @@ export const valueCards = [
     ],
   },
   {
-    title: 'Authorized supply',
+    title: 'Authorized Supply',
+    icon: 'shield' as const,
     description:
       'Genuine Jindal MS ERW and GI hollow sections, plus fittings and flanges — stocked in Ahmedabad, Gujarat and dispatched nationwide.',
   },
   {
-    title: '15–500 MM range',
+    title: '15–500 MM Range',
+    icon: 'range' as const,
     description:
       'Full ERW black pipe and GI hollow section sizes in stock — share your bill of materials and we confirm availability same day.',
   },
   {
-    title: 'Nationwide dispatch',
+    title: 'Nationwide Dispatch',
+    icon: 'truck' as const,
     description:
       'Ahmedabad, Gujarat yards with lift-ready stock for Gujarat projects and freight dispatch across India.',
   },
@@ -207,19 +211,42 @@ export const aboutHighlights =
 export const aboutMission =
   'High-quality products, reasonable prices and dependable service. Trust is our motto.';
 
+/** Story beats — About page icon strip */
+export const aboutStoryBeats = [
+  {
+    title: 'Since 1995',
+    text: 'Three decades stocking MS pipes and sections from Ahmedabad for Gujarat and India.',
+    icon: 'calendar' as const,
+  },
+  {
+    title: 'Jindal Partner',
+    text: 'Authorized channel partner for MS ERW black pipes and GI square & rectangular hollow sections.',
+    icon: 'shield' as const,
+  },
+  {
+    title: 'Project Ready',
+    text: 'Fittings, flanges and allied mills quoted with the same enquiry — lift-ready from our yard.',
+    icon: 'truck' as const,
+  },
+] as const;
+
 export const team = [
   {
     role: 'Founder',
     name: 'Shripal Shah',
     phone: '+91 9825085947',
     tel: 'tel:+919825085947',
+    linkedin: 'https://www.linkedin.com/in/shripal-shah-19b2b529a/',
+    bio: 'Founded Navkar Tubes & Tools in Ahmedabad — building a trusted MS pipe stockyard for industrial buyers across Gujarat.',
     image: images.people.founder,
   },
   {
     role: 'Managing Director',
-    name: 'Harsh Shah',
+    name: 'Harsh Kothari',
     phone: '+91 9601702883',
     tel: 'tel:+919601702883',
+    linkedin: 'https://www.linkedin.com/in/harsh-kothari-159a95262/',
+    bio: 'Leads sales and project supply — genuine Jindal lines, allied mill stock and dispatch support from Ahmedabad.',
     image: images.people.managingDirector,
   },
 ] as const;

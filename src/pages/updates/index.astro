@@ -71,7 +71,19 @@ const collectionSchema = {
         sorted.length > 0 ? (
           <RelatedUpdates entries={sorted} heading="" />
         ) : (
-          <p class="text-sm text-steel-500">No updates published yet.</p>
+          <div class="rounded-2xl border border-slate-200/90 bg-white px-6 py-10 text-center sm:px-10">
+            <p class="section-eyebrow mb-2 justify-center">From The Yard</p>
+            <h2 class="section-title mb-3 !text-[1.45rem]">No Updates Published Yet</h2>
+            <p class="mx-auto mb-6 max-w-md text-[15px] leading-relaxed text-steel-500">
+              Fresh stock snapshots will appear here soon. For current availability, request a quote from Ahmedabad sales.
+            </p>
+            <a href="/contact/" class="btn btn-teal inline-flex items-center gap-1.5 px-6 py-3 text-sm">
+              Get A Quote
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
         )
       }
     </div>

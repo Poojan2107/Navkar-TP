@@ -1,12 +1,16 @@
 ---
 import { site } from '../data/site';
+import Icon from './Icon.astro';
 ---
 
 <section class="border-y border-slate-200 bg-navy-950 text-white" aria-label="Navkar Tubes locations">
   <div class="container-narrow grid gap-6 px-4 py-8 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-8 lg:py-10">
     <div class="lg:col-span-1">
-      <p class="text-sm font-semibold text-teal-300">Find us</p>
-      <h2 class="font-display mt-1 text-xl font-bold uppercase tracking-tight sm:text-2xl">
+      <p class="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-300">
+        <Icon name="map" class="h-4 w-4" />
+        Find Us
+      </p>
+      <h2 class="font-display mt-1 text-xl font-bold tracking-tight sm:text-2xl">
         Ahmedabad, Gujarat
       </h2>
       <p class="mt-2 text-[14px] leading-relaxed text-slate-400">
@@ -15,18 +19,24 @@ import { site } from '../data/site';
     </div>
 
     <div class="rounded-2xl border border-white/10 bg-white/5 p-5 sm:col-span-1 lg:col-span-1">
-      <h3 class="font-semibold text-teal-200">Yard &amp; sales</h3>
+      <h3 class="inline-flex items-center gap-2 font-semibold text-teal-200">
+        <Icon name="map" class="h-4 w-4" />
+        Yard &amp; Sales
+      </h3>
       <address class="mt-2 text-[14px] not-italic leading-relaxed text-slate-300">{site.address.full}</address>
-      <a href={site.phones.salesTel} class="mt-3 block text-sm font-bold text-white hover:text-teal-200">
+      <a href={site.phones.salesTel} class="mt-3 inline-flex items-center gap-2 text-sm font-bold text-white hover:text-teal-200">
+        <Icon name="phone" class="h-4 w-4 text-teal-300" />
         Sales {site.phones.sales}
       </a>
       <a
         href={site.phones.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        class="mt-1.5 block text-sm font-semibold text-teal-200 hover:text-teal-100"
+        class="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-teal-200 hover:text-teal-100"
       >
-        WhatsApp sales →
+        <Icon name="whatsapp" class="h-4 w-4" />
+        WhatsApp Sales
+        <Icon name="arrow" class="h-3.5 w-3.5 opacity-70" />
       </a>
     </div>
 
@@ -35,16 +45,18 @@ import { site } from '../data/site';
         href={site.googleReviewsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-xl border border-teal-400/40 bg-teal-500/10 px-4 py-3 text-sm font-semibold text-teal-100 transition hover:bg-teal-500/20"
+        class="inline-flex items-center justify-center gap-2 rounded-xl border border-teal-400/40 bg-teal-500/10 px-4 py-3 text-sm font-semibold text-teal-100 transition hover:bg-teal-500/20"
       >
-        ★ Read Google reviews
+        <Icon name="star" class="h-4 w-4 text-teal-200" />
+        Read Google Reviews
       </a>
       <a
         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Navkar Tubes & Tools Ahmedabad Gujarat')}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-white/90 transition hover:border-white/30"
+        class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-white/90 transition hover:border-white/30"
       >
+        <Icon name="map" class="h-4 w-4" />
         Open in Google Maps
       </a>
     </div>

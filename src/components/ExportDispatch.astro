@@ -1,6 +1,7 @@
 ---
 import Reveal from './Reveal.astro';
 import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
 
 /** Curated export shots — landscape-first captions for portal tiles */
 const shots = [
@@ -18,17 +19,15 @@ const shots = [
     <Reveal variant="fade-up" class="mb-7 flex flex-wrap items-end justify-between gap-4">
       <SectionHeading
         label="Export &amp; dispatch"
-        title="Container loading from our yard"
+        title="Container Loading From Our Yard"
         description="Real photos from recent export stuffing — MS pipes packed and dispatched from Ahmedabad."
       />
       <a
         href="/contact/?product=erw-pipes"
         class="link-arrow mb-1 inline-flex shrink-0 items-center gap-1.5 text-[15px] font-semibold text-teal-600 hover:text-teal-700"
       >
-        Ask about export supply
-        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
+        Ask About Export Supply
+        <Icon name="arrow" class="h-4 w-4" />
       </a>
     </Reveal>
 

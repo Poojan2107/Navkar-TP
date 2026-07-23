@@ -174,8 +174,11 @@ const preselected =
     </p>
   </div>
 
-  <button type="submit" class:list={['btn btn-teal min-h-12 w-full px-6 py-3.5', !compact && 'sm:w-auto']} data-submit-btn>
+  <button type="submit" class:list={['btn btn-teal inline-flex min-h-12 w-full items-center justify-center gap-2 px-6 py-3.5', !compact && 'sm:w-auto']} data-submit-btn>
     Submit Enquiry
+    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+    </svg>
   </button>
 </form>
 
@@ -183,7 +186,7 @@ const preselected =
   Or call{' '}
   <a href={site.phones.salesTel} class:list={['font-semibold', linkClass]}>{site.phones.sales}</a>
   <span class="mx-1.5 text-slate-400" aria-hidden="true">·</span>
-  <a href={site.phones.whatsapp} target="_blank" rel="noopener noreferrer" class:list={['font-semibold', linkClass]}>WhatsApp sales</a>
+  <a href={site.phones.whatsapp} target="_blank" rel="noopener noreferrer" class:list={['font-semibold', linkClass]}>WhatsApp Sales</a>
 </p>
 
 <script is:inline>

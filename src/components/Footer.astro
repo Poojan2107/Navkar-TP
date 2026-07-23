@@ -2,6 +2,7 @@
 import { site, navLinks } from '../data/site';
 import { products } from '../data/products';
 import Logo from './Logo.astro';
+import Icon from './Icon.astro';
 
 const companyLinks = [
   ...navLinks,
@@ -28,9 +29,11 @@ const productLinks = products.slice(0, 5);
           href={site.phones.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-[14px] font-semibold text-teal-300 transition hover:text-white"
+          class="inline-flex items-center gap-2 text-[14px] font-semibold text-teal-300 transition hover:text-white"
         >
-          WhatsApp Sales →
+          <Icon name="whatsapp" class="h-4 w-4" />
+          WhatsApp Sales
+          <Icon name="arrow" class="h-3.5 w-3.5 opacity-70" />
         </a>
       </div>
 
@@ -62,20 +65,26 @@ const productLinks = products.slice(0, 5);
               ))
             }
             <li>
-              <a href="/products/" class="footer-link font-semibold text-teal-300">All Products →</a>
+              <a href="/products/" class="footer-link inline-flex items-center gap-1 font-semibold text-teal-300">
+                All Products
+                <Icon name="arrow" class="h-3.5 w-3.5" />
+              </a>
             </li>
           </ul>
         </div>
         <div>
           <h3 class="mb-3 text-sm font-semibold text-teal-300">Contact</h3>
-          <address class="space-y-2 text-[14px] not-italic text-slate-400">
-            <p class="leading-snug">
+          <address class="space-y-2.5 text-[14px] not-italic text-slate-400">
+            <p class="inline-flex items-start gap-2 leading-snug">
+              <Icon name="map" class="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />
               <span class="font-medium text-slate-300">Ahmedabad, Gujarat</span>
             </p>
-            <a href={site.phones.salesTel} class="footer-link block">
+            <a href={site.phones.salesTel} class="footer-link inline-flex items-center gap-2">
+              <Icon name="phone" class="h-4 w-4 text-teal-400" />
               Sales {site.phones.sales}
             </a>
-            <a href={`mailto:${site.email}`} class="footer-link block">
+            <a href={`mailto:${site.email}`} class="footer-link inline-flex items-center gap-2">
+              <Icon name="mail" class="h-4 w-4 text-teal-400" />
               {site.email}
             </a>
           </address>
@@ -88,7 +97,10 @@ const productLinks = products.slice(0, 5);
       <div class="flex flex-wrap gap-4 text-sm">
         <a href="/contact/" class="transition hover:text-white">Get Quote</a>
         <a href="/privacy/" class="transition hover:text-white">Privacy</a>
-        <span>Ahmedabad · Gujarat</span>
+        <span class="inline-flex items-center gap-1.5">
+          <Icon name="map" class="h-3.5 w-3.5 opacity-70" />
+          Ahmedabad · Gujarat
+        </span>
       </div>
     </div>
   </div>

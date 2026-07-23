@@ -34,7 +34,7 @@ export const images = {
   emblem: '/images/navkar/favicon.webp',
   people: {
     founder: '/images/navkar/shripal-shah.webp',
-    managingDirector: '/images/navkar/harsh-shah.webp',
+    managingDirector: '/images/navkar/harsh-kothari.webp',
   },
   products: {
     'erw-pipes': '/images/navkar/erw-pipes.webp',
