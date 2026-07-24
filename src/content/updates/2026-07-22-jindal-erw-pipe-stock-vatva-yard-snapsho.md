@@ -6,7 +6,7 @@ date: 2026-07-22
 image: "/images/navkar/updates/yard-01-960.webp"
 thumb: "/images/navkar/updates/yard-01-640.webp"
 tags: ["ERW Pipes", "Jindal", "Ahmedabad"]
-featured: true
+featured: false
 autoPublished: true
 ---
 
